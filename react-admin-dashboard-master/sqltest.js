@@ -51,18 +51,19 @@ async function connectAndQuery() {
 
         console.log("Reading rows from the Table...");
         var resultSet = await poolConnection.request().query(`
-          SELECT COUNT(*) AS Total_Filas
-        FROM Flights`);
+           select count( distinct F.country)
+from Flights F
+where F.country like 'A%'`);
 
         console.log(`${resultSet.recordset.length} rows returned.`);
 
         // output column headers
         var columns = Object.keys(resultSet.recordset[0]).join(", ");
-        console.log("%s", columns);
+        console.log("Columns: ", columns);
 
         // output row contents from default record set
         resultSet.recordset.forEach(row => {
-            console.log("%s", row.Total_Filas);
+            console.log(row);
         });
 
         // close connection only when we're certain application is finished
