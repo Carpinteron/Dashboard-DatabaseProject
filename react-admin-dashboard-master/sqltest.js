@@ -41,9 +41,10 @@ const config = {
         }
     }
 */
-
+const fs = require('fs');
 console.log("Starting...");
-connectAndQuery();
+//connectAndQuery();
+agregarinfo('mockTransactions'); 
 
 async function connectAndQuery() {
     try {
@@ -51,7 +52,7 @@ async function connectAndQuery() {
 
         console.log("Reading rows from the Table...");
         var resultSet = await poolConnection.request().query(`
-           select count( distinct F.country)
+           select distinct F.country
 from Flights F
 where F.country like 'A%'`);
 
@@ -66,9 +67,113 @@ where F.country like 'A%'`);
             console.log(row);
         });
 
+        // Datos obtenidos del query
+        const data = resultSet.recordset;
+
+        // Leer el contenido actual de mockData.js
+        const mockDataPath = './src/data/mockData.js';
+        const mockDataContent = fs.readFileSync(mockDataPath, 'utf8');
+
+         // Verificar si ya existe mockQueryData en el archivo
+         if (mockDataContent.includes('export const mockQueryData')) {
+            // Reemplazar el contenido existente de mockQueryData
+            const updatedContent = mockDataContent.replace(
+                /export const mockQueryData = \[.*?\];/s,
+                `export const mockQueryData = ${JSON.stringify(data, null, 2)};`
+            );
+            fs.writeFileSync(mockDataPath, updatedContent);
+            console.log("mockQueryData actualizado en mockData.js!");
+        } else {
+            // Agregar los nuevos datos al archivo
+            const newData = `export const mockQueryData = ${JSON.stringify(data, null, 2)};\n`;
+            const updatedContent = mockDataContent + '\n' + newData;
+            // Escribir el contenido actualizado en mockData.js
+            fs.writeFileSync(mockDataPath, updatedContent);
+            console.log("mockQueryData agregado a mockData.js!");
+        }
+
         // close connection only when we're certain application is finished
         poolConnection.close();
+
     } catch (err) {
         console.error(err.message);
+    }
+}
+
+async function agregarinfo(exportName) {
+    try {
+        var poolConnection = await sql.connect(config);
+
+        console.log(`Reading rows from the Table for ${exportName}...`);
+        var resultSet = await poolConnection.request().query(`
+            select top 3
+                F.country as name,
+                F.country as email,
+                F.nsmiles as phone,
+                F.year as access
+            from Flights F
+            where F.country like 'A%'
+            group by F.country, F.airport_2, F.nsmiles, F.year;
+        `);
+
+        console.log(`${resultSet.recordset.length} rows returned.`);
+
+        // Datos obtenidos del query
+        const newData = resultSet.recordset;
+
+        // Mapear los datos para que coincidan con la estructura esperada
+        const processedData = newData.map(item => ({
+            txId: item.name, // Mapear 'name' a 'txId'
+            user: item.email, // Mapear 'email' a 'user'
+            date: String(item.access), // Mapear 'access' a 'date' como string
+            cost: parseFloat(item.phone).toFixed(2), // Mapear 'phone' a 'cost' y formatear como número decimal
+        }));
+
+        console.log("Datos procesados:", processedData);
+
+        // Leer el contenido actual de mockData.js
+        const mockDataPath = './src/data/mockData.js';
+        const mockDataContent = fs.readFileSync(mockDataPath, 'utf8');
+
+        // Verificar si el exportName existe en el archivo
+        const exportRegex = new RegExp(`export const ${exportName} = (\\[.*?\\]);`, 's');
+        const existingDataMatch = mockDataContent.match(exportRegex);
+
+        if (existingDataMatch) {
+            try {
+                // Extraer y analizar los datos existentes
+                const rawArrayText = existingDataMatch[1];
+
+// Convertir el array de texto JS a objeto usando "eval" de forma segura
+                const existingData = eval('(' + rawArrayText + ')');
+
+                console.log("Datos existentes en mockTransactions:", existingData);
+
+                // Combinar los datos existentes con los nuevos
+                const combinedData = [...existingData, ...processedData];
+
+                // Reemplazar el contenido del exportName con los datos combinados
+                const updatedContent = mockDataContent.replace(
+                    exportRegex,
+                    `export const ${exportName} = ${JSON.stringify(combinedData, null, 2)};`
+                );
+                fs.writeFileSync(mockDataPath, updatedContent);
+                console.log(`${exportName} actualizado con nuevos registros en mockData.js!`);
+            } catch (err) {
+                console.error("Error al analizar los datos existentes:", err.message);
+            }
+        } else {
+            // Si no existe el exportName, agregarlo desde cero
+            const newExport = `export const ${exportName} = ${JSON.stringify(processedData, null, 2)};\n`;
+            const updatedContent = mockDataContent + '\n' + newExport;
+            fs.writeFileSync(mockDataPath, updatedContent);
+            console.log(`${exportName} agregado a mockData.js!`);
+        }
+
+        // Cerrar la conexión
+        poolConnection.close();
+
+    } catch (err) {
+        console.error("Error:", err.message);
     }
 }
