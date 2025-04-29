@@ -177,7 +177,7 @@ async function agregarinfo(exportName) {
         console.error("Error:", err.message);
     }
 }
-// QUERY #1 
+
 async function agregarLineChartFlightFareData(exportName = "lineChartFlightFareData") {
     try {
       const poolConnection = await sql.connect(config);
@@ -229,62 +229,4 @@ async function agregarLineChartFlightFareData(exportName = "lineChartFlightFareD
       console.error("Error al agregar datos de line chart:", err.message);
     }
   }
-  agregarLineChartFlightFareData();
-
-  async function agregarBarChartDistanceFareData(exportName = "barChartDistanceFareData") {
-    try {
-      const poolConnection = await sql.connect(config);
-  
-      const resultSet = await poolConnection.request().query(`
-        WITH Distance_Info AS (
-          SELECT 
-            CASE
-              WHEN CAST(nsmiles AS FLOAT) >= 0 AND CAST(nsmiles AS FLOAT) <= 1000 THEN '0-1000'
-              WHEN CAST(nsmiles AS FLOAT) > 1000 AND CAST(nsmiles AS FLOAT) <= 2000 THEN '1001-2000'
-              WHEN CAST(nsmiles AS FLOAT) > 2000 AND CAST(nsmiles AS FLOAT) <= 3000 THEN '2001-3000'
-              WHEN CAST(nsmiles AS FLOAT) > 3000 AND CAST(nsmiles AS FLOAT) <= 4000 THEN '3001-4000'
-              ELSE '4001+'
-            END AS Distance_Range, fare 
-          FROM Flights
-        )
-        SELECT AVG(CAST(fare AS FLOAT)) AS Average_Fare, Distance_Range, COUNT(*) AS Flights_per_distance
-        FROM Distance_Info
-        GROUP BY Distance_Range
-        ORDER BY 
-          CASE
-            WHEN Distance_Range = '0-1000' THEN 1
-            WHEN Distance_Range = '1001-2000' THEN 2
-            WHEN Distance_Range = '2001-3000' THEN 3
-            WHEN Distance_Range = '3001-4000' THEN 4
-            WHEN Distance_Range = '4001+' THEN 5 
-          END asc;
-      `);
-  
-      const rows = resultSet.recordset;
-  
-      const processedData = rows.map(r => ({
-        Distance_Range: r.Distance_Range,
-        Average_Fare: parseFloat(r.Average_Fare),
-        Flights_per_distance: parseInt(r.Flights_per_distance)
-      }));
-  
-      // Leer mockData.js
-      const mockDataPath = './src/data/mockData.js';
-      const mockDataContent = fs.readFileSync(mockDataPath, 'utf8');
-  
-      const exportRegex = new RegExp(`export const ${exportName} = (\\[.*?\\]);`, 's');
-      const updatedContent = mockDataContent.includes(`export const ${exportName}`)
-        ? mockDataContent.replace(exportRegex, `export const ${exportName} = ${JSON.stringify(processedData, null, 2)};`)
-        : mockDataContent + `\nexport const ${exportName} = ${JSON.stringify(processedData, null, 2)};\n`;
-  
-      fs.writeFileSync(mockDataPath, updatedContent);
-      console.log(`${exportName} actualizado en mockData.js`);
-  
-      poolConnection.close();
-    } catch (err) {
-      console.error("Error al agregar datos de bar chart:", err.message);
-    }
-  }
-  
-  agregarBarChartDistanceFareData();
   

@@ -1,7 +1,7 @@
 import { useTheme } from "@mui/material";
 import { ResponsiveBar } from "@nivo/bar";
 import { tokens } from "../theme";
-import { barChartDistanceFareData as data } from "../data/mockData";
+import { barChartDistanceFareData as data } from "../data/mockData"; // Asegúrate de que 'barChartDistanceFareData' esté exportado
 
 const BarChart = ({ isDashboard = false }) => {
   const theme = useTheme();
@@ -38,13 +38,13 @@ const BarChart = ({ isDashboard = false }) => {
           },
         },
       }}
-      keys={["Average_Fare"]} // Solo mostramos la tarifa promedio
-      indexBy="Distance_Range"
-      margin={{ top: 50, right: 50, bottom: 50, left: 60 }}
+      keys={["Average_Fare", "Flights_per_distance"]}  // Las claves que usas para los valores de las barras
+      indexBy="Distance_Range"  // El eje X lo mapeas al rango de distancia
+      margin={{ top: 50, right: 130, bottom: 50, left: 60 }}
       padding={0.3}
       valueScale={{ type: "linear" }}
       indexScale={{ type: "band", round: true }}
-      colors={{ scheme: "nivo" }} // Puedes cambiar a uno personalizado si deseas
+      colors={{ scheme: "nivo" }}
       borderColor={{
         from: "color",
         modifiers: [["darker", "1.6"]],
@@ -55,7 +55,7 @@ const BarChart = ({ isDashboard = false }) => {
         tickSize: 5,
         tickPadding: 5,
         tickRotation: 0,
-        legend: isDashboard ? undefined : "Rango de Distancia (millas)",
+        legend: isDashboard ? undefined : "Distancia Recorrida (millas)",  // Etiqueta en el eje X
         legendPosition: "middle",
         legendOffset: 32,
       }}
@@ -63,24 +63,48 @@ const BarChart = ({ isDashboard = false }) => {
         tickSize: 5,
         tickPadding: 5,
         tickRotation: 0,
-        legend: isDashboard ? undefined : "Tarifa Promedio (USD)",
+        legend: isDashboard ? undefined : "Costo Promedio (USD)",  // Etiqueta en el eje Y
         legendPosition: "middle",
         legendOffset: -40,
       }}
-      enableLabel={true} // Si quieres que aparezcan los valores en cada barra
+      enableLabel={false}
       labelSkipWidth={12}
       labelSkipHeight={12}
       labelTextColor={{
         from: "color",
         modifiers: [["darker", 1.6]],
       }}
-      legends={[]} // Eliminamos la leyenda ya que solo hay una variable
+      legends={[
+        {
+          dataFrom: "keys",
+          anchor: "bottom-right",
+          direction: "column",
+          justify: false,
+          translateX: 120,
+          translateY: 0,
+          itemsSpacing: 2,
+          itemWidth: 100,
+          itemHeight: 20,
+          itemDirection: "left-to-right",
+          itemOpacity: 0.85,
+          symbolSize: 20,
+          effects: [
+            {
+              on: "hover",
+              style: {
+                itemOpacity: 1,
+              },
+            },
+          ],
+        },
+      ]}
       role="application"
       barAriaLabel={function (e) {
-        return `${e.id}: ${e.formattedValue} en rango de distancia: ${e.indexValue}`;
+        return e.id + ": " + e.formattedValue + " en rango de distancia: " + e.indexValue;
       }}
     />
   );
 };
 
 export default BarChart;
+

@@ -1,7 +1,7 @@
 import { ResponsiveLine } from "@nivo/line";
 import { useTheme } from "@mui/material";
 import { tokens } from "../theme";
-import { lineChartFlightFareData as data } from "../data/mockData";
+//import { mockLineData as data } from "../data/mockData";
 
 const LineChart = ({ isCustomLineColors = false, isDashboard = false }) => {
   const theme = useTheme();
@@ -43,7 +43,7 @@ const LineChart = ({ isCustomLineColors = false, isDashboard = false }) => {
           },
         },
       }}
-      colors={isDashboard ? { datum: "color" } : { scheme: "nivo" }}
+      colors={isDashboard ? { datum: "color" } : { scheme: "nivo" }} // added
       margin={{ top: 50, right: 110, bottom: 50, left: 60 }}
       xScale={{ type: "point" }}
       yScale={{
@@ -62,23 +62,23 @@ const LineChart = ({ isCustomLineColors = false, isDashboard = false }) => {
         tickSize: 0,
         tickPadding: 5,
         tickRotation: 0,
-        legend: isDashboard ? undefined : "Año",
+        legend: isDashboard ? undefined : "transportation", // added
         legendOffset: 36,
         legendPosition: "middle",
       }}
       axisLeft={{
         orient: "left",
-        tickValues: 5,
+        tickValues: 5, // added
         tickSize: 3,
         tickPadding: 5,
         tickRotation: 0,
-        legend: isDashboard ? undefined : "Valor",
+        legend: isDashboard ? undefined : "count", // added
         legendOffset: -40,
         legendPosition: "middle",
       }}
       enableGridX={false}
       enableGridY={false}
-      pointSize={10} // Ajusta el tamaño de los puntos
+      pointSize={8}
       pointColor={{ theme: "background" }}
       pointBorderWidth={2}
       pointBorderColor={{ from: "serieColor" }}
@@ -110,7 +110,6 @@ const LineChart = ({ isCustomLineColors = false, isDashboard = false }) => {
           ],
         },
       ]}
-      title="Tarifa Promedio y Cantidad de Vuelos" // Añade un título al gráfico
     />
   );
 };

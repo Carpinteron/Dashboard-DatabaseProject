@@ -1,7 +1,7 @@
 import { ResponsiveLine } from "@nivo/line";
 import { useTheme } from "@mui/material";
 import { tokens } from "../theme";
-import { lineChartFlightFareData as data } from "../data/mockData";
+import { lineChartFlightFareData as data } from "../data/mockData"; // aquí el cambio
 
 const LineChart = ({ isCustomLineColors = false, isDashboard = false }) => {
   const theme = useTheme();
@@ -78,7 +78,7 @@ const LineChart = ({ isCustomLineColors = false, isDashboard = false }) => {
       }}
       enableGridX={false}
       enableGridY={false}
-      pointSize={10} // Ajusta el tamaño de los puntos
+      pointSize={8}
       pointColor={{ theme: "background" }}
       pointBorderWidth={2}
       pointBorderColor={{ from: "serieColor" }}
@@ -110,7 +110,6 @@ const LineChart = ({ isCustomLineColors = false, isDashboard = false }) => {
           ],
         },
       ]}
-      title="Tarifa Promedio y Cantidad de Vuelos" // Añade un título al gráfico
     />
   );
 };
