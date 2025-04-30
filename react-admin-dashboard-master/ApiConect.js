@@ -1,4 +1,4 @@
-const axios = require('axios');
+const axios = require('axios'); //npm install axios --legacy-peer-deps
 const sql = require('mssql');
 
 const config = {
@@ -17,49 +17,37 @@ const config = {
 
 const options = {
     method: 'GET',
-    url: 'https://aerodatabox.p.rapidapi.com/flights/airports/iata/LGA/2023-04-04T20:00/2023-04-05T08:00',
+    url: 'https://aerodatabox.p.rapidapi.com/flights/number/DL47/2025-02-07',
     params: {
-      withLeg: 'true',
-      direction: 'Both',
-      withCancelled: 'true',
-      withCodeshared: 'true',
-      withCargo: 'true',
-      withPrivate: 'true',
-      withLocation: 'false'
+      dateLocalRole: 'Both'
     },
     headers: {
       'x-rapidapi-key': '06b34d4afcmsh5cac558248f45d5p190369jsn37aee013c529',
       'x-rapidapi-host': 'aerodatabox.p.rapidapi.com'
     }
   };
-// Consumir la API
-axios.request(options).then(response => {
-    const flights = response.data; // Datos obtenidos de la API
-    console.log('Datos obtenidos de la API:');
 
-    // Procesar y guardar los datos en la base de datos
-    saveToDatabase(flights);
-}).catch(error => {
-    console.error('Error al consumir la API:', error);
-});
-
-async function fetchData() {
-	try {
-		const response = await axios.request(options);
-		console.log(response.data);
-	} catch (error) {
-		console.error(error);
-	}
+  // Función para procesar los datos de los vuelos
+function processFlightsData(flights) {
+    return flights.map(flight => {
+        return {
+            year: new Date(flight.departure.scheduledTime.utc).getFullYear(), // Año del vuelo
+            airport_1: flight.departure.airport.iata, // Código IATA del aeropuerto de salida
+            airport_2: flight.arrival.airport.iata, // Código IATA del aeropuerto de llegada
+            nsmiles: flight.greatCircleDistance.mile, // Distancia en millas
+            geocoded_city1: flight.departure.airport.municipalityName, // Ciudad de salida
+            geocoded_city2: flight.arrival.airport.municipalityName, // Ciudad de llegada
+            country: flight.departure.airport.countryCode, // País de salida
+            country_dest: flight.arrival.airport.countryCode // País de llegada
+        };
+    });
 }
-
-fetchData();
-
 
 // Función para guardar los datos en la base de datos
 async function saveToDatabase(flights) {
     try {
-        const pool = await sql.connect(config);
-        const processedFlights = processFlightsData(flights);
+        const pool = await sql.connect(config); // Conectar al pool de conexiones
+        const processedFlights = processFlightsData(flights); // Procesar los datos
 
         for (const flight of processedFlights) {
             // Generar datos aleatorios para passengers y fare
@@ -94,3 +82,26 @@ async function saveToDatabase(flights) {
         console.error('Error al guardar los datos en la base de datos:', err);
     }
 }
+// Consumir la API
+axios.request(options).then(response => {
+    const flights = response.data; // Datos obtenidos de la API
+    console.log('Datos obtenidos de la API:', flights);
+
+    // Filtrar solo el primer vuelo para pruebas
+    const filteredFlights = flights.slice(0, 1); // Solo el primer vuelo
+    saveToDatabase(filteredFlights);
+}).catch(error => {
+    console.error('Error al consumir la API:', error);
+});
+async function fetchData() {
+	try {
+		const response = await axios.request(options);
+		console.log(response.data);
+	} catch (error) {
+		console.error(error);
+	}
+}
+
+fetchData();
+
+
