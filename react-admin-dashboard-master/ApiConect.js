@@ -68,9 +68,9 @@ const options = {
             );
 
             // Preparar los datos para insertar en la tabla FLIGHTS
-            const year = new Date(fecharequest).getFullYear();
+            const fecha = fecharequest;
             const flightData = {
-                year,
+                fecha,
                 city1: originAirport.city,
                 city2: destinationAirport.city,
                 airport1: originAirport.iata,
@@ -84,9 +84,24 @@ const options = {
                 longitude_airport2: destinationAirport.lon
             };
 
+            // Verificar si ya existe un vuelo con el mismo origen, destino y fecha
+            const existingFlight = await pool.request()
+            .input('flight_date', sql.Date, flightData.fecha)
+            .input('airport1', sql.VarChar, flightData.airport1)
+            .input('airport2', sql.VarChar, flightData.airport2)
+            .query(`
+                SELECT 1
+                FROM Flights_US
+                WHERE date = @flight_date AND airport1 = @airport1 AND airport2 = @airport2
+            `);
+
+        if (existingFlight.recordset.length > 0) {
+            console.log('Vuelo duplicado, no se insertó:', flightData);
+            continue; // Saltar este vuelo
+        }
             // Insertar el vuelo en la base de datos
             const request = pool.request();
-            request.input('year', sql.Int, flightData.year);
+            request.input('date', sql.Date, flightData.fecha);
             request.input('city1', sql.VarChar, flightData.city1);
             request.input('city2', sql.VarChar, flightData.city2);
             request.input('airport1', sql.VarChar, flightData.airport1);
@@ -100,8 +115,8 @@ const options = {
             request.input('longitude_airport2', sql.Float, flightData.longitude_airport2);
 
             const query = `
-                INSERT INTO Flights_US (year, city1, city2, airport1, airport2, nsmiles, passengers, fare, latitude_airport1, longitude_airport1, latitude_airport2, longitude_airport2)
-                VALUES (@year, @city1, @city2, @airport1, @airport2, @nsmiles, @passengers, @fare, @latitude_airport1, @longitude_airport1, @latitude_airport2, @longitude_airport2)
+                INSERT INTO Flights_US (date, city1, city2, airport1, airport2, nsmiles, passengers, fare, latitude_airport1, longitude_airport1, latitude_airport2, longitude_airport2)
+                VALUES (@date, @city1, @city2, @airport1, @airport2, @nsmiles, @passengers, @fare, @latitude_airport1, @longitude_airport1, @latitude_airport2, @longitude_airport2)
             `;
 
             await request.query(query);
