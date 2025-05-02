@@ -1,4 +1,4 @@
-/*import { useTheme } from "@mui/material";
+import { useTheme } from "@mui/material";
 import { ResponsiveChoropleth } from "@nivo/geo";
 import { geoFeatures } from "../data/mockGeoFeatures";
 import { tokens } from "../theme";
@@ -83,38 +83,3 @@ const GeographyChart = ({ isDashboard = false }) => {
 };
 
 export default GeographyChart;
-*/
-// src/components/MapChart.jsx
-import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
-import { Box } from "@mui/material";
-import L from 'leaflet';
-
-// Opción: cambiar el ícono para que se vea correctamente (Leaflet bug común)
-delete L.Icon.Default.prototype._getIconUrl;
-L.Icon.Default.mergeOptions({
-  iconRetinaUrl: require('leaflet/dist/images/marker-icon-2x.png'),
-  iconUrl: require('leaflet/dist/images/marker-icon.png'),
-  shadowUrl: require('leaflet/dist/images/marker-shadow.png'),
-});
-
-const MapChart = () => {
-  const position = [37.7749, -122.4194]; // Ejemplo: San Francisco, CA
-
-  return (
-    <Box height="100%" width="100%">
-      <MapContainer center={[37.0902, -95.7129]} zoom={4} style={{ height: "100%", width: "100%" }}>
-        <TileLayer
-          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-          attribution='&copy; OpenStreetMap contributors'
-        />
-        <Marker position={position}>
-          <Popup>
-            Aquí está San Francisco.
-          </Popup>
-        </Marker>
-      </MapContainer>
-    </Box>
-  );
-};
-
-export default MapChart;

@@ -5,8 +5,8 @@ from Flights_US f
 group by f.airport1, f.airport2
 order by Total_Pasajeros_Ruta desc
 )
-select f.year, r.origen as Origen, r.destino as Destino, sum(f.passengers) as Cant_Pasajeros_Anual, r.Total_Pasajeros_Ruta
+select year(f.date) as Año, r.origen as Origen, r.destino as Destino, sum(f.passengers) as Cant_Pasajeros_Anual, r.Total_Pasajeros_Ruta
 from Flights_US f
 join rutas_populares r on r.origen=f.airport1 and r.destino=f.airport2
-group by f.year, r.origen, r.destino, r.Total_Pasajeros_Ruta
-order by year, Total_Pasajeros_Ruta desc
+group by year(f.date), r.origen, r.destino, r.Total_Pasajeros_Ruta
+order by year(f.date), Total_Pasajeros_Ruta desc

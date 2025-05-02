@@ -1,5 +1,5 @@
 -- precios promedio por año
-select f.year, avg(f.fare) as Precio_Promedio
+select year(f.date) as Año, avg(f.fare) as Precio_Promedio
 from Flights_US f
-group by f.year
-order by year asc
+group by year(f.date)
+order by year(f.date) asc
