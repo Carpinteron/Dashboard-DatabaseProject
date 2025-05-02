@@ -103,8 +103,8 @@ const airports = {
 const airplaneIcon = new L.Icon({
   iconUrl: "https://cdn-icons-png.flaticon.com/512/61/61212.png",
   iconSize: [24, 24],
-  iconAnchor: [12, 12],
-  popupAnchor: [0, -12],
+  iconAnchor: [12, 16],
+  popupAnchor: [0, -16],
 });
 
 const AirportMap = () => {
@@ -145,15 +145,7 @@ const AirportMap = () => {
         <Marker position={toCoords} icon={airplaneIcon}>
           <Popup>Destino: {airports[to].name}</Popup>
         </Marker>
-        <Polyline
-          positions={[fromCoords, toCoords]}
-          pathOptions={{
-            color: "#3399ff",      // azul claro
-            weight: 4,             // grosor de la línea
-            opacity: 0.8,          // transparencia
-            dashArray: "5, 10",    // opcional: línea discontinua
-          }}
-        />
+        <Polyline positions={[fromCoords, toCoords]} color="blue" />
       </MapContainer>
     </Box>
   );
