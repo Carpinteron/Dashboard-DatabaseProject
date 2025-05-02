@@ -16,7 +16,7 @@ const config = {
 }
 
 let airportOriginIataCode='LAX' // Código IATA del aeropuerto de origen
-let fecharequest='2023-10-01' // YYYY-MM-DD
+let fecharequest='2024-10-01' // YYYY-MM-DD
 const options = {
     method: 'GET',
     url: 'https://aerodatabox.p.rapidapi.com/airports/iata/'+airportOriginIataCode+'/stats/routes/daily/'+fecharequest,
@@ -27,13 +27,14 @@ const options = {
   };
 
   async function saveFilteredFlightsToDatabase(flights) {
+    let pool; // Declarar pool aquí para que esté accesible en el bloque finally
     try {
-        const pool = await sql.connect(config); // Conectar al pool de conexiones
+        pool = await sql.connect(config); // Conectar al pool de conexiones
 
         // Obtener los aeropuertos de Estados Unidos desde la tabla AIRPORTS
         const airportsResult = await pool.request().query(`
-            SELECT iata, name, city, country, lat, lon 
-            FROM 
+            SELECT IATA as iata, Nombre AS name, Ciudad AS city, Pais AS country, Latitud AS lat, Longitud AS lon
+            FROM Airports_US;
         `);
         const usAirports = airportsResult.recordset.reduce((acc, airport) => {
             acc[airport.iata] = airport; // Crear un mapa con el IATA como clave
@@ -99,18 +100,20 @@ const options = {
             request.input('longitude_airport2', sql.Float, flightData.longitude_airport2);
 
             const query = `
-                INSERT INTO FLIGHTS (year, city1, city2, airport1, airport2, nsmiles, passengers, fare, latitude_airport1, longitude_airport1, latitude_airport2, longitude_airport2)
+                INSERT INTO Flights_US (year, city1, city2, airport1, airport2, nsmiles, passengers, fare, latitude_airport1, longitude_airport1, latitude_airport2, longitude_airport2)
                 VALUES (@year, @city1, @city2, @airport1, @airport2, @nsmiles, @passengers, @fare, @latitude_airport1, @longitude_airport1, @latitude_airport2, @longitude_airport2)
             `;
 
             await request.query(query);
-            console.log('Vuelo insertado:', flightData);
+            console.log('Vuelo insertado:');
         }
 
-        // Cerrar el pool de conexiones
-        await pool.close();
     } catch (err) {
         console.error('Error al guardar los vuelos filtrados en la base de datos:', err);
+    }finally {
+        if (pool) {
+            await pool.close(); // Cerrar el pool de conexiones
+        }
     }
 }
 
@@ -140,7 +143,7 @@ function calcularDistancia(lat1, lon1, lat2, lon2) {
 // Consumir la API y procesar los datos
 axios.request(options).then(response => {
     const flights = response.data.routes; // Obtener las rutas de la API
-    console.log('Datos obtenidos de la API:', flights);
+    console.log('Datos obtenidos de la API:)');
 
     saveFilteredFlightsToDatabase(flights); // Guardar los vuelos filtrados en la base de datos
 }).catch(error => {
