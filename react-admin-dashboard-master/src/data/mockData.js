@@ -1337,3 +1337,5 @@ export const barchart2 = [
     "cant": 44472
   }
 ];
+
+
