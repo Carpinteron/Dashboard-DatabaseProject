@@ -1323,6 +1323,8 @@ export const rutasPopularesPorAnio = [
 
 
 
+
+
 export const barchart2 = [
   {
     "rango": "0-10000",
@@ -1337,5 +1339,7 @@ export const barchart2 = [
     "cant": 44472
   }
 ];
+
+
 
 

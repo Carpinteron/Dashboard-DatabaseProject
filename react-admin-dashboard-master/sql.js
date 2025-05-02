@@ -24,7 +24,7 @@ console.log("Starting...");
     const poolConnection = await sql.connect(config);
 
     const resultSet = await poolConnection.request().query(`
-  WITH rutas_populares AS (
+ WITH rutas_populares AS (
     SELECT TOP 5 f.airport1 AS origen, f.airport2 AS destino
     FROM Flights_US f
     GROUP BY f.airport1, f.airport2
@@ -32,7 +32,7 @@ console.log("Starting...");
 ),
 datos_agrupados AS (
     SELECT 
-        year(f.date),
+        year(f.date) AS year,
         CONCAT(f.airport1, ' - ', f.airport2) AS ruta,
         SUM(f.passengers) AS cant_pasajeros_anual
     FROM Flights_US f
@@ -42,7 +42,7 @@ datos_agrupados AS (
 )
 
 SELECT 
-    year(d.date),
+    d.year as year,
     SUM(CASE WHEN d.ruta = r1.ruta THEN d.cant_pasajeros_anual ELSE 0 END) AS Ruta_1,
     SUM(CASE WHEN d.ruta = r2.ruta THEN d.cant_pasajeros_anual ELSE 0 END) AS Ruta_2,
     SUM(CASE WHEN d.ruta = r3.ruta THEN d.cant_pasajeros_anual ELSE 0 END) AS Ruta_3,
@@ -54,8 +54,8 @@ CROSS JOIN (SELECT CONCAT(origen, ' - ', destino) AS ruta FROM rutas_populares O
 CROSS JOIN (SELECT CONCAT(origen, ' - ', destino) AS ruta FROM rutas_populares ORDER BY origen OFFSET 2 ROWS FETCH NEXT 1 ROWS ONLY) r3
 CROSS JOIN (SELECT CONCAT(origen, ' - ', destino) AS ruta FROM rutas_populares ORDER BY origen OFFSET 3 ROWS FETCH NEXT 1 ROWS ONLY) r4
 CROSS JOIN (SELECT CONCAT(origen, ' - ', destino) AS ruta FROM rutas_populares ORDER BY origen OFFSET 4 ROWS FETCH NEXT 1 ROWS ONLY) r5
-GROUP BY year(d.date)
-ORDER BY year(d.date);
+GROUP BY d.year
+ORDER BY d.year;
 
       `);
 
@@ -102,7 +102,7 @@ async function barchart2(exportName = "barchart2") {
         else '20000+'  
     end as Rango_Dist,
     count(*) as Cant_Vuelos
-from Flights_US_Backup f
+from Flights_US f
 group by
     case
         when f.nsmiles < 10000 then '1'
