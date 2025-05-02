@@ -1323,6 +1323,126 @@ export const lineChartFlightFareData = [
 
 export const rutasPopularesPorAnio = [
   {
+    "year": 2000,
+    "HNL 🠮 ITO": 670149,
+    "LAS 🠮 RNO": 474454,
+    "LAX 🠮 RNO": 294632,
+    "PHX 🠮 RNO": 245061,
+    "SEA 🠮 RNO": 267208
+  },
+  {
+    "year": 2001,
+    "HNL 🠮 ITO": 626701,
+    "LAS 🠮 RNO": 431184,
+    "LAX 🠮 RNO": 278734,
+    "PHX 🠮 RNO": 249998,
+    "SEA 🠮 RNO": 217248
+  },
+  {
+    "year": 2002,
+    "HNL 🠮 ITO": 603813,
+    "LAS 🠮 RNO": 434532,
+    "LAX 🠮 RNO": 209317,
+    "PHX 🠮 RNO": 223773,
+    "SEA 🠮 RNO": 200054
+  },
+  {
+    "year": 2003,
+    "HNL 🠮 ITO": 626419,
+    "LAS 🠮 RNO": 459528,
+    "LAX 🠮 RNO": 133353,
+    "PHX 🠮 RNO": 0,
+    "SEA 🠮 RNO": 0
+  },
+  {
+    "year": 2004,
+    "HNL 🠮 ITO": 564597,
+    "LAS 🠮 RNO": 520609,
+    "LAX 🠮 RNO": 187242,
+    "PHX 🠮 RNO": 253808,
+    "SEA 🠮 RNO": 207164
+  },
+  {
+    "year": 2005,
+    "HNL 🠮 ITO": 589732,
+    "LAS 🠮 RNO": 508981,
+    "LAX 🠮 RNO": 194230,
+    "PHX 🠮 RNO": 0,
+    "SEA 🠮 RNO": 0
+  },
+  {
+    "year": 2006,
+    "HNL 🠮 ITO": 634017,
+    "LAS 🠮 RNO": 537661,
+    "LAX 🠮 RNO": 197116,
+    "PHX 🠮 RNO": 275493,
+    "SEA 🠮 RNO": 194328
+  },
+  {
+    "year": 2007,
+    "HNL 🠮 ITO": 734649,
+    "LAS 🠮 RNO": 511530,
+    "LAX 🠮 RNO": 210288,
+    "PHX 🠮 RNO": 248014,
+    "SEA 🠮 RNO": 183279
+  },
+  {
+    "year": 2008,
+    "HNL 🠮 ITO": 602940,
+    "LAS 🠮 RNO": 446252,
+    "LAX 🠮 RNO": 189102,
+    "PHX 🠮 RNO": 224806,
+    "SEA 🠮 RNO": 155671
+  },
+  {
+    "year": 2009,
+    "HNL 🠮 ITO": 623128,
+    "LAS 🠮 RNO": 398035,
+    "LAX 🠮 RNO": 161230,
+    "PHX 🠮 RNO": 224522,
+    "SEA 🠮 RNO": 114837
+  },
+  {
+    "year": 2010,
+    "HNL 🠮 ITO": 0,
+    "LAS 🠮 RNO": 0,
+    "LAX 🠮 RNO": 2787,
+    "PHX 🠮 RNO": 1646,
+    "SEA 🠮 RNO": 0
+  },
+  {
+    "year": 2011,
+    "HNL 🠮 ITO": 0,
+    "LAS 🠮 RNO": 0,
+    "LAX 🠮 RNO": 2808,
+    "PHX 🠮 RNO": 1824,
+    "SEA 🠮 RNO": 0
+  },
+  {
+    "year": 2012,
+    "HNL 🠮 ITO": 0,
+    "LAS 🠮 RNO": 0,
+    "LAX 🠮 RNO": 2746,
+    "PHX 🠮 RNO": 1709,
+    "SEA 🠮 RNO": 0
+  },
+  {
+    "year": 2013,
+    "HNL 🠮 ITO": 0,
+    "LAS 🠮 RNO": 0,
+    "LAX 🠮 RNO": 2655,
+    "PHX 🠮 RNO": 1782,
+    "SEA 🠮 RNO": 0
+  },
+  {
+    "year": 2014,
+    "HNL 🠮 ITO": 0,
+    "LAS 🠮 RNO": 0,
+    "LAX 🠮 RNO": 2598,
+    "PHX 🠮 RNO": 1720,
+    "SEA 🠮 RNO": 0
+  },
+  {
     "year": 2015,
     "HNL 🠮 ITO": 0,
     "LAS 🠮 RNO": 0,
@@ -1403,6 +1523,7 @@ export const rutasPopularesPorAnio = [
     "SEA 🠮 RNO": 0
   }
 ];
+
 
 
 

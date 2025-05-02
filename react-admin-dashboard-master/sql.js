@@ -37,7 +37,7 @@ datos_agrupados AS (
         SUM(f.passengers) AS cant_pasajeros_anual
     FROM Flights_US_Backup f
     JOIN rutas_populares r ON r.origen = f.airport1 AND r.destino = f.airport2
-    WHERE f.year >= 2015
+    WHERE f.year >= 2000
     GROUP BY f.year, f.airport1, f.airport2
 )
 
