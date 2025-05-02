@@ -14,91 +14,11 @@ const config = {
     }
 }
 
-/*
-    //Use Azure VM Managed Identity to connect to the SQL database
-    const config = {
-        server: process.env["db_server"],
-        port: process.env["db_port"],
-        database: process.env["db_database"],
-        authentication: {
-            type: 'azure-active-directory-msi-vm'
-        },
-        options: {
-            encrypt: true
-        }
-    }
-
-    //Use Azure App Service Managed Identity to connect to the SQL database
-    const config = {
-        server: process.env["db_server"],
-        port: process.env["db_port"],
-        database: process.env["db_database"],
-        authentication: {
-            type: 'azure-active-directory-msi-app-service'
-        },
-        options: {
-            encrypt: true
-        }
-    }
-*/
 const fs = require('fs');
 console.log("Starting...");
 //connectAndQuery();
-agregarinfo('mockTransactions'); 
+// agregarinfo('mockTransactions'); 
 
-async function connectAndQuery() {
-    try {
-        var poolConnection = await sql.connect(config);
-
-        console.log("Reading rows from the Table...");
-        var resultSet = await poolConnection.request().query(`
-           select distinct F.country
-from Flights F
-where F.country like 'A%'`);
-
-        console.log(`${resultSet.recordset.length} rows returned.`);
-
-        // output column headers
-        var columns = Object.keys(resultSet.recordset[0]).join(", ");
-        console.log("Columns: ", columns);
-
-        // output row contents from default record set
-        resultSet.recordset.forEach(row => {
-            console.log(row);
-        });
-
-        // Datos obtenidos del query
-        const data = resultSet.recordset;
-
-        // Leer el contenido actual de mockData.js
-        const mockDataPath = './src/data/mockData.js';
-        const mockDataContent = fs.readFileSync(mockDataPath, 'utf8');
-
-         // Verificar si ya existe mockQueryData en el archivo
-         if (mockDataContent.includes('export const mockQueryData')) {
-            // Reemplazar el contenido existente de mockQueryData
-            const updatedContent = mockDataContent.replace(
-                /export const mockQueryData = \[.*?\];/s,
-                `export const mockQueryData = ${JSON.stringify(data, null, 2)};`
-            );
-            fs.writeFileSync(mockDataPath, updatedContent);
-            console.log("mockQueryData actualizado en mockData.js!");
-        } else {
-            // Agregar los nuevos datos al archivo
-            const newData = `export const mockQueryData = ${JSON.stringify(data, null, 2)};\n`;
-            const updatedContent = mockDataContent + '\n' + newData;
-            // Escribir el contenido actualizado en mockData.js
-            fs.writeFileSync(mockDataPath, updatedContent);
-            console.log("mockQueryData agregado a mockData.js!");
-        }
-
-        // close connection only when we're certain application is finished
-        poolConnection.close();
-
-    } catch (err) {
-        console.error(err.message);
-    }
-}
 
 async function agregarinfo(exportName) {
     try {
@@ -295,7 +215,7 @@ async function agregarLineChartFlightFareData(exportName = "lineChartFlightFareD
       const resultSet = await poolConnection.request().query(`
         WITH rutas_populares AS (
           SELECT TOP 5 f.airport1 AS origen, f.airport2 AS destino, SUM(f.passengers) AS Total_Pasajeros
-          FROM Flights_US f
+          FROM Flights_US_Backup f
           GROUP BY f.airport1, f.airport2
           ORDER BY Total_Pasajeros DESC
         )
@@ -305,7 +225,7 @@ async function agregarLineChartFlightFareData(exportName = "lineChartFlightFareD
           r.destino AS Destino, 
           SUM(f.passengers) AS Cant_Pasajeros_Anual, 
           r.Total_Pasajeros
-        FROM Flights_US f
+        FROM Flights_US_Backup f
         JOIN rutas_populares r ON r.origen = f.airport1 AND r.destino = f.airport2
         GROUP BY f.year, r.origen, r.destino, r.Total_Pasajeros
         ORDER BY f.year, r.Total_Pasajeros DESC;

@@ -1313,3 +1313,96 @@ export const lineChartFlightFareData = [
 ];
 
 
+
+
+
+
+
+
+
+
+export const rutasPopularesPorAnio = [
+  {
+    "year": 2015,
+    "HNL 🠮 ITO": 0,
+    "LAS 🠮 RNO": 0,
+    "LAX 🠮 RNO": 2605,
+    "PHX 🠮 RNO": 1830,
+    "SEA 🠮 RNO": 0
+  },
+  {
+    "year": 2016,
+    "HNL 🠮 ITO": 0,
+    "LAS 🠮 RNO": 0,
+    "LAX 🠮 RNO": 2494,
+    "PHX 🠮 RNO": 1591,
+    "SEA 🠮 RNO": 0
+  },
+  {
+    "year": 2017,
+    "HNL 🠮 ITO": 0,
+    "LAS 🠮 RNO": 0,
+    "LAX 🠮 RNO": 2789,
+    "PHX 🠮 RNO": 1589,
+    "SEA 🠮 RNO": 0
+  },
+  {
+    "year": 2018,
+    "HNL 🠮 ITO": 0,
+    "LAS 🠮 RNO": 0,
+    "LAX 🠮 RNO": 2964,
+    "PHX 🠮 RNO": 1784,
+    "SEA 🠮 RNO": 0
+  },
+  {
+    "year": 2019,
+    "HNL 🠮 ITO": 0,
+    "LAS 🠮 RNO": 0,
+    "LAX 🠮 RNO": 3237,
+    "PHX 🠮 RNO": 1799,
+    "SEA 🠮 RNO": 0
+  },
+  {
+    "year": 2020,
+    "HNL 🠮 ITO": 0,
+    "LAS 🠮 RNO": 0,
+    "LAX 🠮 RNO": 1088,
+    "PHX 🠮 RNO": 1039,
+    "SEA 🠮 RNO": 0
+  },
+  {
+    "year": 2021,
+    "HNL 🠮 ITO": 0,
+    "LAS 🠮 RNO": 0,
+    "LAX 🠮 RNO": 2398,
+    "PHX 🠮 RNO": 1753,
+    "SEA 🠮 RNO": 0
+  },
+  {
+    "year": 2022,
+    "HNL 🠮 ITO": 0,
+    "LAS 🠮 RNO": 0,
+    "LAX 🠮 RNO": 2840,
+    "PHX 🠮 RNO": 2027,
+    "SEA 🠮 RNO": 0
+  },
+  {
+    "year": 2023,
+    "HNL 🠮 ITO": 0,
+    "LAS 🠮 RNO": 0,
+    "LAX 🠮 RNO": 2769,
+    "PHX 🠮 RNO": 2038,
+    "SEA 🠮 RNO": 0
+  },
+  {
+    "year": 2024,
+    "HNL 🠮 ITO": 0,
+    "LAS 🠮 RNO": 0,
+    "LAX 🠮 RNO": 679,
+    "PHX 🠮 RNO": 502,
+    "SEA 🠮 RNO": 0
+  }
+];
+
+
+
