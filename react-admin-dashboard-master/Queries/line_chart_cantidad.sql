@@ -1,5 +1,5 @@
 -- cantidad de vuelos por año
-select f.year, count(*) as Cant_Vuelos
+select year(f.date) as Año, count(*) as Cant_Vuelos
 from Flights_US f
-group by f.year
-order by year asc
+group by year(f.date)
+order by year(f.date) asc
