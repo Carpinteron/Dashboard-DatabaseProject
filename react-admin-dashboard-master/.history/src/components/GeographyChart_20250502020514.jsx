@@ -101,7 +101,7 @@ const airports = {
 
 // Ícono de avión más estilizado
 const airplaneIcon = new L.Icon({
-  iconUrl: "https://cdn-icons-png.flaticon.com/512/61/61212.png",
+  iconUrl: "https://e7.pngegg.com/pngimages/361/470/png-clipart-airplane-aircraft-flight-airline-ticket-hotel-airplane-blue-angle.png",
   iconSize: [24, 24],
   iconAnchor: [12, 12],
   popupAnchor: [0, -12],

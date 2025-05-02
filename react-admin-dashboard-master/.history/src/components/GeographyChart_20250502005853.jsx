@@ -84,6 +84,7 @@ const GeographyChart = ({ isDashboard = false }) => {
 
 export default GeographyChart;
 */
+// src/components/MapChart.jsx
 // src/components/AirportMap.jsx
 import { MapContainer, TileLayer, Marker, Popup, Polyline } from 'react-leaflet';
 import { Box, MenuItem, Select, FormControl, InputLabel } from '@mui/material';
@@ -91,7 +92,6 @@ import { useState } from 'react';
 import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 
-// Datos de aeropuertos
 const airports = {
   JFK: { name: "JFK - New York", coords: [40.6413, -73.7781] },
   LAX: { name: "LAX - Los Angeles", coords: [33.9416, -118.4085] },
@@ -99,12 +99,10 @@ const airports = {
   ATL: { name: "ATL - Atlanta", coords: [33.6407, -84.4277] },
 };
 
-// Ícono de avión más estilizado
+// Ícono de avión
 const airplaneIcon = new L.Icon({
-  iconUrl: "https://cdn-icons-png.flaticon.com/512/61/61212.png",
-  iconSize: [24, 24],
-  iconAnchor: [12, 12],
-  popupAnchor: [0, -12],
+  iconUrl: "https://cdn-icons-png.flaticon.com/512/190/190601.png",
+  iconSize: [30, 30],
 });
 
 const AirportMap = () => {
@@ -135,31 +133,22 @@ const AirportMap = () => {
         </FormControl>
       </Box>
       <MapContainer center={[39.8283, -98.5795]} zoom={4} style={{ height: "80%", width: "100%" }}>
-      <TileLayer
-  url={`https://{s}.tile.thunderforest.com/outdoors/{z}/{x}/{y}.png?apikey=ad4af2b3ce0543d7b1bc7e2dd416c6f1`}
-  attribution='&copy; OpenStreetMap contributors, &copy; Thunderforest'
-/>
-        <Marker position={fromCoords} icon={airplaneIcon}>
+        <TileLayer
+          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+          attribution='&copy; OpenStreetMap contributors'
+        />
+        <Marker position={fromCoords}>
           <Popup>Origen: {airports[from].name}</Popup>
         </Marker>
         <Marker position={toCoords} icon={airplaneIcon}>
           <Popup>Destino: {airports[to].name}</Popup>
         </Marker>
-        <Polyline
-          positions={[fromCoords, toCoords]}
-          pathOptions={{
-            color: "#3399ff",      // azul claro
-            weight: 4,             // grosor de la línea
-            opacity: 0.8,          // transparencia
-            dashArray: "5, 10",    // opcional: línea discontinua
-          }}
-        />
+        <Polyline positions={[fromCoords, toCoords]} color="blue" />
       </MapContainer>
     </Box>
   );
 };
 
 export default AirportMap;
-
 
 
