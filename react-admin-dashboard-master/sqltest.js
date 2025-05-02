@@ -288,3 +288,4 @@ async function agregarLineChartFlightFareData(exportName = "lineChartFlightFareD
   
   agregarBarChartDistanceFareData();
   
+  
