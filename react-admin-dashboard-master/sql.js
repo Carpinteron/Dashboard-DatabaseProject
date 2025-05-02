@@ -19,7 +19,7 @@ console.log("Starting...");
 
 
 
-async function agregarRutasPopularesPorAnio(exportName = "rutasPopularesPorAnio") {
+ async function agregarRutasPopularesPorAnio(exportName = "rutasPopularesPorAnio") {
   try {
     const poolConnection = await sql.connect(config);
 
@@ -37,7 +37,7 @@ datos_agrupados AS (
         SUM(f.passengers) AS cant_pasajeros_anual
     FROM Flights_US_Backup f
     JOIN rutas_populares r ON r.origen = f.airport1 AND r.destino = f.airport2
-    WHERE f.year >= 2000
+    WHERE f.year >= 2020
     GROUP BY f.year, f.airport1, f.airport2
 )
 
@@ -88,6 +88,64 @@ ORDER BY d.year;
     console.error("Error al agregar rutas populares por año:", err.message);
   }
 }
-
 agregarRutasPopularesPorAnio();
+
+async function barchart2(exportName = "barchart2") {
+  try {
+    const poolConnection = await sql.connect(config);
+
+    const resultSet = await poolConnection.request().query(`
+  select
+    case
+        when f.nsmiles < 10000 then '0-10000'
+        when f.nsmiles between 10000 and 20000 then '10000-20000'
+        else '20000+'  
+    end as Rango_Dist,
+    count(*) as Cant_Vuelos
+from Flights_US_Backup f
+group by
+    case
+        when f.nsmiles < 10000 then '1'
+        when f.nsmiles between 10000 and 20000 then '2'
+        else '3' 
+	end,
+    case
+        when f.nsmiles < 10000 then '0-10000'
+        when f.nsmiles between 10000 and 20000 then '10000-20000'
+        else '20000+' 
+    end
+order by
+    case
+        when f.nsmiles < 10000 then '1'
+        when f.nsmiles between 10000 and 20000 then '2'
+        else '3' 
+	end
+      `);
+
+    const rows = resultSet.recordset;
+
+    const processedData = rows.map(r => ({
+      rango:r.Rango_Dist,
+      cant:r.Cant_Vuelos
+    }));
+
+    const mockDataPath = './src/data/mockData.js';
+    const mockDataContent = fs.readFileSync(mockDataPath, 'utf8');
+
+    const exportRegex = new RegExp(`export const ${exportName} = (\\[.*?\\]);`, 's');
+    const newExport = `export const ${exportName} = ${JSON.stringify(processedData, null, 2)};\n`;
+
+    const updatedContent = mockDataContent.includes(`export const ${exportName}`)
+      ? mockDataContent.replace(exportRegex, newExport)
+      : mockDataContent + '\n' + newExport;
+
+    fs.writeFileSync(mockDataPath, updatedContent);
+    console.log(`${exportName} actualizado en mockData.js`);
+
+    poolConnection.close();
+  } catch (err) {
+    console.error("Error al agregar rutas populares por año:", err.message);
+  }
+}
+barchart2();
 

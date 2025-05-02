@@ -125,56 +125,7 @@ export const mockPieData = [
   },
 ];
 
-export const barChartDistanceFareData = [
-  {
-    year: "2020",
-    "HNL 🠮 ITO": 137,
-    "LAS 🠮 RNO": 96,
-    "SEA 🠮 RNO": 72,
-    "LAX 🠮 RNO": 140,
-    "PHX 🠮 RNO":50
-  },
-  {
-    year: "2021",
-    "HNL 🠮 ITO": 55,
-    "LAS 🠮 RNO": 28,
-    "SEA 🠮 RNO": 58,
-    "LAX 🠮 RNO": 29,
-    "PHX 🠮 RNO":50  
-  },
-  {
-    year: "2022",
-    "HNL 🠮 ITO": 109,
-    "LAS 🠮 RNO": 23,
-    "SEA 🠮 RNO": 34,
-    "LAX 🠮 RNO": 152,
-    "PHX 🠮 RNO":50
-  },
-  {
-    year: "2023",
-    "HNL 🠮 ITO": 133,
-    "LAS 🠮 RNO": 52,
-    "SEA 🠮 RNO": 43,
-    "LAX 🠮 RNO": 83,
-    "PHX 🠮 RNO":50  
-},
-  {
-    year: "2024",
-    "HNL 🠮 ITO": 81,
-    "LAS 🠮 RNO": 80,
-    "SEA 🠮 RNO": 112,
-    "LAX 🠮 RNO": 35,
-    "PHX 🠮 RNO":50  
-},
-  {
-    year: "2025",
-    "HNL 🠮 ITO": 66,
-    "LAS 🠮 RNO": 111,
-    "SEA 🠮 RNO": 167,
-    "LAX 🠮 RNO": 18,
-    "PHX 🠮 RNO":50  
-  }
-];
+
 
 export const A = [
  {
@@ -1323,166 +1274,6 @@ export const lineChartFlightFareData = [
 
 export const rutasPopularesPorAnio = [
   {
-    "year": 2000,
-    "HNL 🠮 ITO": 670149,
-    "LAS 🠮 RNO": 474454,
-    "LAX 🠮 RNO": 294632,
-    "PHX 🠮 RNO": 245061,
-    "SEA 🠮 RNO": 267208
-  },
-  {
-    "year": 2001,
-    "HNL 🠮 ITO": 626701,
-    "LAS 🠮 RNO": 431184,
-    "LAX 🠮 RNO": 278734,
-    "PHX 🠮 RNO": 249998,
-    "SEA 🠮 RNO": 217248
-  },
-  {
-    "year": 2002,
-    "HNL 🠮 ITO": 603813,
-    "LAS 🠮 RNO": 434532,
-    "LAX 🠮 RNO": 209317,
-    "PHX 🠮 RNO": 223773,
-    "SEA 🠮 RNO": 200054
-  },
-  {
-    "year": 2003,
-    "HNL 🠮 ITO": 626419,
-    "LAS 🠮 RNO": 459528,
-    "LAX 🠮 RNO": 133353,
-    "PHX 🠮 RNO": 0,
-    "SEA 🠮 RNO": 0
-  },
-  {
-    "year": 2004,
-    "HNL 🠮 ITO": 564597,
-    "LAS 🠮 RNO": 520609,
-    "LAX 🠮 RNO": 187242,
-    "PHX 🠮 RNO": 253808,
-    "SEA 🠮 RNO": 207164
-  },
-  {
-    "year": 2005,
-    "HNL 🠮 ITO": 589732,
-    "LAS 🠮 RNO": 508981,
-    "LAX 🠮 RNO": 194230,
-    "PHX 🠮 RNO": 0,
-    "SEA 🠮 RNO": 0
-  },
-  {
-    "year": 2006,
-    "HNL 🠮 ITO": 634017,
-    "LAS 🠮 RNO": 537661,
-    "LAX 🠮 RNO": 197116,
-    "PHX 🠮 RNO": 275493,
-    "SEA 🠮 RNO": 194328
-  },
-  {
-    "year": 2007,
-    "HNL 🠮 ITO": 734649,
-    "LAS 🠮 RNO": 511530,
-    "LAX 🠮 RNO": 210288,
-    "PHX 🠮 RNO": 248014,
-    "SEA 🠮 RNO": 183279
-  },
-  {
-    "year": 2008,
-    "HNL 🠮 ITO": 602940,
-    "LAS 🠮 RNO": 446252,
-    "LAX 🠮 RNO": 189102,
-    "PHX 🠮 RNO": 224806,
-    "SEA 🠮 RNO": 155671
-  },
-  {
-    "year": 2009,
-    "HNL 🠮 ITO": 623128,
-    "LAS 🠮 RNO": 398035,
-    "LAX 🠮 RNO": 161230,
-    "PHX 🠮 RNO": 224522,
-    "SEA 🠮 RNO": 114837
-  },
-  {
-    "year": 2010,
-    "HNL 🠮 ITO": 0,
-    "LAS 🠮 RNO": 0,
-    "LAX 🠮 RNO": 2787,
-    "PHX 🠮 RNO": 1646,
-    "SEA 🠮 RNO": 0
-  },
-  {
-    "year": 2011,
-    "HNL 🠮 ITO": 0,
-    "LAS 🠮 RNO": 0,
-    "LAX 🠮 RNO": 2808,
-    "PHX 🠮 RNO": 1824,
-    "SEA 🠮 RNO": 0
-  },
-  {
-    "year": 2012,
-    "HNL 🠮 ITO": 0,
-    "LAS 🠮 RNO": 0,
-    "LAX 🠮 RNO": 2746,
-    "PHX 🠮 RNO": 1709,
-    "SEA 🠮 RNO": 0
-  },
-  {
-    "year": 2013,
-    "HNL 🠮 ITO": 0,
-    "LAS 🠮 RNO": 0,
-    "LAX 🠮 RNO": 2655,
-    "PHX 🠮 RNO": 1782,
-    "SEA 🠮 RNO": 0
-  },
-  {
-    "year": 2014,
-    "HNL 🠮 ITO": 0,
-    "LAS 🠮 RNO": 0,
-    "LAX 🠮 RNO": 2598,
-    "PHX 🠮 RNO": 1720,
-    "SEA 🠮 RNO": 0
-  },
-  {
-    "year": 2015,
-    "HNL 🠮 ITO": 0,
-    "LAS 🠮 RNO": 0,
-    "LAX 🠮 RNO": 2605,
-    "PHX 🠮 RNO": 1830,
-    "SEA 🠮 RNO": 0
-  },
-  {
-    "year": 2016,
-    "HNL 🠮 ITO": 0,
-    "LAS 🠮 RNO": 0,
-    "LAX 🠮 RNO": 2494,
-    "PHX 🠮 RNO": 1591,
-    "SEA 🠮 RNO": 0
-  },
-  {
-    "year": 2017,
-    "HNL 🠮 ITO": 0,
-    "LAS 🠮 RNO": 0,
-    "LAX 🠮 RNO": 2789,
-    "PHX 🠮 RNO": 1589,
-    "SEA 🠮 RNO": 0
-  },
-  {
-    "year": 2018,
-    "HNL 🠮 ITO": 0,
-    "LAS 🠮 RNO": 0,
-    "LAX 🠮 RNO": 2964,
-    "PHX 🠮 RNO": 1784,
-    "SEA 🠮 RNO": 0
-  },
-  {
-    "year": 2019,
-    "HNL 🠮 ITO": 0,
-    "LAS 🠮 RNO": 0,
-    "LAX 🠮 RNO": 3237,
-    "PHX 🠮 RNO": 1799,
-    "SEA 🠮 RNO": 0
-  },
-  {
     "year": 2020,
     "HNL 🠮 ITO": 0,
     "LAS 🠮 RNO": 0,
@@ -1527,3 +1318,22 @@ export const rutasPopularesPorAnio = [
 
 
 
+
+
+
+
+
+export const barchart2 = [
+  {
+    "rango": "0-10000",
+    "cant": 161831
+  },
+  {
+    "rango": "10000-20000",
+    "cant": 95450
+  },
+  {
+    "rango": "20000+",
+    "cant": 44472
+  }
+];
