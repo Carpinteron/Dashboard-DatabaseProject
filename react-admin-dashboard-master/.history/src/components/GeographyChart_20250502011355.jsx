@@ -85,73 +85,140 @@ const GeographyChart = ({ isDashboard = false }) => {
 export default GeographyChart;
 */
 // src/components/AirportMap.jsx
-import { MapContainer, TileLayer, Marker, Popup, Polyline } from 'react-leaflet';
+import React, { useEffect, useRef, useState } from 'react';
+import {
+  MapContainer,
+  TileLayer,
+  Polyline,
+  Marker,
+  useMap,
+} from 'react-leaflet';
 import { Box, MenuItem, Select, FormControl, InputLabel } from '@mui/material';
-import { useState } from 'react';
 import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 
-// Datos de aeropuertos
+// Aeropuertos ejemplo
 const airports = {
-  JFK: { name: "JFK - New York", coords: [40.6413, -73.7781] },
-  LAX: { name: "LAX - Los Angeles", coords: [33.9416, -118.4085] },
-  ORD: { name: "ORD - Chicago", coords: [41.9742, -87.9073] },
-  ATL: { name: "ATL - Atlanta", coords: [33.6407, -84.4277] },
+  JFK: { name: 'JFK - New York', coords: [40.6413, -73.7781] },
+  LAX: { name: 'LAX - Los Angeles', coords: [33.9416, -118.4085] },
+  ORD: { name: 'ORD - Chicago', coords: [41.9742, -87.9073] },
+  ATL: { name: 'ATL - Atlanta', coords: [33.6407, -84.4277] },
 };
 
-// Ícono de avión más estilizado
+// Ícono de avión personalizado
 const airplaneIcon = new L.Icon({
-  iconUrl: "https://cdn-icons-png.flaticon.com/512/61/61212.png",
+  iconUrl: 'https://cdn-icons-png.flaticon.com/512/681/681611.png',
   iconSize: [32, 32],
   iconAnchor: [16, 16],
-  popupAnchor: [0, -16],
 });
 
+const interpolate = (from, to, factor) => [
+  from[0] + (to[0] - from[0]) * factor,
+  from[1] + (to[1] - from[1]) * factor,
+];
+
+const AnimatedFlight = ({ from, to }) => {
+  const [progress, setProgress] = useState(0);
+  const [path, setPath] = useState([from]);
+  const markerRef = useRef(null);
+
+  // Centra el mapa en el vuelo
+  const map = useMap();
+  useEffect(() => {
+    map.flyTo(from, 4);
+  }, [from, map]);
+
+  useEffect(() => {
+    setProgress(0);
+    setPath([from]);
+
+    let currentProgress = 0;
+    const interval = setInterval(() => {
+      currentProgress += 0.01;
+      if (currentProgress >= 1) {
+        currentProgress = 1;
+        clearInterval(interval);
+      }
+
+      const nextPoint = interpolate(from, to, currentProgress);
+      setPath((prev) => [...prev, nextPoint]);
+
+      // Mueve el avión
+      if (markerRef.current) {
+        markerRef.current.setLatLng(nextPoint);
+      }
+
+      setProgress(currentProgress);
+    }, 30);
+
+    return () => clearInterval(interval);
+  }, [from, to]);
+
+  return (
+    <>
+      <Polyline positions={path} color="blue" />
+      <Marker position={from} icon={airplaneIcon}>
+        <div>Origen</div>
+      </Marker>
+      <Marker
+        icon={airplaneIcon}
+        position={from}
+        ref={markerRef}
+        opacity={1}
+      >
+        <div>Avión</div>
+      </Marker>
+    </>
+  );
+};
+
 const AirportMap = () => {
-  const [from, setFrom] = useState("JFK");
-  const [to, setTo] = useState("LAX");
+  const [from, setFrom] = useState('JFK');
+  const [to, setTo] = useState('LAX');
 
   const fromCoords = airports[from].coords;
   const toCoords = airports[to].coords;
 
   return (
-    <Box height="100%" width="100%">
+    <Box>
       <Box display="flex" gap={2} p={2}>
         <FormControl>
           <InputLabel>Origen</InputLabel>
-          <Select value={from} onChange={(e) => setFrom(e.target.value)} label="Origen">
+          <Select value={from} onChange={(e) => setFrom(e.target.value)}>
             {Object.entries(airports).map(([code, info]) => (
-              <MenuItem key={code} value={code}>{info.name}</MenuItem>
+              <MenuItem key={code} value={code}>
+                {info.name}
+              </MenuItem>
             ))}
           </Select>
         </FormControl>
         <FormControl>
           <InputLabel>Destino</InputLabel>
-          <Select value={to} onChange={(e) => setTo(e.target.value)} label="Destino">
+          <Select value={to} onChange={(e) => setTo(e.target.value)}>
             {Object.entries(airports).map(([code, info]) => (
-              <MenuItem key={code} value={code}>{info.name}</MenuItem>
+              <MenuItem key={code} value={code}>
+                {info.name}
+              </MenuItem>
             ))}
           </Select>
         </FormControl>
       </Box>
-      <MapContainer center={[39.8283, -98.5795]} zoom={4} style={{ height: "80%", width: "100%" }}>
-        <TileLayer
-          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-          attribution='&copy; OpenStreetMap contributors'
-        />
-        <Marker position={fromCoords} icon={airplaneIcon}>
-          <Popup>Origen: {airports[from].name}</Popup>
-        </Marker>
-        <Marker position={toCoords} icon={airplaneIcon}>
-          <Popup>Destino: {airports[to].name}</Popup>
-        </Marker>
-        <Polyline positions={[fromCoords, toCoords]} color="blue" />
-      </MapContainer>
+
+      <Box height="75vh" width="100%">
+        <MapContainer
+          center={[39.8283, -98.5795]}
+          zoom={4}
+          style={{ height: '100%', width: '100%' }}
+        >
+          <TileLayer
+            url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+            attribution="&copy; OpenStreetMap contributors"
+          />
+          {from !== to && <AnimatedFlight from={fromCoords} to={toCoords} />}
+        </MapContainer>
+      </Box>
     </Box>
   );
 };
 
 export default AirportMap;
-
-
-

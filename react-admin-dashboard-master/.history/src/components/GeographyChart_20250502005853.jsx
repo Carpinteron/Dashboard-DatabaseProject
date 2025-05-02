@@ -84,6 +84,7 @@ const GeographyChart = ({ isDashboard = false }) => {
 
 export default GeographyChart;
 */
+// src/components/MapChart.jsx
 // src/components/AirportMap.jsx
 import { MapContainer, TileLayer, Marker, Popup, Polyline } from 'react-leaflet';
 import { Box, MenuItem, Select, FormControl, InputLabel } from '@mui/material';
@@ -91,7 +92,6 @@ import { useState } from 'react';
 import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 
-// Datos de aeropuertos
 const airports = {
   JFK: { name: "JFK - New York", coords: [40.6413, -73.7781] },
   LAX: { name: "LAX - Los Angeles", coords: [33.9416, -118.4085] },
@@ -99,12 +99,10 @@ const airports = {
   ATL: { name: "ATL - Atlanta", coords: [33.6407, -84.4277] },
 };
 
-// Ícono de avión más estilizado
+// Ícono de avión
 const airplaneIcon = new L.Icon({
-  iconUrl: "https://cdn-icons-png.flaticon.com/512/61/61212.png",
-  iconSize: [32, 32],
-  iconAnchor: [16, 16],
-  popupAnchor: [0, -16],
+  iconUrl: "https://cdn-icons-png.flaticon.com/512/190/190601.png",
+  iconSize: [30, 30],
 });
 
 const AirportMap = () => {
@@ -139,7 +137,7 @@ const AirportMap = () => {
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
           attribution='&copy; OpenStreetMap contributors'
         />
-        <Marker position={fromCoords} icon={airplaneIcon}>
+        <Marker position={fromCoords}>
           <Popup>Origen: {airports[from].name}</Popup>
         </Marker>
         <Marker position={toCoords} icon={airplaneIcon}>
@@ -152,6 +150,5 @@ const AirportMap = () => {
 };
 
 export default AirportMap;
-
 
 

@@ -84,74 +84,37 @@ const GeographyChart = ({ isDashboard = false }) => {
 
 export default GeographyChart;
 */
-// src/components/AirportMap.jsx
-import { MapContainer, TileLayer, Marker, Popup, Polyline } from 'react-leaflet';
-import { Box, MenuItem, Select, FormControl, InputLabel } from '@mui/material';
-import { useState } from 'react';
+// src/components/MapChart.jsx
+import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
+import { Box } from "@mui/material";
 import L from 'leaflet';
-import 'leaflet/dist/leaflet.css';
 
-// Datos de aeropuertos
-const airports = {
-  JFK: { name: "JFK - New York", coords: [40.6413, -73.7781] },
-  LAX: { name: "LAX - Los Angeles", coords: [33.9416, -118.4085] },
-  ORD: { name: "ORD - Chicago", coords: [41.9742, -87.9073] },
-  ATL: { name: "ATL - Atlanta", coords: [33.6407, -84.4277] },
-};
-
-// Ícono de avión más estilizado
-const airplaneIcon = new L.Icon({
-  iconUrl: "https://cdn-icons-png.flaticon.com/512/61/61212.png",
-  iconSize: [32, 32],
-  iconAnchor: [16, 16],
-  popupAnchor: [0, -16],
+// Opción: cambiar el ícono para que se vea correctamente (Leaflet bug común)
+delete L.Icon.Default.prototype._getIconUrl;
+L.Icon.Default.mergeOptions({
+  iconRetinaUrl: require('leaflet/dist/images/marker-icon-2x.png'),
+  iconUrl: require('leaflet/dist/images/marker-icon.png'),
+  shadowUrl: require('leaflet/dist/images/marker-shadow.png'),
 });
 
-const AirportMap = () => {
-  const [from, setFrom] = useState("JFK");
-  const [to, setTo] = useState("LAX");
-
-  const fromCoords = airports[from].coords;
-  const toCoords = airports[to].coords;
+const MapChart = () => {
+  const position = [37.7749, -122.4194]; // Ejemplo: San Francisco, CA
 
   return (
     <Box height="100%" width="100%">
-      <Box display="flex" gap={2} p={2}>
-        <FormControl>
-          <InputLabel>Origen</InputLabel>
-          <Select value={from} onChange={(e) => setFrom(e.target.value)} label="Origen">
-            {Object.entries(airports).map(([code, info]) => (
-              <MenuItem key={code} value={code}>{info.name}</MenuItem>
-            ))}
-          </Select>
-        </FormControl>
-        <FormControl>
-          <InputLabel>Destino</InputLabel>
-          <Select value={to} onChange={(e) => setTo(e.target.value)} label="Destino">
-            {Object.entries(airports).map(([code, info]) => (
-              <MenuItem key={code} value={code}>{info.name}</MenuItem>
-            ))}
-          </Select>
-        </FormControl>
-      </Box>
-      <MapContainer center={[39.8283, -98.5795]} zoom={4} style={{ height: "80%", width: "100%" }}>
+      <MapContainer center={[37.0902, -95.7129]} zoom={4} style={{ height: "100%", width: "100%" }}>
         <TileLayer
-          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+          url="https://{s}.tile.stamen.com/toner/{z}/{x}/{y}.png"
           attribution='&copy; OpenStreetMap contributors'
         />
-        <Marker position={fromCoords} icon={airplaneIcon}>
-          <Popup>Origen: {airports[from].name}</Popup>
+        <Marker position={position}>
+          <Popup>
+            Aquí está San Francisco.
+          </Popup>
         </Marker>
-        <Marker position={toCoords} icon={airplaneIcon}>
-          <Popup>Destino: {airports[to].name}</Popup>
-        </Marker>
-        <Polyline positions={[fromCoords, toCoords]} color="blue" />
       </MapContainer>
     </Box>
   );
 };
 
-export default AirportMap;
-
-
-
+export default MapChart;

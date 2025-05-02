@@ -259,7 +259,7 @@ const Dashboard = () => {
           >
             Geography Based Traffic
           </Typography>
-          <Box height="175px">
+          <Box height="160px">
             <GeographyChart isDashboard={true} />
           </Box>
         </Box>
