@@ -43,15 +43,13 @@ const options = {
 
         // Filtrar los vuelos que tienen destino en aeropuertos de Estados Unidos
         const filteredFlights = flights.filter(flight => {
-            const destinationIata = flight.destination.iata;
-            return usAirports[destinationIata]; // Solo incluir si el IATA está en la tabla AIRPORTS
+            const destinationIata = flight.destination?.iata; // Validar que exista flight.destination.iata
+            return destinationIata && usAirports[destinationIata]; // Solo incluir si el IATA está en la tabla AIRPORTS
         });
 
         for (const flight of filteredFlights) {
             const destinationIata = flight.destination.iata;
             const destinationAirport = usAirports[destinationIata];
-
-            // Obtener información del aeropuerto de origen desde la tabla AIRPORTS
             const originAirport = usAirports[airportOriginIataCode];
 
             if (!originAirport) {
@@ -68,9 +66,8 @@ const options = {
             );
 
             // Preparar los datos para insertar en la tabla FLIGHTS
-            const fecha = fecharequest;
             const flightData = {
-                fecha,
+                date: fecharequest,
                 city1: originAirport.city,
                 city2: destinationAirport.city,
                 airport1: originAirport.iata,
@@ -86,13 +83,13 @@ const options = {
 
             // Verificar si ya existe un vuelo con el mismo origen, destino y fecha
             const existingFlight = await pool.request()
-            .input('flight_date', sql.Date, flightData.fecha)
+            .input('date', sql.Date, flightData.date)
             .input('airport1', sql.VarChar, flightData.airport1)
             .input('airport2', sql.VarChar, flightData.airport2)
             .query(`
                 SELECT 1
                 FROM Flights_US
-                WHERE date = @flight_date AND airport1 = @airport1 AND airport2 = @airport2
+                WHERE date = @date AND airport1 = @airport1 AND airport2 = @airport2
             `);
 
         if (existingFlight.recordset.length > 0) {
@@ -101,7 +98,7 @@ const options = {
         }
             // Insertar el vuelo en la base de datos
             const request = pool.request();
-            request.input('date', sql.Date, flightData.fecha);
+            request.input('date', sql.Date, flightData.date);
             request.input('city1', sql.VarChar, flightData.city1);
             request.input('city2', sql.VarChar, flightData.city2);
             request.input('airport1', sql.VarChar, flightData.airport1);
