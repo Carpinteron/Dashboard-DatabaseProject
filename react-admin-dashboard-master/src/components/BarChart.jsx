@@ -39,8 +39,9 @@ const BarChart = ({ isDashboard = false }) => {
           },
         },
       }}
-      keys={["MIM 🠮 BAQ", "burger", "sandwich", "kebab", "fries"]}
-      indexBy="country"
+
+      keys={["HNL 🠮 ITO", "LAS 🠮 RNO", "SEA 🠮 RNO", "LAX 🠮 RNO", "PHX 🠮 RNO"]}
+      indexBy="year"
       margin={{ top: 50, right: 130, bottom: 50, left: 60 }}
       padding={0.3}
       valueScale={{ type: "linear" }}
@@ -121,7 +122,7 @@ const BarChart = ({ isDashboard = false }) => {
       ]}
       role="application"
       barAriaLabel={function (e) {
-        return e.id + ": " + e.formattedValue + " in country: " + e.indexValue;
+        return e.id + ": " + e.formattedValue + " in year: " + e.indexValue;
       }}
     />
   );
