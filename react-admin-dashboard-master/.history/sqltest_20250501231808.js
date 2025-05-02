@@ -288,37 +288,22 @@ async function agregarLineChartFlightFareData(exportName = "lineChartFlightFareD
   
   agregarBarChartDistanceFareData();
   
-  async function agregarRutasPopularesPorAnio(exportName = "rutasPopularesPorAnio") {
+  async function agregarVuelosPorAnio(exportName = "vuelosPorAnio") {
     try {
       const poolConnection = await sql.connect(config);
   
       const resultSet = await poolConnection.request().query(`
-        WITH rutas_populares AS (
-          SELECT TOP 5 f.airport1 AS origen, f.airport2 AS destino, SUM(f.passengers) AS Total_Pasajeros
-          FROM Flights_US f
-          GROUP BY f.airport1, f.airport2
-          ORDER BY Total_Pasajeros DESC
-        )
-        SELECT 
-          f.year AS Year, 
-          r.origen AS Origen, 
-          r.destino AS Destino, 
-          SUM(f.passengers) AS Cant_Pasajeros_Anual, 
-          r.Total_Pasajeros
+        SELECT f.year AS Year, COUNT(*) AS Cant_Vuelos
         FROM Flights_US f
-        JOIN rutas_populares r ON r.origen = f.airport1 AND r.destino = f.airport2
-        GROUP BY f.year, r.origen, r.destino, r.Total_Pasajeros
-        ORDER BY f.year, r.Total_Pasajeros DESC;
+        GROUP BY f.year
+        ORDER BY f.year ASC;
       `);
   
       const rows = resultSet.recordset;
   
       const processedData = rows.map(r => ({
         year: r.Year,
-        origen: r.Origen,
-        destino: r.Destino,
-        pasajerosAnuales: parseInt(r.Cant_Pasajeros_Anual),
-        pasajerosTotales: parseInt(r.Total_Pasajeros)
+        flights: parseInt(r.Cant_Vuelos)
       }));
   
       const mockDataPath = './src/data/mockData.js';
@@ -336,9 +321,9 @@ async function agregarLineChartFlightFareData(exportName = "lineChartFlightFareD
   
       poolConnection.close();
     } catch (err) {
-      console.error("Error al agregar rutas populares por año:", err.message);
+      console.error("Error al agregar vuelos por año:", err.message);
     }
   }
   
-  agregarRutasPopularesPorAnio();
+  agregarVuelosPorAnio();
   
