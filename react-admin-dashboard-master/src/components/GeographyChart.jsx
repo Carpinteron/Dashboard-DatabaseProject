@@ -115,8 +115,8 @@ const AirportMap = () => {
   const toCoords = airports[to].coords;
 
   return (
-    <Box height="100%" width="100%">
-      <Box display="flex" gap={2} p={2}>
+    <Box height="110%" width="100%">
+      <Box display="flex" justifyContent="center" gap={2} p={2}>
         <FormControl>
           <InputLabel>Origen</InputLabel>
           <Select value={from} onChange={(e) => setFrom(e.target.value)} label="Origen">

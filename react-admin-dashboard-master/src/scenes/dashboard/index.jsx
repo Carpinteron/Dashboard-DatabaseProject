@@ -226,16 +226,10 @@ const Dashboard = () => {
           gridColumn="span 4"
           gridRow="span 2"
           backgroundColor={colors.primary[400]}
-          padding="30px"
+          padding="10px"
         >
-          <Typography
-            variant="h5"
-            fontWeight="600"
-            sx={{ marginBottom: "15px" }}
-          >
-            Geography Based Traffic
-          </Typography>
-          <Box height="175px">
+         
+          <Box height="177px">
             <GeographyChart isDashboard={true} />
           </Box>
         </Box>

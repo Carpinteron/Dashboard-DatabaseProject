@@ -1,3 +1,4 @@
+
 const sql = require('mssql');
 
 const config = {
@@ -90,6 +91,7 @@ ORDER BY d.year;
 }
 agregarRutasPopularesPorAnio();
 
+
 async function barchart2(exportName = "barchart2") {
   try {
     const poolConnection = await sql.connect(config);
@@ -149,3 +151,64 @@ order by
 }
 barchart2();
 
+async function agregarPreciosPromedioRutas(exportName = "lineChartFlightFareData") {
+  try {
+    const poolConnection = await sql.connect(config);
+
+    const resultSet = await poolConnection.request().query(`
+      WITH rutas_concurridas AS (    
+        SELECT TOP 5 f.airport1 AS origen, f.airport2 AS destino, COUNT(*) AS cant
+        FROM Flights_US f
+        GROUP BY f.airport1, f.airport2
+        ORDER BY cant DESC
+      )
+      SELECT YEAR(f.date) AS year, rc.origen, rc.destino, AVG(f.fare) AS Precio_Promedio_Anual
+      FROM rutas_concurridas rc
+      JOIN Flights_US f ON f.airport1 = rc.origen AND f.airport2 = rc.destino
+      GROUP BY YEAR(f.date), rc.origen, rc.destino
+      ORDER BY YEAR(f.date);
+    `);
+
+    const rows = resultSet.recordset;
+
+    const getRandomColor = () => `#${Math.floor(Math.random()*16777215).toString(16)}`;
+
+    const processedData = rows.reduce((acc, r) => {
+      let ruta = `${r.origen} 🠮 ${r.destino}`;
+      let rutaObj = acc.find(obj => obj.id === ruta);
+
+      if (!rutaObj) {
+        rutaObj = { id: ruta, color: getRandomColor(), data: [] };
+        acc.push(rutaObj);
+      }
+
+      const lastEntry = rutaObj.data[rutaObj.data.length - 1];
+
+      rutaObj.data.push({
+        x: r.year.toString(),
+        y: r.Precio_Promedio_Anual ? parseFloat(r.Precio_Promedio_Anual.toFixed(2)) : (lastEntry ? lastEntry.y : 0)
+      });
+
+      return acc;
+    }, []);
+
+    const mockDataPath = './src/data/mockData.js';
+    const mockDataContent = fs.readFileSync(mockDataPath, 'utf8');
+
+    const exportRegex = new RegExp(`export const ${exportName} = (\\[.*?\\]);`, 's');
+    const newExport = `export const ${exportName} = ${JSON.stringify(processedData, null, 2)};\n`;
+
+    const updatedContent = mockDataContent.includes(`export const ${exportName}`)
+      ? mockDataContent.replace(exportRegex, newExport)
+      : mockDataContent + '\n' + newExport;
+
+    fs.writeFileSync(mockDataPath, updatedContent);
+    console.log(`${exportName} actualizado en mockData.js`);
+
+    poolConnection.close();
+  } catch (err) {
+    console.error("Error al agregar precios promedio por año:", err.message);
+  }
+}
+
+agregarPreciosPromedioRutas();
