@@ -66,7 +66,7 @@ const Dashboard = () => {
             </Box>
           </Box>
           <Box height="250px" m="-20px 0 0 0">
-            <LineChart isDashboard={true} />
+          <LineChart isDashboard={true} />
           </Box>
         </Box>
         <Box
@@ -84,7 +84,7 @@ const Dashboard = () => {
             p="15px"
           >
             <Typography color={colors.grey[100]} variant="h5" fontWeight="600">
-              Recent Transactions
+              Recent Flights
             </Typography>
           </Box>
           {mockTransactions.map((transaction, i) => (
@@ -114,7 +114,7 @@ const Dashboard = () => {
                 p="5px 10px"
                 borderRadius="4px"
               >
-                ${transaction.cost}
+                {transaction.cost}
               </Box>
             </Box>
           ))}
@@ -227,6 +227,7 @@ const Dashboard = () => {
               $48,352 revenue generated
             </Typography>
             <Typography>Includes extra misc expenditures and costs</Typography>
+            
           </Box>
         </Box>
         <Box

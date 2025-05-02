@@ -44,206 +44,60 @@ export const mockDataTeam = [
 
 export const mockTransactions = [
   {
-    "txId": "01e4dsa",
-    "user": "johndoe",
-    "date": "2021-09-01",
-    "cost": "43.95"
-  },
-  {
-    "txId": "0315dsaa",
-    "user": "jackdower",
-    "date": "2022-04-01",
-    "cost": "133.45"
-  },
-  {
-    "txId": "01e4dsa",
-    "user": "aberdohnny",
-    "date": "2021-09-01",
-    "cost": "43.95"
-  },
-  {
-    "txId": "51034szv",
-    "user": "goodmanave",
-    "date": "2022-11-05",
-    "cost": "200.95"
-  },
-  {
-    "txId": "0a123sb",
-    "user": "stevebower",
-    "date": "2022-11-02",
-    "cost": "13.55"
-  },
-  {
-    "txId": "01e4dsa",
-    "user": "aberdohnny",
-    "date": "2021-09-01",
-    "cost": "43.95"
-  },
-  {
-    "txId": "120s51a",
-    "user": "wootzifer",
-    "date": "2019-04-15",
-    "cost": "24.20"
-  },
-  {
-    "txId": "0315dsaa",
-    "user": "jackdower",
-    "date": "2022-04-01",
-    "cost": "133.45"
-  },
-  {
-    "txId": "Austria",
-    "user": "Austria",
-    "date": "2016",
-    "cost": "2662.00"
-  },
-  {
-    "txId": "Austria",
-    "user": "Austria",
-    "date": "2016",
-    "cost": "3955.00"
-  },
-  {
-    "txId": "Austria",
-    "user": "Austria",
-    "date": "2021",
-    "cost": "3265.00"
-  },
-  {
-    "txId": "Austria",
-    "user": "Austria",
-    "date": "2016",
-    "cost": "2662.00"
-  },
-  {
-    "txId": "Austria",
-    "user": "Austria",
-    "date": "2016",
-    "cost": "3955.00"
-  },
-  {
-    "txId": "Austria",
-    "user": "Austria",
-    "date": "2021",
-    "cost": "3265.00"
-  },
-  {
-    "txId": "Austria",
-    "user": "Austria",
-    "date": "2016",
-    "cost": "2662.00"
-  },
-  {
-    "txId": "Austria",
-    "user": "Austria",
-    "date": "2016",
-    "cost": "3955.00"
-  },
-  {
-    "txId": "Austria",
-    "user": "Austria",
-    "date": "2021",
-    "cost": "3265.00"
-  },
-  {
-    "txId": "Austria",
-    "user": "Austria",
-    "date": "2016",
-    "cost": "2662.00"
-  },
-  {
-    "txId": "Austria",
-    "user": "Austria",
-    "date": "2016",
-    "cost": "3955.00"
-  },
-  {
-    "txId": "Austria",
-    "user": "Austria",
-    "date": "2021",
-    "cost": "3265.00"
+    "txId": "ID1",
+    "user": "ciudad1 - ciudad2",
+    "date": "fecha",
+    "cost": "From - To"
+  },{
+    "txId": "ID2",
+    "user": "ciudad1 - ciudad2",
+    "date": "fecha",
+    "cost": "From - To"
+  },{
+    "txId": "ID3",
+    "user": "ciudad1 - ciudad2",
+    "date": "fecha",
+    "cost": "From - To"
+  },{
+    "txId": "ID4",
+    "user": "ciudad1 - ciudad2",
+    "date": "fecha",
+    "cost": "From - To"
+  },{
+    "txId": "ID5",
+    "user": "ciudad1 - ciudad2",
+    "date": "fecha",
+    "cost": "From - To"
+  },{
+    "txId": "ID6",
+    "user": "ciudad1 - ciudad2",
+    "date": "fecha",
+    "cost": "From - To"
+  },{
+    "txId": "ID7",
+    "user": "ciudad1 - ciudad2",
+    "date": "fecha",
+    "cost": "From - To"
+  },{
+    "txId": "ID8",
+    "user": "ciudad1 - ciudad2",
+    "date": "fecha",
+    "cost": "From - To"
+  },{
+    "txId": "ID9",
+    "user": "ciudad1 - ciudad2",
+    "date": "fecha",
+    "cost": "From - To"
+  },{
+    "txId": "ID10",
+    "user": "ciudad1 - ciudad2",
+    "date": "fecha",
+    "cost": "From - To"
   }
+
 ];
 
-export const mockBarData = [
-  {
-    country: "AD",
-    "hot dog": 137,
-    "hot dogColor": "hsl(229, 70%, 50%)",
-    burger: 96,
-    burgerColor: "hsl(296, 70%, 50%)",
-    kebab: 72,
-    kebabColor: "hsl(97, 70%, 50%)",
-    donut: 140,
-    donutColor: "hsl(340, 70%, 50%)",
-  },
-  {
-    country: "AE",
-    "hot dog": 55,
-    "hot dogColor": "hsl(307, 70%, 50%)",
-    burger: 28,
-    burgerColor: "hsl(111, 70%, 50%)",
-    kebab: 58,
-    kebabColor: "hsl(273, 70%, 50%)",
-    donut: 29,
-    donutColor: "hsl(275, 70%, 50%)",
-  },
-  {
-    country: "AF",
-    "hot dog": 109,
-    "hot dogColor": "hsl(72, 70%, 50%)",
-    burger: 23,
-    burgerColor: "hsl(96, 70%, 50%)",
-    kebab: 34,
-    kebabColor: "hsl(106, 70%, 50%)",
-    donut: 152,
-    donutColor: "hsl(256, 70%, 50%)",
-  },
-  {
-    country: "AG",
-    "hot dog": 133,
-    "hot dogColor": "hsl(257, 70%, 50%)",
-    burger: 52,
-    burgerColor: "hsl(326, 70%, 50%)",
-    kebab: 43,
-    kebabColor: "hsl(110, 70%, 50%)",
-    donut: 83,
-    donutColor: "hsl(9, 70%, 50%)",
-  },
-  {
-    country: "AI",
-    "hot dog": 81,
-    "hot dogColor": "hsl(190, 70%, 50%)",
-    burger: 80,
-    burgerColor: "hsl(325, 70%, 50%)",
-    kebab: 112,
-    kebabColor: "hsl(54, 70%, 50%)",
-    donut: 35,
-    donutColor: "hsl(285, 70%, 50%)",
-  },
-  {
-    country: "AL",
-    "hot dog": 66,
-    "hot dogColor": "hsl(208, 70%, 50%)",
-    burger: 111,
-    burgerColor: "hsl(334, 70%, 50%)",
-    kebab: 167,
-    kebabColor: "hsl(182, 70%, 50%)",
-    donut: 18,
-    donutColor: "hsl(76, 70%, 50%)",
-  },
-  {
-    country: "AM",
-    "hot dog": 80,
-    "hot dogColor": "hsl(87, 70%, 50%)",
-    burger: 47,
-    burgerColor: "hsl(141, 70%, 50%)",
-    kebab: 158,
-    kebabColor: "hsl(224, 70%, 50%)",
-    donut: 49,
-    donutColor: "hsl(274, 70%, 50%)",
-  },
-];
+
 
 export const mockPieData = [
   {
@@ -278,169 +132,113 @@ export const mockPieData = [
   },
 ];
 
-export const mockLineData = [
+
+export const barChartDistanceFareData = [
+  
   {
-    id: "japan",
-    color: tokens("dark").greenAccent[500],
-    data: [
-      {
-        x: "plane",
-        y: 101,
-      },
-      {
-        x: "helicopter",
-        y: 75,
-      },
-      {
-        x: "boat",
-        y: 36,
-      },
-      {
-        x: "train",
-        y: 216,
-      },
-      {
-        x: "subway",
-        y: 35,
-      },
-      {
-        x: "bus",
-        y: 236,
-      },
-      {
-        x: "car",
-        y: 88,
-      },
-      {
-        x: "moto",
-        y: 232,
-      },
-      {
-        x: "bicycle",
-        y: 281,
-      },
-      {
-        x: "horse",
-        y: 1,
-      },
-      {
-        x: "skateboard",
-        y: 35,
-      },
-      {
-        x: "others",
-        y: 14,
-      },
-    ],
+    country: "2019",
+    "hot dog": 80,
+    "hot dogColor": "hsl(87, 70%, 50%)",
+    burger: 47,
+    burgerColor: "hsl(141, 70%, 50%)",
+    kebab: 158,
+    kebabColor: "hsl(224, 70%, 50%)",
+    donut: 49,
+    donutColor: "hsl(274, 70%, 50%)",
   },
   {
-    id: "france",
-    color: tokens("dark").blueAccent[300],
-    data: [
-      {
-        x: "plane",
-        y: 212,
-      },
-      {
-        x: "helicopter",
-        y: 190,
-      },
-      {
-        x: "boat",
-        y: 270,
-      },
-      {
-        x: "train",
-        y: 9,
-      },
-      {
-        x: "subway",
-        y: 75,
-      },
-      {
-        x: "bus",
-        y: 175,
-      },
-      {
-        x: "car",
-        y: 33,
-      },
-      {
-        x: "moto",
-        y: 189,
-      },
-      {
-        x: "bicycle",
-        y: 97,
-      },
-      {
-        x: "horse",
-        y: 87,
-      },
-      {
-        x: "skateboard",
-        y: 299,
-      },
-      {
-        x: "others",
-        y: 251,
-      },
-    ],
+    country: "2020",
+    "hot dog": 137,
+    "hot dogColor": "hsl(229, 70%, 50%)",
+    burger: 96,
+    burgerColor: "hsl(296, 70%, 50%)",
+    kebab: 72,
+    kebabColor: "hsl(97, 70%, 50%)",
+    donut: 140,
+    donutColor: "hsl(340, 70%, 50%)",
   },
   {
-    id: "us",
-    color: tokens("dark").redAccent[200],
-    data: [
-      {
-        x: "plane",
-        y: 191,
-      },
-      {
-        x: "helicopter",
-        y: 136,
-      },
-      {
-        x: "boat",
-        y: 91,
-      },
-      {
-        x: "train",
-        y: 190,
-      },
-      {
-        x: "subway",
-        y: 211,
-      },
-      {
-        x: "bus",
-        y: 152,
-      },
-      {
-        x: "car",
-        y: 189,
-      },
-      {
-        x: "moto",
-        y: 152,
-      },
-      {
-        x: "bicycle",
-        y: 8,
-      },
-      {
-        x: "horse",
-        y: 197,
-      },
-      {
-        x: "skateboard",
-        y: 107,
-      },
-      {
-        x: "others",
-        y: 170,
-      },
-    ],
+    country: "2021",
+    "MIM 🠮 BAQ": 55,
+    "hot dogColor": "hsl(307, 70%, 50%)",
+    burger: 28,
+    burgerColor: "hsl(111, 70%, 50%)",
+    kebab: 58,
+    kebabColor: "hsl(273, 70%, 50%)",
+    donut: 29,
+    donutColor: "hsl(275, 70%, 50%)",
+    fries: 22
   },
+  {
+    country: "2022",
+    "hot dog": 109,
+    "hot dogColor": "hsl(72, 70%, 50%)",
+    burger: 23,
+    burgerColor: "hsl(96, 70%, 50%)",
+    kebab: 34,
+    kebabColor: "hsl(106, 70%, 50%)",
+    donut: 152,
+    donutColor: "hsl(256, 70%, 50%)",
+  },
+  {
+    country: "2023",
+    "hot dog": 133,
+    "hot dogColor": "hsl(257, 70%, 50%)",
+    burger: 52,
+    burgerColor: "hsl(326, 70%, 50%)",
+    kebab: 43,
+    kebabColor: "hsl(110, 70%, 50%)",
+    donut: 83,
+    donutColor: "hsl(9, 70%, 50%)",
+  },
+  {
+    country: "2024",
+    "hot dog": 81,
+    "hot dogColor": "hsl(190, 70%, 50%)",
+    burger: 80,
+    kebab: 112,
+    donut: 35,
+  },
+  {
+    country: "2025",
+    "hot dog": 66,
+    "hot dogColor": "hsl(208, 70%, 50%)",
+    burger: 111,
+    burgerColor: "hsl(334, 70%, 50%)",
+    kebab: 167,
+    kebabColor: "hsl(182, 70%, 50%)",
+    donut: 18,
+    donutColor: "hsl(76, 70%, 50%)",
+  }
+];
+
+
+export const A = [
+ {
+    country: "0-1000",
+    "fries": 209.19474591588408,
+  
+   }, 
+  {
+    country: "1001-2000",
+    "fries": 248.04621599524265,
+    "Flights_per_distance": 80724
+  },
+  {
+    country: "2001-3000",
+    "fries": 281.8726643911947,
+    "Flights_per_distance": 57424
+  },
+  {
+    country: "3001-4000",
+    "fries": 274.76840526367374,
+    "Flights_per_distance": 30701
+  },
+  {
+    country: "4001+",
+    "fries": 275.6814890333595,
+    "Flights_per_distance": 30456
+  } 
 ];
 
 export const mockGeographyData = [
@@ -1169,291 +967,385 @@ export const a = [
   }
 ];
 
+export const mockLineData = [
+  {
+    id: "japan",
+    color: tokens("dark").greenAccent[500],
+    data: [
+      {
+        x: "plane",
+        y: 101,
+      },
+      {
+        x: "helicopter",
+        y: 75,
+      },
+      {
+        x: "boat",
+        y: 36,
+      },
+      {
+        x: "train",
+        y: 216,
+      },
+      {
+        x: "subway",
+        y: 35,
+      },
+      {
+        x: "bus",
+        y: 236,
+      },
+      {
+        x: "car",
+        y: 88,
+      },
+      {
+        x: "moto",
+        y: 232,
+      },
+      {
+        x: "bicycle",
+        y: 281,
+      },
+      {
+        x: "horse",
+        y: 1,
+      },
+      {
+        x: "skateboard",
+        y: 35,
+      },
+      {
+        x: "others",
+        y: 14,
+      },
+    ],
+  },
+  {
+    id: "france",
+    color: tokens("dark").blueAccent[300],
+    data: [
+      {
+        x: "plane",
+        y: 212,
+      },
+      {
+        x: "helicopter",
+        y: 190,
+      },
+      {
+        x: "boat",
+        y: 270,
+      },
+      {
+        x: "train",
+        y: 9,
+      },
+      {
+        x: "subway",
+        y: 75,
+      },
+      {
+        x: "bus",
+        y: 175,
+      },
+      {
+        x: "car",
+        y: 33,
+      },
+      {
+        x: "moto",
+        y: 189,
+      },
+      {
+        x: "bicycle",
+        y: 97,
+      },
+      {
+        x: "horse",
+        y: 87,
+      },
+      {
+        x: "skateboard",
+        y: 299,
+      },
+      {
+        x: "others",
+        y: 251,
+      },
+    ],
+  },
+  {
+    id: "us",
+    color: tokens("dark").redAccent[200],
+    data: [
+      {
+        x: "plane",
+        y: 191,
+      },
+      {
+        x: "helicopter",
+        y: 136,
+      },
+      {
+        x: "boat",
+        y: 91,
+      },
+      {
+        x: "train",
+        y: 190,
+      },
+      {
+        x: "subway",
+        y: 211,
+      },
+      {
+        x: "bus",
+        y: 152,
+      },
+      {
+        x: "car",
+        y: 189,
+      },
+      {
+        x: "moto",
+        y: 152,
+      },
+      {
+        x: "bicycle",
+        y: 8,
+      },
+      {
+        x: "horse",
+        y: 197,
+      },
+      {
+        x: "skateboard",
+        y: 107,
+      },
+      {
+        x: "others",
+        y: 170,
+      },
+    ],
+  },
+];
 export const lineChartFlightFareData = [
   {
-    "id": "Tarifa Promedio",
-    "data": [
+    id: "Tarifa Prom",
+    color: tokens("dark").redAccent[200],
+    data: [
+      
       {
-        "x": "1993",
-        "y": 215.1350787201631
+        x: "2000",
+        y: 218.90972526416883
       },
       {
-        "x": "1994",
-        "y": 217.0309906914894
+        x: "2001",
+        y: 200.9760599734294
       },
       {
-        "x": "1996",
-        "y": 204.83211275216055
+        x: "2002",
+        y: 193.74042968010588
       },
       {
-        "x": "1997",
-        "y": 208.15711225996998
+        x: "2003",
+        y: 197.3516250725479
       },
       {
-        "x": "1998",
-        "y": 211.70779954785195
+        x: "2004",
+        y: 188.12055479585885
       },
       {
-        "x": "1999",
-        "y": 210.20650985496516
+        x: "2005",
+        y: 186.62637364798388
       },
       {
-        "x": "2000",
-        "y": 218.90972526416883
+        x: "2006",
+        y: 205.56926863857333
       },
       {
-        "x": "2001",
-        "y": 200.9760599734294
+        x: "2007",
+        y: 203.28231024471197
       },
       {
-        "x": "2002",
-        "y": 193.74042968010588
+        x: "2008",
+        y: 220.1337024360781
       },
       {
-        "x": "2003",
-        "y": 197.3516250725479
+        x: "2009",
+        y: 195.3301577031945
       },
       {
-        "x": "2004",
-        "y": 188.12055479585885
+        x: "2010",
+        y: 213.3471619163127
       },
       {
-        "x": "2005",
-        "y": 186.62637364798388
+        x: "2011",
+        y: 230.64880266075346
       },
       {
-        "x": "2006",
-        "y": 205.56926863857333
+        x: "2012",
+        y: 240.89760221212703
       },
       {
-        "x": "2007",
-        "y": 203.28231024471197
+        x: "2013",
+        y: 244.90448215330562
       },
       {
-        "x": "2008",
-        "y": 220.1337024360781
+        x: "2014",
+        y: 252.33284769539048
       },
       {
-        "x": "2009",
-        "y": 195.3301577031945
+        x: "2015",
+        y: 248.4635883424419
       },
       {
-        "x": "2010",
-        "y": 213.3471619163127
+        x: "2016",
+        y: 269.2135252933265
       },
       {
-        "x": "2011",
-        "y": 230.64880266075346
+        x: "2017",
+        y: 268.7107799464219
       },
       {
-        "x": "2012",
-        "y": 240.89760221212703
+        x: "2018",
+        y: 268.8697566557852
       },
       {
-        "x": "2013",
-        "y": 244.90448215330562
+        x: "2019",
+        y: 268.8686854507178
       },
       {
-        "x": "2014",
-        "y": 252.33284769539048
+        x: "2020",
+        y: 262.0941302873444
       },
       {
-        "x": "2015",
-        "y": 248.4635883424419
+        x: "2021",
+        y: 263.67298858749024
       },
       {
-        "x": "2016",
-        "y": 269.2135252933265
+        x: "2022",
+        y: 265.48082523295625
       },
       {
-        "x": "2017",
-        "y": 268.7107799464219
+        x: "2023",
+        y: 249.6697469422182
       },
       {
-        "x": "2018",
-        "y": 268.8697566557852
-      },
-      {
-        "x": "2019",
-        "y": 268.8686854507178
-      },
-      {
-        "x": "2020",
-        "y": 262.0941302873444
-      },
-      {
-        "x": "2021",
-        "y": 263.67298858749024
-      },
-      {
-        "x": "2022",
-        "y": 265.48082523295625
-      },
-      {
-        "x": "2023",
-        "y": 249.6697469422182
-      },
-      {
-        "x": "2024",
-        "y": 257.2028945074103
+        x: "2024",
+        y: 257.2028945074103
       }
     ]
   },
   {
-    "id": "Cantidad de Vuelos",
-    "data": [
+    id: "# de Vuelos",
+    color: tokens("dark").blueAccent[300],
+    data: [
+      
       {
-        "x": "1993",
-        "y": 5907
+        x: "2000",
+        y: 5205
       },
       {
-        "x": "1994",
-        "y": 1504
+        x: "2001",
+        y: 5269
       },
       {
-        "x": "1996",
-        "y": 5552
+        x: "2002",
+        y: 5283
       },
       {
-        "x": "1997",
-        "y": 5416
+        x: "2003",
+        y: 5169
       },
       {
-        "x": "1998",
-        "y": 5308
+        x: "2004",
+        y: 5119
       },
       {
-        "x": "1999",
-        "y": 5378
+        x: "2005",
+        y: 5085
       },
       {
-        "x": "2000",
-        "y": 5205
+        x: "2006",
+        y: 4936
       },
       {
-        "x": "2001",
-        "y": 5269
+        x: "2007",
+        y: 4822
       },
       {
-        "x": "2002",
-        "y": 5283
+        x: "2008",
+        y: 4967
       },
       {
-        "x": "2003",
-        "y": 5169
+        x: "2009",
+        y: 4946
       },
       {
-        "x": "2004",
-        "y": 5119
+        x: "2010",
+        y: 4947
       },
       {
-        "x": "2005",
-        "y": 5085
+        x: "2011",
+        y: 4961
       },
       {
-        "x": "2006",
-        "y": 4936
+        x: "2012",
+        y: 5063
       },
       {
-        "x": "2007",
-        "y": 4822
+        x: "2013",
+        y: 5127
       },
       {
-        "x": "2008",
-        "y": 4967
+        x: "2014",
+        y: 4990
       },
       {
-        "x": "2009",
-        "y": 4946
+        x: "2015",
+        y: 4941
       },
       {
-        "x": "2010",
-        "y": 4947
+        x: "2016",
+        y: 25995
       },
       {
-        "x": "2011",
-        "y": 4961
+        x: "2017",
+        y: 26130
       },
       {
-        "x": "2012",
-        "y": 5063
+        x: "2018",
+        y: 29711
       },
       {
-        "x": "2013",
-        "y": 5127
+        x: "2019",
+        y: 29919
       },
       {
-        "x": "2014",
-        "y": 4990
+        x: "2020",
+        y: 28015
       },
       {
-        "x": "2015",
-        "y": 4941
+        x: "2021",
+        y: 29529
       },
       {
-        "x": "2016",
-        "y": 25995
+        x: "2022",
+        y: 14917
       },
       {
-        "x": "2017",
-        "y": 26130
+        x: "2023",
+        y: 4742
       },
       {
-        "x": "2018",
-        "y": 29711
-      },
-      {
-        "x": "2019",
-        "y": 29919
-      },
-      {
-        "x": "2020",
-        "y": 28015
-      },
-      {
-        "x": "2021",
-        "y": 29529
-      },
-      {
-        "x": "2022",
-        "y": 14917
-      },
-      {
-        "x": "2023",
-        "y": 4742
-      },
-      {
-        "x": "2024",
-        "y": 1147
+        x: "2024",
+        y: 1147
       }
     ]
   }
 ];
 
-export const barChartDistanceFareData = [
-  {
-    "Distance_Range": "0-1000",
-    "Average_Fare": 209.19474591588408,
-    "Flights_per_distance": 100695
-  },
-  {
-    "Distance_Range": "1001-2000",
-    "Average_Fare": 248.04621599524265,
-    "Flights_per_distance": 80724
-  },
-  {
-    "Distance_Range": "2001-3000",
-    "Average_Fare": 281.8726643911947,
-    "Flights_per_distance": 57424
-  },
-  {
-    "Distance_Range": "3001-4000",
-    "Average_Fare": 274.76840526367374,
-    "Flights_per_distance": 30701
-  },
-  {
-    "Distance_Range": "4001+",
-    "Average_Fare": 275.6814890333595,
-    "Flights_per_distance": 30456
-  }
-];
+
