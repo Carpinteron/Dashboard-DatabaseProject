@@ -8,6 +8,7 @@ import 'leaflet/dist/leaflet.css';
 
 
 import Bar from "./scenes/bar";
+import Bar2 from "./scenes/bar2";
 import Form from "./scenes/form";
 import Line from "./scenes/line";
 import Pie from "./scenes/pie";
@@ -32,15 +33,12 @@ function App() {
             <Routes>
               <Route path="/" element={<Dashboard />} />
               <Route path="/team" element={<Team />} />
-            
-              
               <Route path="/form" element={<Form />} />
               <Route path="/bar" element={<Bar />} />
-              
+              <Route path="/bar2" element={<Bar2 />} />
               <Route path="/pie" element={<Pie />} />
               <Route path="/line" element={<Line />} />
               <Route path="/faq" element={<FAQ />} />
-              
               <Route path="/geography" element={<Geography />} />
             </Routes>
           </main>

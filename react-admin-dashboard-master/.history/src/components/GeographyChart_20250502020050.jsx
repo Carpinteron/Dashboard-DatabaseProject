@@ -145,15 +145,7 @@ const AirportMap = () => {
         <Marker position={toCoords} icon={airplaneIcon}>
           <Popup>Destino: {airports[to].name}</Popup>
         </Marker>
-        <Polyline
-          positions={[fromCoords, toCoords]}
-          pathOptions={{
-            color: "#3399ff",      // azul claro
-            weight: 4,             // grosor de la línea
-            opacity: 0.8,          // transparencia
-            dashArray: "5, 10",    // opcional: línea discontinua
-          }}
-        />
+        <Polyline positions={[fromCoords, toCoords]} color="blue" />
       </MapContainer>
     </Box>
   );

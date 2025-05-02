@@ -92,7 +92,7 @@ const Sidebar = () => {
           {!isCollapsed && (
             <Box mb="25px">
               <Box display="flex" justifyContent="center" alignItems="center">
-              
+
               </Box>
               <Box textAlign="center">
                 <Typography
@@ -101,7 +101,7 @@ const Sidebar = () => {
                   fontWeight="bold"
                   sx={{ m: "10px 0 0 0" }}
                 >
-                 
+
                 </Typography>
                 <Typography variant="h5" color={colors.greenAccent[500]}>
                 </Typography>
@@ -132,8 +132,9 @@ const Sidebar = () => {
               selected={selected}
               setSelected={setSelected}
             />
-            
-            
+
+
+
 
             <Typography
               variant="h6"
@@ -149,7 +150,8 @@ const Sidebar = () => {
               selected={selected}
               setSelected={setSelected}
             />
-           
+
+
             <Item
               title="Proposito"
               to="/faq"
@@ -172,6 +174,14 @@ const Sidebar = () => {
               selected={selected}
               setSelected={setSelected}
             />
+            <Item
+              title="bar2"
+              to="/bar2"
+              icon={<BarChartOutlinedIcon />}
+              selected={selected}
+              setSelected={setSelected}
+            />
+
             <Item
               title="Pie Chart"
               to="/pie"

@@ -101,10 +101,10 @@ const airports = {
 
 // Ícono de avión más estilizado
 const airplaneIcon = new L.Icon({
-  iconUrl: "https://cdn-icons-png.flaticon.com/512/61/61212.png",
-  iconSize: [24, 24],
-  iconAnchor: [12, 12],
-  popupAnchor: [0, -12],
+  iconUrl: "",
+  iconSize: [32, 32],
+  iconAnchor: [16, 16],
+  popupAnchor: [0, -16],
 });
 
 const AirportMap = () => {
@@ -135,25 +135,17 @@ const AirportMap = () => {
         </FormControl>
       </Box>
       <MapContainer center={[39.8283, -98.5795]} zoom={4} style={{ height: "80%", width: "100%" }}>
-      <TileLayer
-  url={`https://{s}.tile.thunderforest.com/outdoors/{z}/{x}/{y}.png?apikey=ad4af2b3ce0543d7b1bc7e2dd416c6f1`}
-  attribution='&copy; OpenStreetMap contributors, &copy; Thunderforest'
-/>
+        <TileLayer
+          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+          attribution='&copy; OpenStreetMap contributors'
+        />
         <Marker position={fromCoords} icon={airplaneIcon}>
           <Popup>Origen: {airports[from].name}</Popup>
         </Marker>
         <Marker position={toCoords} icon={airplaneIcon}>
           <Popup>Destino: {airports[to].name}</Popup>
         </Marker>
-        <Polyline
-          positions={[fromCoords, toCoords]}
-          pathOptions={{
-            color: "#3399ff",      // azul claro
-            weight: 4,             // grosor de la línea
-            opacity: 0.8,          // transparencia
-            dashArray: "5, 10",    // opcional: línea discontinua
-          }}
-        />
+        <Polyline positions={[fromCoords, toCoords]} color="blue" />
       </MapContainer>
     </Box>
   );
