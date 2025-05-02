@@ -1,7 +1,5 @@
 import { tokens } from "../theme";
 
-
-
 export const mockDataTeam = [
   {
     id: 1,
@@ -38,9 +36,6 @@ export const mockDataTeam = [
    
   
 ];
-
-
-
 
 export const mockTransactions = [
   {
@@ -97,8 +92,6 @@ export const mockTransactions = [
 
 ];
 
-
-
 export const mockPieData = [
   {
     id: "hack",
@@ -132,86 +125,56 @@ export const mockPieData = [
   },
 ];
 
-
 export const barChartDistanceFareData = [
-  
   {
-    country: "2019",
-    "hot dog": 80,
-    "hot dogColor": "hsl(87, 70%, 50%)",
-    burger: 47,
-    burgerColor: "hsl(141, 70%, 50%)",
-    kebab: 158,
-    kebabColor: "hsl(224, 70%, 50%)",
-    donut: 49,
-    donutColor: "hsl(274, 70%, 50%)",
+    year: "2020",
+    "HNL 🠮 ITO": 137,
+    "LAS 🠮 RNO": 96,
+    "SEA 🠮 RNO": 72,
+    "LAX 🠮 RNO": 140,
+    "PHX 🠮 RNO":50
   },
   {
-    country: "2020",
-    "hot dog": 137,
-    "hot dogColor": "hsl(229, 70%, 50%)",
-    burger: 96,
-    burgerColor: "hsl(296, 70%, 50%)",
-    kebab: 72,
-    kebabColor: "hsl(97, 70%, 50%)",
-    donut: 140,
-    donutColor: "hsl(340, 70%, 50%)",
+    year: "2021",
+    "HNL 🠮 ITO": 55,
+    "LAS 🠮 RNO": 28,
+    "SEA 🠮 RNO": 58,
+    "LAX 🠮 RNO": 29,
+    "PHX 🠮 RNO":50  
   },
   {
-    country: "2021",
-    "MIM 🠮 BAQ": 55,
-    "hot dogColor": "hsl(307, 70%, 50%)",
-    burger: 28,
-    burgerColor: "hsl(111, 70%, 50%)",
-    kebab: 58,
-    kebabColor: "hsl(273, 70%, 50%)",
-    donut: 29,
-    donutColor: "hsl(275, 70%, 50%)",
-    fries: 22
+    year: "2022",
+    "HNL 🠮 ITO": 109,
+    "LAS 🠮 RNO": 23,
+    "SEA 🠮 RNO": 34,
+    "LAX 🠮 RNO": 152,
+    "PHX 🠮 RNO":50
   },
   {
-    country: "2022",
-    "hot dog": 109,
-    "hot dogColor": "hsl(72, 70%, 50%)",
-    burger: 23,
-    burgerColor: "hsl(96, 70%, 50%)",
-    kebab: 34,
-    kebabColor: "hsl(106, 70%, 50%)",
-    donut: 152,
-    donutColor: "hsl(256, 70%, 50%)",
-  },
+    year: "2023",
+    "HNL 🠮 ITO": 133,
+    "LAS 🠮 RNO": 52,
+    "SEA 🠮 RNO": 43,
+    "LAX 🠮 RNO": 83,
+    "PHX 🠮 RNO":50  
+},
   {
-    country: "2023",
-    "hot dog": 133,
-    "hot dogColor": "hsl(257, 70%, 50%)",
-    burger: 52,
-    burgerColor: "hsl(326, 70%, 50%)",
-    kebab: 43,
-    kebabColor: "hsl(110, 70%, 50%)",
-    donut: 83,
-    donutColor: "hsl(9, 70%, 50%)",
-  },
+    year: "2024",
+    "HNL 🠮 ITO": 81,
+    "LAS 🠮 RNO": 80,
+    "SEA 🠮 RNO": 112,
+    "LAX 🠮 RNO": 35,
+    "PHX 🠮 RNO":50  
+},
   {
-    country: "2024",
-    "hot dog": 81,
-    "hot dogColor": "hsl(190, 70%, 50%)",
-    burger: 80,
-    kebab: 112,
-    donut: 35,
-  },
-  {
-    country: "2025",
-    "hot dog": 66,
-    "hot dogColor": "hsl(208, 70%, 50%)",
-    burger: 111,
-    burgerColor: "hsl(334, 70%, 50%)",
-    kebab: 167,
-    kebabColor: "hsl(182, 70%, 50%)",
-    donut: 18,
-    donutColor: "hsl(76, 70%, 50%)",
+    year: "2025",
+    "HNL 🠮 ITO": 66,
+    "LAS 🠮 RNO": 111,
+    "SEA 🠮 RNO": 167,
+    "LAX 🠮 RNO": 18,
+    "PHX 🠮 RNO":50  
   }
 ];
-
 
 export const A = [
  {
@@ -1131,6 +1094,7 @@ export const mockLineData = [
     ],
   },
 ];
+
 export const lineChartFlightFareData = [
   {
     id: "Tarifa Prom",
