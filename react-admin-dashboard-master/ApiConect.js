@@ -17,6 +17,7 @@ const config = {
 
 let airportOriginIataCode='LAX' // Código IATA del aeropuerto de origen
 let fecharequest='2024-10-01' // YYYY-MM-DD
+
 const options = {
     method: 'GET',
     url: 'https://aerodatabox.p.rapidapi.com/airports/iata/'+airportOriginIataCode+'/stats/routes/daily/'+fecharequest,
@@ -72,7 +73,7 @@ const options = {
                 city2: destinationAirport.city,
                 airport1: originAirport.iata,
                 airport2: destinationAirport.iata,
-                nsmiles: distancia.millas,
+                nsmiles: distancia.millas.toString(), // Convertir a string
                 passengers: null, // Pasajeros como null
                 fare: null, // Tarifa como null
                 latitude_airport1: originAirport.lat,
@@ -103,13 +104,13 @@ const options = {
             request.input('city2', sql.VarChar, flightData.city2);
             request.input('airport1', sql.VarChar, flightData.airport1);
             request.input('airport2', sql.VarChar, flightData.airport2);
-            request.input('nsmiles', sql.Float, flightData.nsmiles);
+            request.input('nsmiles', sql.VarChar, flightData.nsmiles);
             request.input('passengers', sql.Int, flightData.passengers);
-            request.input('fare', sql.Float, flightData.fare);
-            request.input('latitude_airport1', sql.Float, flightData.latitude_airport1);
-            request.input('longitude_airport1', sql.Float, flightData.longitude_airport1);
-            request.input('latitude_airport2', sql.Float, flightData.latitude_airport2);
-            request.input('longitude_airport2', sql.Float, flightData.longitude_airport2);
+            request.input('fare', sql.VarChar, flightData.fare);
+            request.input('latitude_airport1', sql.VarChar, flightData.latitude_airport1);
+            request.input('longitude_airport1', sql.VarChar, flightData.longitude_airport1);
+            request.input('latitude_airport2', sql.VarChar, flightData.latitude_airport2);
+            request.input('longitude_airport2', sql.VarChar, flightData.longitude_airport2);
 
             const query = `
                 INSERT INTO Flights_US (date, city1, city2, airport1, airport2, nsmiles, passengers, fare, latitude_airport1, longitude_airport1, latitude_airport2, longitude_airport2)
