@@ -1,6 +1,7 @@
-const express = require('express');
-const sql = require('mssql');
-const cors = require('cors');
+const express = require("express");
+const sql = require("mssql");
+const cors = require("cors");
+const WebSocket = require("ws");
 
 const app = express();
 const port = 3001;
@@ -9,32 +10,32 @@ app.use(express.json());
 
 // Configuración SQL Server
 const config = {
-  user: 'adminsql',
-  password: 'NIPS-lab#1',
-  server: 'servidorskysql.database.windows.net',
-  database: 'FlightsData',
+  user: "adminsql",
+  password: "NIPS-lab#1",
+  server: "servidorskysql.database.windows.net",
+  database: "FlightsData",
   port: 1433,
-  authentication: {
-    type: 'default'
-  },
-  options: {
-    encrypt: true
-  }
+  authentication: { type: "default" },
+  options: { encrypt: true }
 };
 
 // Conexión a SQL Server
 let pool;
-sql.connect(config).then(p => {
-  pool = p;
-  console.log("✅ Conectado a SQL Server");
-}).catch(err => {
-  console.error("❌ Error de conexión:", err.message);
-});
+sql.connect(config)
+  .then((p) => {
+    pool = p;
+    console.log("✅ Conectado a SQL Server");
+  })
+  .catch((err) => {
+    console.error("❌ Error de conexión:", err.message);
+  });
 
-// --- Rutas ---
 
-// 1. Rutas populares por año
+
+// 1. Rutas populares por año barchart apilado
 app.get('/api/rutas-populares', async (req, res) => {
+  const year1 = parseInt(req.query.year1) || 2020;
+  const year2 = parseInt(req.query.year2) || 2025;
     try {
       const result = await pool.request().query(`
    WITH rutas_populares AS (
@@ -50,7 +51,7 @@ app.get('/api/rutas-populares', async (req, res) => {
           SUM(f.passengers) AS cant_pasajeros_anual
       FROM Flights_US f
       JOIN rutas_populares r ON r.origen = f.airport1 AND r.destino = f.airport2
-      WHERE year(f.date) >= 2020
+      WHERE year(f.date) >= ${year1} and year(f.date) <= ${year2}
       GROUP BY year(f.date), f.airport1, f.airport2
   )
   

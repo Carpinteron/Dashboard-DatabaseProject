@@ -12,7 +12,7 @@ const BarChart = ({ isDashboard = false }) => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const res = await fetch("http://localhost:3001/api/rutas-populares");
+        const res = await fetch("http://localhost:3001/api/rutas-populares?year1=2020&year2=2025");
         const json = await res.json();
         setData(json);
       } catch (error) {
@@ -51,7 +51,7 @@ const BarChart = ({ isDashboard = false }) => {
         tickSize: 5,
         tickPadding: 5,
         tickRotation: 0,
-        legend: isDashboard ? undefined : "Year",
+        legend: isDashboard ? undefined : "",
         legendPosition: "middle",
         legendOffset: 32,
       }}
