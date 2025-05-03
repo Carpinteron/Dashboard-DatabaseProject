@@ -2,10 +2,9 @@ import { Box } from "@mui/material";
 import Header from "../../components/Header";
 import BarChart from "../../components/BarChart";
 import { tokens } from "../../theme";
-import {  Button, IconButton, Typography, useTheme } from "@mui/material";
-import styled from "@emotion/styled";
+import { useTheme } from "@mui/material";
+
 import InputBase from "@mui/material/InputBase";
-import DoneOutlineIcon from '@mui/icons-material/DoneOutline';
 import { useState } from "react";
 
 
@@ -17,9 +16,7 @@ const Bar = () => {
   const [year1b, setYear1] = useState("");
   const [year2b, setYear2] = useState("");
 
-  const handleSaveYears = () => {
-    alert(`Años guardados:\nYear1: ${year1b}\nYear2: ${year2b}`);
-  };
+ 
 
   return (
     <Box m="20px">

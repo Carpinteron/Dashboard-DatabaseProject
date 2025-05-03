@@ -165,13 +165,7 @@ const Sidebar = () => {
               selected={selected}
               setSelected={setSelected}
             />
-            <Item
-              title="bar2"
-              to="/bar2"
-              icon={<BarChartOutlinedIcon />}
-              selected={selected}
-              setSelected={setSelected}
-            />
+           
 
             <Item
               title="Pie Chart"
