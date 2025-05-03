@@ -251,22 +251,22 @@ app.get('/api/rutas-populares', async (req, res) => {
     });
 
     // 5. Lista de vuelos ordenados por fecha (descendente)
-  app.get('/api/lista-vuelos', async (req, res) => {
-    try {
-      const result = await pool.request().query(`
-        SELECT top 10 f.id, f.date, f.airport1, f.airport2, f.city1, f.city2
-        FROM Flights_US f
-        ORDER BY f.date DESC
-      `);
+app.get('/api/lista-vuelos', async (req, res) => {
+  try {
+    const result = await pool.request().query(`
+      SELECT f.id, f.date, f.airport1, f.airport2, f.city1, f.city2
+      FROM Flights_US f
+      ORDER BY f.date DESC
+    `);
 
-      const rows = result.recordset;
+    const rows = result.recordset;
 
-      res.json(rows);
-    } catch (err) {
-      console.error("Error en lista-vuelos:", err.message);
-      res.status(500).send("Error interno del servidor");
-    }
-  });
+    res.json(rows);
+  } catch (err) {
+    console.error("Error en lista-vuelos:", err.message);
+    res.status(500).send("Error interno del servidor");
+  }
+});
 
   
 // Arranca el servidor

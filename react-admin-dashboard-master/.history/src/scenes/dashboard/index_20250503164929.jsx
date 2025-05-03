@@ -91,7 +91,7 @@ useEffect(() => {
             p="15px"
           >
             <Typography color={colors.grey[100]} variant="h5" fontWeight="600">
-              Vuelos Recientes
+              Recent Flights
             </Typography>
           </Box>
           {recentFlights.map((flight, i) => (
@@ -102,17 +102,23 @@ useEffect(() => {
             alignItems="center"
             borderBottom={`4px solid ${colors.primary[500]}`}
             p="15px"
-          >
+          ><Box
+              backgroundColor={colors.greenAccent[500]}
+              p="5px 10px"
+              borderRadius="4px"
+            >
+              {flight.airport2} 🛬
+            </Box>
             <Box>
               <Typography
                 color={colors.greenAccent[500]}
                 variant="h5"
                 fontWeight="600"
               >
-                🛬 {flight.airport1} → {flight.airport2}
+                ID: {flight.id}
               </Typography>
               <Typography color={colors.grey[100]}>
-              {flight.city1} → {flight.city2}
+                {flight.city1} → {flight.city2}
               </Typography>
             </Box>
             <Box color={colors.grey[100]}>{new Date(flight.date).toLocaleDateString()}</Box>

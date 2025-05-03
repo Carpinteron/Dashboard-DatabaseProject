@@ -91,7 +91,7 @@ useEffect(() => {
             p="15px"
           >
             <Typography color={colors.grey[100]} variant="h5" fontWeight="600">
-              Vuelos Recientes
+              Recent Flights
             </Typography>
           </Box>
           {recentFlights.map((flight, i) => (
