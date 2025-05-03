@@ -3,7 +3,7 @@ import { useTheme } from "@mui/material";
 import { tokens } from "../theme";
 import { useEffect, useState } from "react";
 
-const LineChart = ({ isCustomLineColors = false, isDashboard = false }) => {
+const LineChart = ({ year1l,year2l, isDashboard = false }) => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
   const [data, setData] = useState([]);
@@ -11,16 +11,32 @@ const LineChart = ({ isCustomLineColors = false, isDashboard = false }) => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const res = await fetch("http://localhost:3001/api/precios-promedio");
+        const res = await fetch(`http://localhost:3001/api/precios-promedio?year1=${year1l}&year2=${year2l}`);
         const json = await res.json();
+        console.log("Datos recibidos line ", json);
         setData(json);
       } catch (error) {
         console.error("Error al cargar los datos del gráfico:", error);
       }
     };
+  
+    const fetchData2 = async () => {
+      try {
+        const res = await fetch(`http://localhost:3001/api/precios-promedio?year1=${year1l}&year2=${year2l}`);
+        const json = await res.json();
+        setData(json);
+      } catch (error) {
+        console.error("Error al cargar datos del backend:", error);
+      }
+    };
 
-    fetchData();
-  }, []);
+    if (year1l && year2l) {
+      fetchData();
+    }else{
+      fetchData2();
+    }
+  }, [year1l, year2l]); // Dependencias para actualizar la gráfica cuando cambien los años.
+
 
   return (
     <ResponsiveLine
@@ -104,6 +120,8 @@ const LineChart = ({ isCustomLineColors = false, isDashboard = false }) => {
           ],
         },
       ]}
+      role="application"
+      lineAriaLabel={(e) => `${e.id}: ${e.formattedValue} in year: ${e.indexValue}`}
     />
   );
 };

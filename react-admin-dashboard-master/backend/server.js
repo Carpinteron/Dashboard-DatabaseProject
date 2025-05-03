@@ -133,9 +133,14 @@ app.get('/api/rutas-populares', async (req, res) => {
       res.status(500).send("Error interno del servidor");
     }
   });
+
+
+
   
   // 3. Precios promedio de rutas
   app.get('/api/precios-promedio', async (req, res) => {
+    const year1 = parseInt(req.query.year1) || 2020;
+    const year2 = parseInt(req.query.year2) || 2025;
     try {
       const result = await pool.request().query(`
         WITH rutas_concurridas AS (    
@@ -147,6 +152,7 @@ app.get('/api/rutas-populares', async (req, res) => {
         SELECT YEAR(f.date) AS year, rc.origen, rc.destino, AVG(cast(f.fare as float)) AS Precio_Promedio_Anual
         FROM rutas_concurridas rc
         JOIN Flights_US f ON f.airport1 = rc.origen AND f.airport2 = rc.destino
+        WHERE year(f.date) >= ${year1} and year(f.date) <= ${year2}
         GROUP BY YEAR(f.date), rc.origen, rc.destino
         ORDER BY YEAR(f.date);
       `); // Tu SQL de precios promedio
