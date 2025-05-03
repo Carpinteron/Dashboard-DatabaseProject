@@ -49,14 +49,14 @@ const Dashboard = () => {
                 fontWeight="600"
                 color={colors.grey[100]}
               >
-                Revenue Generated
+                1) Line Chart
               </Typography>
               <Typography
                 variant="h3"
                 fontWeight="bold"
-                color={colors.greenAccent[500]}
+                color={colors.greenAccent[300]}
               >
-                $59,342.32
+                Tendendicia de Vuelos y Tarifas promedio Anuales
               </Typography>
             </Box>
 

@@ -7,7 +7,7 @@ const LineChart = ({ isCustomLineColors = false, isDashboard = false }) => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
   const [data, setData] = useState([]);
-
+  const fixedColors = ["#4FC3F7", "#81C784", "#BA68C8", "#FFB74D", "#90A4AE"];
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -37,8 +37,8 @@ const LineChart = ({ isCustomLineColors = false, isDashboard = false }) => {
         legends: { text: { fill: colors.grey[100] } },
         tooltip: { container: { color: colors.primary[500] } },
       }}
-      colors={isDashboard ? { datum: "color" } : { scheme: "nivo" }}
-      margin={{ top: 50, right: 110, bottom: 50, left: 60 }}
+      colors={fixedColors}
+      margin={{ top: 40, right: 110, bottom: 70, left: 60 }}
       xScale={{ type: "point" }}
       yScale={{
         type: "linear",
@@ -56,24 +56,24 @@ const LineChart = ({ isCustomLineColors = false, isDashboard = false }) => {
         tickSize: 0,
         tickPadding: 5,
         tickRotation: -90,
-        legend: isDashboard ? undefined : "Año",
-        legendOffset: 36,
+        legend: "Año",
+        legendOffset: 43,
         legendPosition: "middle",
       }}
       axisLeft={{
         orient: "left",
         tickValues: 5,
         tickSize: 3,
-        tickPadding: 5,
+        tickPadding: 6,
         tickRotation: 0,
-        legend: isDashboard ? undefined : "Precio Promedio (USD)",
-        legendOffset: -40,
+        legend:  "Precio Promedio (USD)",
+        legendOffset: -44,
         legendPosition: "middle",
       }}
       enableGridX={false}
       enableGridY={false}
-      pointSize={8}
-      pointColor={{ theme: "background" }}
+      pointSize={6}
+      pointColor={{ from: "serieColor" }}
       pointBorderWidth={2}
       pointBorderColor={{ from: "serieColor" }}
       pointLabelYOffset={-12}
