@@ -254,7 +254,7 @@ app.get('/api/rutas-populares', async (req, res) => {
   app.get('/api/lista-vuelos', async (req, res) => {
     try {
       const result = await pool.request().query(`
-        SELECT top 10 f.id, f.date, f.airport1, f.airport2, f.city1, f.city2
+        SELECT f.id, f.date, f.airport1, f.airport2, f.city1, f.city2
         FROM Flights_US f
         ORDER BY f.date DESC
       `);

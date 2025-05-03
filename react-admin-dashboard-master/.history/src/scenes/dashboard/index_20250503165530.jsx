@@ -60,7 +60,7 @@ useEffect(() => {
                 fontWeight="600"
                 color={colors.grey[100]}
               >
-                Line Chart
+                1) Line Chart
               </Typography>
               <Typography
                 variant="h3"
@@ -91,7 +91,7 @@ useEffect(() => {
             p="15px"
           >
             <Typography color={colors.grey[100]} variant="h5" fontWeight="600">
-              Vuelos Recientes
+              Recent Flights
             </Typography>
           </Box>
           {recentFlights.map((flight, i) => (
@@ -109,7 +109,7 @@ useEffect(() => {
                 variant="h5"
                 fontWeight="600"
               >
-                🛬 {flight.airport1} → {flight.airport2}
+                🛬ID: {flight.airport1} → {flight.city2}{fligidht.}
               </Typography>
               <Typography color={colors.grey[100]}>
               {flight.city1} → {flight.city2}

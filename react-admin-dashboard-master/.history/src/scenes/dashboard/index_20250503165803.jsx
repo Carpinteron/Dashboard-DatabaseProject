@@ -60,7 +60,7 @@ useEffect(() => {
                 fontWeight="600"
                 color={colors.grey[100]}
               >
-                Line Chart
+                1) Line Chart
               </Typography>
               <Typography
                 variant="h3"

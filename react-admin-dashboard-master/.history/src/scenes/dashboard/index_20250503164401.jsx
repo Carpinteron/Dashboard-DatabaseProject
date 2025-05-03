@@ -60,7 +60,7 @@ useEffect(() => {
                 fontWeight="600"
                 color={colors.grey[100]}
               >
-                Line Chart
+                1) Line Chart
               </Typography>
               <Typography
                 variant="h3"
@@ -91,12 +91,13 @@ useEffect(() => {
             p="15px"
           >
             <Typography color={colors.grey[100]} variant="h5" fontWeight="600">
-              Vuelos Recientes
+              Recent Flights
             </Typography>
           </Box>
           {recentFlights.map((flight, i) => (
           <Box
-            key={`${flight.id}-${i}`}
+            key={flight.id}
+
             display="flex"
             justifyContent="space-between"
             alignItems="center"
@@ -109,14 +110,20 @@ useEffect(() => {
                 variant="h5"
                 fontWeight="600"
               >
-                🛬 {flight.airport1} → {flight.airport2}
+                {flight.airport1} 🛫
               </Typography>
               <Typography color={colors.grey[100]}>
-              {flight.city1} → {flight.city2}
+                {flight.city1} → {flight.city2}
               </Typography>
             </Box>
             <Box color={colors.grey[100]}>{new Date(flight.date).toLocaleDateString()}</Box>
-            
+            <Box
+              backgroundColor={colors.greenAccent[500]}
+              p="5px 10px"
+              borderRadius="4px"
+            >
+              {flight.airport2} 🛬
+            </Box>
           </Box>
           
           ))}
