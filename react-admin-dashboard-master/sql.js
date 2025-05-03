@@ -38,7 +38,7 @@ datos_agrupados AS (
         SUM(f.passengers) AS cant_pasajeros_anual
     FROM Flights_US f
     JOIN rutas_populares r ON r.origen = f.airport1 AND r.destino = f.airport2
-    WHERE year(f.date) >= 2020
+    WHERE year(f.date) >= 2000
     GROUP BY year(f.date), f.airport1, f.airport2
 )
 
@@ -212,3 +212,44 @@ async function agregarPreciosPromedioRutas(exportName = "lineChartFlightFareData
 }
 
 agregarPreciosPromedioRutas();
+
+async function agregarTopCitiesPieData(exportName = "topCitiesPieData") {
+  try {
+    const poolConnection = await sql.connect(config);
+
+    const resultSet = await poolConnection.request().query(`
+      SELECT TOP 5 f.city2, SUM(f.passengers) AS Cant_Pasajeros
+      FROM Flights_US f
+      WHERE f.city2 != ''
+      GROUP BY f.city2
+      ORDER BY Cant_Pasajeros DESC
+    `);
+
+    const rows = resultSet.recordset;
+
+    const processedData = rows.map(row => ({
+      id: row.city2, 
+      label: row.Cant_Pasajeros , 
+      value: row.Cant_Pasajeros 
+    }));
+
+    const mockDataPath = './src/data/mockData.js';
+    const mockDataContent = fs.readFileSync(mockDataPath, 'utf8');
+
+    const exportRegex = new RegExp(`export const ${exportName} = (\\[.*?\\]);`, 's');
+    const newExport = `export const ${exportName} = ${JSON.stringify(processedData, null, 2)};\n`;
+
+    const updatedContent = mockDataContent.includes(`export const ${exportName}`)
+      ? mockDataContent.replace(exportRegex, newExport)
+      : mockDataContent + '\n' + newExport;
+
+    fs.writeFileSync(mockDataPath, updatedContent);
+    console.log(`${exportName} actualizado en mockData.js`);
+
+    poolConnection.close();
+  } catch (err) {
+    console.error("Error al agregar datos de ciudades populares:", err.message);
+  }
+}
+
+agregarTopCitiesPieData();

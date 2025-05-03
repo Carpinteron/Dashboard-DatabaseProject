@@ -1,4 +1,4 @@
-import { tokens } from "../theme";
+
 
 export const mockDataTeam = [
   {
@@ -94,962 +94,41 @@ export const mockTransactions = [
 
 export const mockPieData = [
   {
-    id: "hack",
-    label: "hack",
+    id: "as",
+    label: "as",
     value: 239,
-    color: "hsl(104, 70%, 50%)",
+    
   },
   {
-    id: "make",
+    id: "suas",
     label: "make",
     value: 170,
-    color: "hsl(162, 70%, 50%)",
+    
   },
   {
-    id: "go",
+    id: "gows",
     label: "go",
     value: 322,
-    color: "hsl(291, 70%, 50%)",
+    
   },
   {
-    id: "lisp",
+    id: "lispa",
     label: "lisp",
     value: 503,
-    color: "hsl(229, 70%, 50%)",
+    
   },
   {
-    id: "scala",
+    id: "aaaaaa",
     label: "scala",
     value: 584,
-    color: "hsl(344, 70%, 50%)",
-  },
-];
-
-
-
-export const A = [
- {
-    country: "0-1000",
-    "fries": 209.19474591588408,
-  
-   }, 
-  {
-    country: "1001-2000",
-    "fries": 248.04621599524265,
-    "Flights_per_distance": 80724
-  },
-  {
-    country: "2001-3000",
-    "fries": 281.8726643911947,
-    "Flights_per_distance": 57424
-  },
-  {
-    country: "3001-4000",
-    "fries": 274.76840526367374,
-    "Flights_per_distance": 30701
-  },
-  {
-    country: "4001+",
-    "fries": 275.6814890333595,
-    "Flights_per_distance": 30456
-  } 
-];
-
-export const mockGeographyData = [
-  {
-    id: "AFG",
-    value: 520600,
-  },
-  {
-    id: "AGO",
-    value: 949905,
-  },
-  {
-    id: "ALB",
-    value: 329910,
-  },
-  {
-    id: "ARE",
-    value: 675484,
-  },
-  {
-    id: "ARG",
-    value: 432239,
-  },
-  {
-    id: "ARM",
-    value: 288305,
-  },
-  {
-    id: "ATA",
-    value: 415648,
-  },
-  {
-    id: "ATF",
-    value: 665159,
-  },
-  {
-    id: "AUT",
-    value: 798526,
-  },
-  {
-    id: "AZE",
-    value: 481678,
-  },
-  {
-    id: "BDI",
-    value: 496457,
-  },
-  {
-    id: "BEL",
-    value: 252276,
-  },
-  {
-    id: "BEN",
-    value: 440315,
-  },
-  {
-    id: "BFA",
-    value: 343752,
-  },
-  {
-    id: "BGD",
-    value: 920203,
-  },
-  {
-    id: "BGR",
-    value: 261196,
-  },
-  {
-    id: "BHS",
-    value: 421551,
-  },
-  {
-    id: "BIH",
-    value: 974745,
-  },
-  {
-    id: "BLR",
-    value: 349288,
-  },
-  {
-    id: "BLZ",
-    value: 305983,
-  },
-  {
-    id: "BOL",
-    value: 430840,
-  },
-  {
-    id: "BRN",
-    value: 345666,
-  },
-  {
-    id: "BTN",
-    value: 649678,
-  },
-  {
-    id: "BWA",
-    value: 319392,
-  },
-  {
-    id: "CAF",
-    value: 722549,
-  },
-  {
-    id: "CAN",
-    value: 332843,
-  },
-  {
-    id: "CHE",
-    value: 122159,
-  },
-  {
-    id: "CHL",
-    value: 811736,
-  },
-  {
-    id: "CHN",
-    value: 593604,
-  },
-  {
-    id: "CIV",
-    value: 143219,
-  },
-  {
-    id: "CMR",
-    value: 630627,
-  },
-  {
-    id: "COG",
-    value: 498556,
-  },
-  {
-    id: "COL",
-    value: 660527,
-  },
-  {
-    id: "CRI",
-    value: 60262,
-  },
-  {
-    id: "CUB",
-    value: 177870,
-  },
-  {
-    id: "-99",
-    value: 463208,
-  },
-  {
-    id: "CYP",
-    value: 945909,
-  },
-  {
-    id: "CZE",
-    value: 500109,
-  },
-  {
-    id: "DEU",
-    value: 63345,
-  },
-  {
-    id: "DJI",
-    value: 634523,
-  },
-  {
-    id: "DNK",
-    value: 731068,
-  },
-  {
-    id: "DOM",
-    value: 262538,
-  },
-  {
-    id: "DZA",
-    value: 760695,
-  },
-  {
-    id: "ECU",
-    value: 301263,
-  },
-  {
-    id: "EGY",
-    value: 148475,
-  },
-  {
-    id: "ERI",
-    value: 939504,
-  },
-  {
-    id: "ESP",
-    value: 706050,
-  },
-  {
-    id: "EST",
-    value: 977015,
-  },
-  {
-    id: "ETH",
-    value: 461734,
-  },
-  {
-    id: "FIN",
-    value: 22800,
-  },
-  {
-    id: "FJI",
-    value: 18985,
-  },
-  {
-    id: "FLK",
-    value: 64986,
-  },
-  {
-    id: "FRA",
-    value: 447457,
-  },
-  {
-    id: "GAB",
-    value: 669675,
-  },
-  {
-    id: "GBR",
-    value: 757120,
-  },
-  {
-    id: "GEO",
-    value: 158702,
-  },
-  {
-    id: "GHA",
-    value: 893180,
-  },
-  {
-    id: "GIN",
-    value: 877288,
-  },
-  {
-    id: "GMB",
-    value: 724530,
-  },
-  {
-    id: "GNB",
-    value: 387753,
-  },
-  {
-    id: "GNQ",
-    value: 706118,
-  },
-  {
-    id: "GRC",
-    value: 377796,
-  },
-  {
-    id: "GTM",
-    value: 66890,
-  },
-  {
-    id: "GUY",
-    value: 719300,
-  },
-  {
-    id: "HND",
-    value: 739590,
-  },
-  {
-    id: "HRV",
-    value: 929467,
-  },
-  {
-    id: "HTI",
-    value: 538961,
-  },
-  {
-    id: "HUN",
-    value: 146095,
-  },
-  {
-    id: "IDN",
-    value: 490681,
-  },
-  {
-    id: "IND",
-    value: 549818,
-  },
-  {
-    id: "IRL",
-    value: 630163,
-  },
-  {
-    id: "IRN",
-    value: 596921,
-  },
-  {
-    id: "IRQ",
-    value: 767023,
-  },
-  {
-    id: "ISL",
-    value: 478682,
-  },
-  {
-    id: "ISR",
-    value: 963688,
-  },
-  {
-    id: "ITA",
-    value: 393089,
-  },
-  {
-    id: "JAM",
-    value: 83173,
-  },
-  {
-    id: "JOR",
-    value: 52005,
-  },
-  {
-    id: "JPN",
-    value: 199174,
-  },
-  {
-    id: "KAZ",
-    value: 181424,
-  },
-  {
-    id: "KEN",
-    value: 60946,
-  },
-  {
-    id: "KGZ",
-    value: 432478,
-  },
-  {
-    id: "KHM",
-    value: 254461,
-  },
-  {
-    id: "OSA",
-    value: 942447,
-  },
-  {
-    id: "KWT",
-    value: 414413,
-  },
-  {
-    id: "LAO",
-    value: 448339,
-  },
-  {
-    id: "LBN",
-    value: 620090,
-  },
-  {
-    id: "LBR",
-    value: 435950,
-  },
-  {
-    id: "LBY",
-    value: 75091,
-  },
-  {
-    id: "LKA",
-    value: 595124,
-  },
-  {
-    id: "LSO",
-    value: 483524,
-  },
-  {
-    id: "LTU",
-    value: 867357,
-  },
-  {
-    id: "LUX",
-    value: 689172,
-  },
-  {
-    id: "LVA",
-    value: 742980,
-  },
-  {
-    id: "MAR",
-    value: 236538,
-  },
-  {
-    id: "MDA",
-    value: 926836,
-  },
-  {
-    id: "MDG",
-    value: 840840,
-  },
-  {
-    id: "MEX",
-    value: 353910,
-  },
-  {
-    id: "MKD",
-    value: 505842,
-  },
-  {
-    id: "MLI",
-    value: 286082,
-  },
-  {
-    id: "MMR",
-    value: 915544,
-  },
-  {
-    id: "MNE",
-    value: 609500,
-  },
-  {
-    id: "MNG",
-    value: 410428,
-  },
-  {
-    id: "MOZ",
-    value: 32868,
-  },
-  {
-    id: "MRT",
-    value: 375671,
-  },
-  {
-    id: "MWI",
-    value: 591935,
-  },
-  {
-    id: "MYS",
-    value: 991644,
-  },
-  {
-    id: "NAM",
-    value: 701897,
-  },
-  {
-    id: "NCL",
-    value: 144098,
-  },
-  {
-    id: "NER",
-    value: 312944,
-  },
-  {
-    id: "NGA",
-    value: 862877,
-  },
-  {
-    id: "NIC",
-    value: 90831,
-  },
-  {
-    id: "NLD",
-    value: 281879,
-  },
-  {
-    id: "NOR",
-    value: 224537,
-  },
-  {
-    id: "NPL",
-    value: 322331,
-  },
-  {
-    id: "NZL",
-    value: 86615,
-  },
-  {
-    id: "OMN",
-    value: 707881,
-  },
-  {
-    id: "PAK",
-    value: 158577,
-  },
-  {
-    id: "PAN",
-    value: 738579,
-  },
-  {
-    id: "PER",
-    value: 248751,
-  },
-  {
-    id: "PHL",
-    value: 557292,
-  },
-  {
-    id: "PNG",
-    value: 516874,
-  },
-  {
-    id: "POL",
-    value: 682137,
-  },
-  {
-    id: "PRI",
-    value: 957399,
-  },
-  {
-    id: "PRT",
-    value: 846430,
-  },
-  {
-    id: "PRY",
-    value: 720555,
-  },
-  {
-    id: "QAT",
-    value: 478726,
-  },
-  {
-    id: "ROU",
-    value: 259318,
-  },
-  {
-    id: "RUS",
-    value: 268735,
-  },
-  {
-    id: "RWA",
-    value: 136781,
-  },
-  {
-    id: "ESH",
-    value: 151957,
-  },
-  {
-    id: "SAU",
-    value: 111821,
-  },
-  {
-    id: "SDN",
-    value: 927112,
-  },
-  {
-    id: "SDS",
-    value: 966473,
-  },
-  {
-    id: "SEN",
-    value: 158085,
-  },
-  {
-    id: "SLB",
-    value: 178389,
-  },
-  {
-    id: "SLE",
-    value: 528433,
-  },
-  {
-    id: "SLV",
-    value: 353467,
-  },
-  {
-    id: "ABV",
-    value: 251,
-  },
-  {
-    id: "SOM",
-    value: 445243,
-  },
-  {
-    id: "SRB",
-    value: 202402,
-  },
-  {
-    id: "SUR",
-    value: 972121,
-  },
-  {
-    id: "SVK",
-    value: 319923,
-  },
-  {
-    id: "SVN",
-    value: 728766,
-  },
-  {
-    id: "SWZ",
-    value: 379669,
-  },
-  {
-    id: "SYR",
-    value: 16221,
-  },
-  {
-    id: "TCD",
-    value: 101273,
-  },
-  {
-    id: "TGO",
-    value: 498411,
-  },
-  {
-    id: "THA",
-    value: 506906,
-  },
-  {
-    id: "TJK",
-    value: 613093,
-  },
-  {
-    id: "TKM",
-    value: 327016,
-  },
-  {
-    id: "TLS",
-    value: 607972,
-  },
-  {
-    id: "TTO",
-    value: 936365,
-  },
-  {
-    id: "TUN",
-    value: 898416,
-  },
-  {
-    id: "TUR",
-    value: 237783,
-  },
-  {
-    id: "TWN",
-    value: 878213,
-  },
-  {
-    id: "TZA",
-    value: 442174,
-  },
-  {
-    id: "UGA",
-    value: 720710,
-  },
-  {
-    id: "UKR",
-    value: 74172,
-  },
-  {
-    id: "URY",
-    value: 753177,
-  },
-  {
-    id: "USA",
-    value: 658725,
-  },
-  {
-    id: "UZB",
-    value: 550313,
-  },
-  {
-    id: "VEN",
-    value: 707492,
-  },
-  {
-    id: "VNM",
-    value: 538907,
-  },
-  {
-    id: "VUT",
-    value: 650646,
-  },
-  {
-    id: "PSE",
-    value: 476078,
-  },
-  {
-    id: "YEM",
-    value: 957751,
-  },
-  {
-    id: "ZAF",
-    value: 836949,
-  },
-  {
-    id: "ZMB",
-    value: 714503,
-  },
-  {
-    id: "ZWE",
-    value: 405217,
-  },
-  {
-    id: "KOR",
-    value: 171135,
-  },
-];
-
-export const a = [
-  {
-    "name": "Belgium",
-    "email": "Belgium",
-    "phone": "3932.0",
-    "access": "2021"
-  },
-  {
-    "name": "Belgium",
-    "email": "Belgium",
-    "phone": "1038.0",
-    "access": "2018"
-  },
-  {
-    "name": "Belgium",
-    "email": "Belgium",
-    "phone": "1655.0",
-    "access": "2017"
-  },
-  {
-    "name": "Austria",
-    "email": "Austria",
-    "phone": "2662.0",
-    "access": "2016"
-  },
-  {
-    "name": "Austria",
-    "email": "Austria",
-    "phone": "3955.0",
-    "access": "2016"
-  },
-  {
-    "name": "Austria",
-    "email": "Austria",
-    "phone": "3265.0",
-    "access": "2021"
-  }
-];
-
-export const mockLineData = [
-  {
-    id: "japan",
-    color: tokens("dark").greenAccent[500],
-    data: [
-      {
-        x: "plane",
-        y: 101,
-      },
-      {
-        x: "helicopter",
-        y: 75,
-      },
-      {
-        x: "boat",
-        y: 36,
-      },
-      {
-        x: "train",
-        y: 216,
-      },
-      {
-        x: "subway",
-        y: 35,
-      },
-      {
-        x: "bus",
-        y: 236,
-      },
-      {
-        x: "car",
-        y: 88,
-      },
-      {
-        x: "moto",
-        y: 232,
-      },
-      {
-        x: "bicycle",
-        y: 281,
-      },
-      {
-        x: "horse",
-        y: 1,
-      },
-      {
-        x: "skateboard",
-        y: 35,
-      },
-      {
-        x: "others",
-        y: 14,
-      },
-    ],
-  },
-  {
-    id: "france",
-    color: tokens("dark").blueAccent[300],
-    data: [
-      {
-        x: "plane",
-        y: 212,
-      },
-      {
-        x: "helicopter",
-        y: 190,
-      },
-      {
-        x: "boat",
-        y: 270,
-      },
-      {
-        x: "train",
-        y: 190,
-      },
-      {
-        x: "subway",
-        y: 75,
-      },
-      {
-        x: "bus",
-        y: 175,
-      },
-      {
-        x: "car",
-        y: 33,
-      },
-      {
-        x: "moto",
-        y: 189,
-      },
-      {
-        x: "bicycle",
-        y: 97,
-      },
-      {
-        x: "horse",
-        y: 87,
-      },
-      {
-        x: "skateboard",
-        y: 299,
-      },
-      {
-        x: "others",
-        y: 251,
-      },
-    ],
-  },
-  {
-    id: "us",
-    color: tokens("dark").redAccent[200],
-    data: [
-      {
-        x: "plane",
-        y: 191,
-      },
-      {
-        x: "helicopter",
-        y: 136,
-      },
-      {
-        x: "boat",
-        y: 91,
-      },
-      {
-        x: "train",
-        y: 190,
-      },
-      {
-        x: "subway",
-        y: 211,
-      },
-      {
-        x: "bus",
-        y: 152,
-      },
-      {
-        x: "car",
-        y: 189,
-      },
-      {
-        x: "moto",
-        y: 152,
-      },
-      {
-        x: "bicycle",
-        y: 0,
-      },
-      {
-        x: "horse",
-        y: 197,
-      },
-      {
-        x: "skateboard",
-        y: 107,
-      },
-      {
-        x: "others",
-        y: 170,
-      },
-    ],
+    
   },
 ];
 
 export const lineChartFlightFareData = [
   {
     "id": "HNL 🠮 ITO",
-    "color": "#b60c28",
+    "color": "#faab9d",
     "data": [
       {
         "x": "1990",
@@ -1135,7 +214,7 @@ export const lineChartFlightFareData = [
   },
   {
     "id": "LAS 🠮 RNO",
-    "color": "#3b4fb3",
+    "color": "#3efd7",
     "data": [
       {
         "x": "1990",
@@ -1221,7 +300,7 @@ export const lineChartFlightFareData = [
   },
   {
     "id": "LAX 🠮 RNO",
-    "color": "#640a3f",
+    "color": "#665a66",
     "data": [
       {
         "x": "1990",
@@ -1367,7 +446,7 @@ export const lineChartFlightFareData = [
   },
   {
     "id": "PHX 🠮 RNO",
-    "color": "#ddb856",
+    "color": "#f9829a",
     "data": [
       {
         "x": "1990",
@@ -1505,7 +584,7 @@ export const lineChartFlightFareData = [
   },
   {
     "id": "SEA 🠮 RNO",
-    "color": "#64eb67",
+    "color": "#bbb11d",
     "data": [
       {
         "x": "1990",
@@ -1584,24 +663,167 @@ export const lineChartFlightFareData = [
 ];
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 export const rutasPopularesPorAnio = [
+  {
+    "year": 2000,
+    "HNL 🠮 ITO": 670149,
+    "LAS 🠮 RNO": 474454,
+    "LAX 🠮 RNO": 294632,
+    "PHX 🠮 RNO": 245061,
+    "SEA 🠮 RNO": 267208
+  },
+  {
+    "year": 2001,
+    "HNL 🠮 ITO": 626701,
+    "LAS 🠮 RNO": 431184,
+    "LAX 🠮 RNO": 278734,
+    "PHX 🠮 RNO": 249998,
+    "SEA 🠮 RNO": 217248
+  },
+  {
+    "year": 2002,
+    "HNL 🠮 ITO": 603813,
+    "LAS 🠮 RNO": 434532,
+    "LAX 🠮 RNO": 209317,
+    "PHX 🠮 RNO": 223773,
+    "SEA 🠮 RNO": 200054
+  },
+  {
+    "year": 2003,
+    "HNL 🠮 ITO": 626419,
+    "LAS 🠮 RNO": 459528,
+    "LAX 🠮 RNO": 133353,
+    "PHX 🠮 RNO": 0,
+    "SEA 🠮 RNO": 0
+  },
+  {
+    "year": 2004,
+    "HNL 🠮 ITO": 564597,
+    "LAS 🠮 RNO": 520609,
+    "LAX 🠮 RNO": 187242,
+    "PHX 🠮 RNO": 253808,
+    "SEA 🠮 RNO": 207164
+  },
+  {
+    "year": 2005,
+    "HNL 🠮 ITO": 589732,
+    "LAS 🠮 RNO": 508981,
+    "LAX 🠮 RNO": 194230,
+    "PHX 🠮 RNO": 0,
+    "SEA 🠮 RNO": 0
+  },
+  {
+    "year": 2006,
+    "HNL 🠮 ITO": 634017,
+    "LAS 🠮 RNO": 537661,
+    "LAX 🠮 RNO": 197116,
+    "PHX 🠮 RNO": 275493,
+    "SEA 🠮 RNO": 194328
+  },
+  {
+    "year": 2007,
+    "HNL 🠮 ITO": 734649,
+    "LAS 🠮 RNO": 511530,
+    "LAX 🠮 RNO": 210288,
+    "PHX 🠮 RNO": 248014,
+    "SEA 🠮 RNO": 183279
+  },
+  {
+    "year": 2008,
+    "HNL 🠮 ITO": 602940,
+    "LAS 🠮 RNO": 446252,
+    "LAX 🠮 RNO": 189102,
+    "PHX 🠮 RNO": 224806,
+    "SEA 🠮 RNO": 155671
+  },
+  {
+    "year": 2009,
+    "HNL 🠮 ITO": 623128,
+    "LAS 🠮 RNO": 398035,
+    "LAX 🠮 RNO": 161230,
+    "PHX 🠮 RNO": 224522,
+    "SEA 🠮 RNO": 114837
+  },
+  {
+    "year": 2010,
+    "HNL 🠮 ITO": 0,
+    "LAS 🠮 RNO": 0,
+    "LAX 🠮 RNO": 2787,
+    "PHX 🠮 RNO": 1646,
+    "SEA 🠮 RNO": 0
+  },
+  {
+    "year": 2011,
+    "HNL 🠮 ITO": 0,
+    "LAS 🠮 RNO": 0,
+    "LAX 🠮 RNO": 2808,
+    "PHX 🠮 RNO": 1824,
+    "SEA 🠮 RNO": 0
+  },
+  {
+    "year": 2012,
+    "HNL 🠮 ITO": 0,
+    "LAS 🠮 RNO": 0,
+    "LAX 🠮 RNO": 2746,
+    "PHX 🠮 RNO": 1709,
+    "SEA 🠮 RNO": 0
+  },
+  {
+    "year": 2013,
+    "HNL 🠮 ITO": 0,
+    "LAS 🠮 RNO": 0,
+    "LAX 🠮 RNO": 2655,
+    "PHX 🠮 RNO": 1782,
+    "SEA 🠮 RNO": 0
+  },
+  {
+    "year": 2014,
+    "HNL 🠮 ITO": 0,
+    "LAS 🠮 RNO": 0,
+    "LAX 🠮 RNO": 2598,
+    "PHX 🠮 RNO": 1720,
+    "SEA 🠮 RNO": 0
+  },
+  {
+    "year": 2015,
+    "HNL 🠮 ITO": 0,
+    "LAS 🠮 RNO": 0,
+    "LAX 🠮 RNO": 2605,
+    "PHX 🠮 RNO": 1830,
+    "SEA 🠮 RNO": 0
+  },
+  {
+    "year": 2016,
+    "HNL 🠮 ITO": 0,
+    "LAS 🠮 RNO": 0,
+    "LAX 🠮 RNO": 2494,
+    "PHX 🠮 RNO": 1591,
+    "SEA 🠮 RNO": 0
+  },
+  {
+    "year": 2017,
+    "HNL 🠮 ITO": 0,
+    "LAS 🠮 RNO": 0,
+    "LAX 🠮 RNO": 2789,
+    "PHX 🠮 RNO": 1589,
+    "SEA 🠮 RNO": 0
+  },
+  {
+    "year": 2018,
+    "HNL 🠮 ITO": 0,
+    "LAS 🠮 RNO": 0,
+    "LAX 🠮 RNO": 2964,
+    "PHX 🠮 RNO": 1784,
+    "SEA 🠮 RNO": 0
+  },
+  {
+    "year": 2019,
+    "HNL 🠮 ITO": 0,
+    "LAS 🠮 RNO": 0,
+    "LAX 🠮 RNO": 3237,
+    "PHX 🠮 RNO": 1799,
+    "SEA 🠮 RNO": 0
+  },
   {
     "year": 2020,
     "HNL 🠮 ITO": 0,
@@ -1645,26 +867,6 @@ export const rutasPopularesPorAnio = [
 ];
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 export const barchart2 = [
   {
     "rango": "0-10000",
@@ -1681,15 +883,32 @@ export const barchart2 = [
 ];
 
 
-
-
-
-
-
-
-
-
-
-
+export const topCitiesPieData = [
+  {
+    "id": "Reno, NV",
+    "label": 44669594,
+    "value": 44669594
+  },
+  {
+    "id": "Miami, FL (Metropolitan Area)",
+    "label": 22958428,
+    "value": 22958428
+  },
+  {
+    "id": "Tampa,  FL",
+    "label": 17278781,
+    "value": 17278781
+  },
+  {
+    "id": "New York City, NY (Metropolitan Area)",
+    "label": 10062064,
+    "value": 10062064
+  },
+  {
+    "id": "San Francisco, CA (Metropolitan Area)",
+    "label": 8975111,
+    "value": 8975111
+  }
+];
 
 
