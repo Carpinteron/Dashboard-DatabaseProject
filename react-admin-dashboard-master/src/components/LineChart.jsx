@@ -55,7 +55,7 @@ const LineChart = ({ isCustomLineColors = false, isDashboard = false }) => {
         orient: "bottom",
         tickSize: 0,
         tickPadding: 5,
-        tickRotation: 0,
+        tickRotation: -90,
         legend: isDashboard ? undefined : "Año",
         legendOffset: 36,
         legendPosition: "middle",
