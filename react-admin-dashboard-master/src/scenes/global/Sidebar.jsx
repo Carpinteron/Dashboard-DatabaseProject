@@ -44,7 +44,7 @@ const Sidebar = () => {
   return (
     <Box
       sx={{
-        
+      
         "& .pro-sidebar-inner": {
           background: `${colors.primary[400]} !important`,
         },
@@ -87,6 +87,7 @@ const Sidebar = () => {
                   <MenuOutlinedIcon />
                 </IconButton>
               </Box>
+            
             )}
           </MenuItem>
 
@@ -133,9 +134,6 @@ const Sidebar = () => {
               selected={selected}
               setSelected={setSelected}
             />
-
-
-
 
             <Typography
               variant="h6"
