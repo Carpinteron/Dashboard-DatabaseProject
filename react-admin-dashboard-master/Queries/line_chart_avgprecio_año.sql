@@ -5,7 +5,7 @@ with rutas_concurridas as(
     GROUP BY f.airport1, f.airport2
     ORDER BY cant DESC
 )
-select year(f.date) as year, rc.origen, rc.destino, avg(f.fare) as Precio_Promedio_Anual
+select year(f.date) as year, rc.origen, rc.destino, avg(cast(f.fare as float)) as Precio_Promedio_Anual
 from rutas_concurridas rc
 join Flights_US f on f.airport1=rc.origen and f.airport2=rc.destino
 group by year(f.date), rc.origen, rc.destino
