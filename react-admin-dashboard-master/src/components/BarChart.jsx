@@ -3,7 +3,8 @@ import { useTheme } from "@mui/material";
 import { ResponsiveBar } from "@nivo/bar";
 import { tokens } from "../theme";
 
-const BarChart = ({ isDashboard = false }) => {
+
+const BarChart = ({ year1b, year2b, isDashboard = false }) => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
 
@@ -12,7 +13,16 @@ const BarChart = ({ isDashboard = false }) => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const res = await fetch("http://localhost:3001/api/rutas-populares?year1=2020&year2=2025");
+        const res = await fetch(`http://localhost:3001/api/rutas-populares?year1=${year1b||2020}&year2=${year2b||2025}`);
+        const json = await res.json();
+        setData(json);
+      } catch (error) {
+        console.error("Error al cargar datos del backend:", error);
+      }
+    };
+    const fetchData2 = async () => {
+      try {
+        const res = await fetch(`http://localhost:3001/api/rutas-populares?year1=2020&year2=2025`);
         const json = await res.json();
         setData(json);
       } catch (error) {
@@ -20,11 +30,17 @@ const BarChart = ({ isDashboard = false }) => {
       }
     };
 
-    fetchData();
-  }, []);
+    if (year1b && year2b) {
+      fetchData();
+    }else{
+      fetchData2();
+    }
+  }, [year1b, year2b]); // Dependencias para actualizar la gráfica cuando cambien los años.
+
 
   return (
     <ResponsiveBar
+    
       data={data}
       keys={["HNL 🠮 ITO", "LAS 🠮 RNO", "SEA 🠮 RNO", "LAX 🠮 RNO", "PHX 🠮 RNO"]}
       indexBy="year"
@@ -91,7 +107,11 @@ const BarChart = ({ isDashboard = false }) => {
       ]}
       role="application"
       barAriaLabel={e => `${e.id}: ${e.formattedValue} in year: ${e.indexValue}`}
+
+     
+
     />
+    
   );
 };
 
