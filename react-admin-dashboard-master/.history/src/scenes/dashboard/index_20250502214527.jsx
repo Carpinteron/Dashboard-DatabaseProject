@@ -228,8 +228,8 @@ const Dashboard = () => {
           backgroundColor={colors.primary[400]}
           padding="10px"
         >
-          Mapa
-          <Box height="260px">
+          
+          <Box height="177px">
             <GeographyChart isDashboard={true} />
           </Box>
         </Box>

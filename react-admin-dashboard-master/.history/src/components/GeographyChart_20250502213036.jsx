@@ -50,7 +50,7 @@ const FlightMap = () => {
 
   return (
       <Box height="100%" width="100%">
-      <MapContainer center={[39.8283, -98.5795]} zoom={4} style={{ height: "100%", width: "100%" }}>
+      <MapContainer center={[39.8283, -98.5795]} zoom={4} style={{ height: "80%", width: "100%" }}>
         <TileLayer
           url={`https://{s}.tile.thunderforest.com/outdoors/{z}/{x}/{y}.png?apikey=ad4af2b3ce0543d7b1bc7e2dd416c6f1`}
           attribution='&copy; OpenStreetMap contributors, &copy; Thunderforest'
