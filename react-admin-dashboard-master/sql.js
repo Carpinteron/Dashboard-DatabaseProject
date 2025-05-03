@@ -38,7 +38,7 @@ datos_agrupados AS (
         SUM(f.passengers) AS cant_pasajeros_anual
     FROM Flights_US f
     JOIN rutas_populares r ON r.origen = f.airport1 AND r.destino = f.airport2
-    WHERE year(f.date) >= 2000
+    WHERE year(f.date) >= 2020
     GROUP BY year(f.date), f.airport1, f.airport2
 )
 
@@ -97,29 +97,29 @@ async function barchart2(exportName = "barchart2") {
     const poolConnection = await sql.connect(config);
 
     const resultSet = await poolConnection.request().query(`
-  select
+select
     case
-        when f.nsmiles < 10000 then '0-10000'
-        when f.nsmiles between 10000 and 20000 then '10000-20000'
-        else '20000+'  
+        when cast(f.nsmiles as float) < 1000 then '0-1000'
+        when cast(f.nsmiles as float) between 1000 and 2000 then '1000-2000'
+        else '2000+'  
     end as Rango_Dist,
     count(*) as Cant_Vuelos
 from Flights_US f
 group by
     case
-        when f.nsmiles < 10000 then '1'
-        when f.nsmiles between 10000 and 20000 then '2'
+        when cast(f.nsmiles as float) < 1000 then '1'
+        when cast(f.nsmiles as float) between 1000 and 2000 then '2'
         else '3' 
 	end,
     case
-        when f.nsmiles < 10000 then '0-10000'
-        when f.nsmiles between 10000 and 20000 then '10000-20000'
-        else '20000+' 
+        when cast(f.nsmiles as float) < 1000 then '0-1000'
+        when cast(f.nsmiles as float) between 1000 and 2000 then '1000-2000'
+        else '2000+' 
     end
 order by
     case
-        when f.nsmiles < 10000 then '1'
-        when f.nsmiles between 10000 and 20000 then '2'
+        when cast(f.nsmiles as float) < 1000 then '1'
+        when cast(f.nsmiles as float) between 1000 and 2000 then '2'
         else '3' 
 	end
       `);
@@ -162,7 +162,7 @@ async function agregarPreciosPromedioRutas(exportName = "lineChartFlightFareData
         GROUP BY f.airport1, f.airport2
         ORDER BY cant DESC
       )
-      SELECT YEAR(f.date) AS year, rc.origen, rc.destino, AVG(f.fare) AS Precio_Promedio_Anual
+      SELECT YEAR(f.date) AS year, rc.origen, rc.destino, AVG(cast(f.fare as float)) AS Precio_Promedio_Anual
       FROM rutas_concurridas rc
       JOIN Flights_US f ON f.airport1 = rc.origen AND f.airport2 = rc.destino
       GROUP BY YEAR(f.date), rc.origen, rc.destino
@@ -253,3 +253,63 @@ async function agregarTopCitiesPieData(exportName = "topCitiesPieData") {
 }
 
 agregarTopCitiesPieData();
+
+  async function rutasMapa(year = 2021, minPassengers = 5000, exportName = "rutasMapa") { 
+    try {
+      const poolConnection = await sql.connect(config);
+  
+      const resultSet = await poolConnection.request().query(`
+        SELECT  
+          city1,
+          city2,
+          airport1,
+          airport2,
+          latitude_airport1,
+          longitude_airport1,
+          latitude_airport2,
+          longitude_airport2,
+          SUM(passengers) AS total_passengers
+        FROM Flights_US
+        WHERE YEAR(date) = ${year}
+        GROUP BY  
+          city1, city2,
+          airport1, airport2,  
+          latitude_airport1, longitude_airport1,  
+          latitude_airport2, longitude_airport2
+        HAVING SUM(passengers) > ${minPassengers};
+      `);
+  
+      const rows = resultSet.recordset;
+  
+      const processedData = rows.map(r => ({
+        from: r.airport1,
+        to: r.airport2,
+        cityFrom: r.city1,
+        cityTo: r.city2,
+        lat1: r.latitude_airport1,
+        lon1: r.longitude_airport1,
+        lat2: r.latitude_airport2,
+        lon2: r.longitude_airport2,
+        passengers: r.total_passengers
+      }));
+  
+      const mockDataPath = './src/data/mockGeo.js';
+      const mockDataContent = fs.readFileSync(mockDataPath, 'utf8');
+  
+      const exportRegex = new RegExp(`export const ${exportName} = (\\[.*?\\]);`, 's');
+      const newExport = `export const ${exportName} = ${JSON.stringify(processedData, null, 2)};\n`;
+  
+      const updatedContent = mockDataContent.includes(`export const ${exportName}`)
+        ? mockDataContent.replace(exportRegex, newExport)
+        : mockDataContent + '\n' + newExport;
+  
+      fs.writeFileSync(mockDataPath, updatedContent);
+      console.log(`${exportName} actualizado en mockGeo.js`);
+  
+      poolConnection.close();
+    } catch (err) {
+      console.error("Error al agregar rutas de vuelo para el mapa:", err.message);
+    }
+  }
+  
+  rutasMapa(2024, 3000, "rutasMapa");

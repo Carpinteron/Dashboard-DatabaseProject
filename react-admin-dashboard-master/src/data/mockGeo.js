@@ -2,94 +2,6 @@
 export const rutasMapa = [
   {
     "from": "ATL",
-    "to": "BWI",
-    "cityFrom": "Atlanta, GA (Metropolitan Area)",
-    "cityTo": "Baltimore,  MD",
-    "lat1": "33.6367",
-    "lon1": "-84.428101",
-    "lat2": "39.1754",
-    "lon2": "-76.668297",
-    "passengers": 5464
-  },
-  {
-    "from": "ATL",
-    "to": "BOS",
-    "cityFrom": "Atlanta, GA (Metropolitan Area)",
-    "cityTo": "Boston, MA (Metropolitan Area)",
-    "lat1": "33.6367",
-    "lon1": "-84.428101",
-    "lat2": "42.36429977",
-    "lon2": "-71.00520325",
-    "passengers": 5883
-  },
-  {
-    "from": "ATL",
-    "to": "ORD",
-    "cityFrom": "Atlanta, GA (Metropolitan Area)",
-    "cityTo": "Chicago, IL",
-    "lat1": "33.6367",
-    "lon1": "-84.428101",
-    "lat2": "41.9786",
-    "lon2": "-87.9048",
-    "passengers": 7030
-  },
-  {
-    "from": "ATL",
-    "to": "DFW",
-    "cityFrom": "Atlanta, GA (Metropolitan Area)",
-    "cityTo": "Dallas/Fort Worth, TX",
-    "lat1": "33.6367",
-    "lon1": "-84.428101",
-    "lat2": "32.896801",
-    "lon2": "-97.038002",
-    "passengers": 6628
-  },
-  {
-    "from": "ATL",
-    "to": "LAX",
-    "cityFrom": "Atlanta, GA (Metropolitan Area)",
-    "cityTo": "Los Angeles, CA (Metropolitan Area)",
-    "lat1": "33.6367",
-    "lon1": "-84.428101",
-    "lat2": "33.94250107",
-    "lon2": "-118.4079971",
-    "passengers": 9747
-  },
-  {
-    "from": "ATL",
-    "to": "FLL",
-    "cityFrom": "Atlanta, GA (Metropolitan Area)",
-    "cityTo": "Miami, FL (Metropolitan Area)",
-    "lat1": "33.6367",
-    "lon1": "-84.428101",
-    "lat2": "26.072599",
-    "lon2": "-80.152702",
-    "passengers": 7843
-  },
-  {
-    "from": "ATL",
-    "to": "MIA",
-    "cityFrom": "Atlanta, GA (Metropolitan Area)",
-    "cityTo": "Miami, FL (Metropolitan Area)",
-    "lat1": "33.6367",
-    "lon1": "-84.428101",
-    "lat2": "25.79319954",
-    "lon2": "-80.29060364",
-    "passengers": 7613
-  },
-  {
-    "from": "ATL",
-    "to": "EWR",
-    "cityFrom": "Atlanta, GA (Metropolitan Area)",
-    "cityTo": "New York City, NY (Metropolitan Area)",
-    "lat1": "33.6367",
-    "lon1": "-84.428101",
-    "lat2": "40.69250107",
-    "lon2": "-74.16870117",
-    "passengers": 7314
-  },
-  {
-    "from": "ATL",
     "to": "LGA",
     "cityFrom": "Atlanta, GA (Metropolitan Area)",
     "cityTo": "New York City, NY (Metropolitan Area)",
@@ -97,73 +9,7 @@ export const rutasMapa = [
     "lon1": "-84.428101",
     "lat2": "40.77719879",
     "lon2": "-73.87259674",
-    "passengers": 9414
-  },
-  {
-    "from": "AUS",
-    "to": "LAX",
-    "cityFrom": "Austin, TX",
-    "cityTo": "Los Angeles, CA (Metropolitan Area)",
-    "lat1": "30.19449997",
-    "lon1": "-97.66989899",
-    "lat2": "33.94250107",
-    "lon2": "-118.4079971",
-    "passengers": 6157
-  },
-  {
-    "from": "BOS",
-    "to": "ORD",
-    "cityFrom": "Boston, MA (Metropolitan Area)",
-    "cityTo": "Chicago, IL",
-    "lat1": "42.36429977",
-    "lon1": "-71.00520325",
-    "lat2": "41.9786",
-    "lon2": "-87.9048",
-    "passengers": 6664
-  },
-  {
-    "from": "BOS",
-    "to": "DEN",
-    "cityFrom": "Boston, MA (Metropolitan Area)",
-    "cityTo": "Denver, CO",
-    "lat1": "42.36429977",
-    "lon1": "-71.00520325",
-    "lat2": "39.86169815",
-    "lon2": "-104.6729965",
-    "passengers": 5094
-  },
-  {
-    "from": "BOS",
-    "to": "LAX",
-    "cityFrom": "Boston, MA (Metropolitan Area)",
-    "cityTo": "Los Angeles, CA (Metropolitan Area)",
-    "lat1": "42.36429977",
-    "lon1": "-71.00520325",
-    "lat2": "33.94250107",
-    "lon2": "-118.4079971",
-    "passengers": 8609
-  },
-  {
-    "from": "BOS",
-    "to": "FLL",
-    "cityFrom": "Boston, MA (Metropolitan Area)",
-    "cityTo": "Miami, FL (Metropolitan Area)",
-    "lat1": "42.36429977",
-    "lon1": "-71.00520325",
-    "lat2": "26.072599",
-    "lon2": "-80.152702",
-    "passengers": 6382
-  },
-  {
-    "from": "BOS",
-    "to": "MIA",
-    "cityFrom": "Boston, MA (Metropolitan Area)",
-    "cityTo": "Miami, FL (Metropolitan Area)",
-    "lat1": "42.36429977",
-    "lon1": "-71.00520325",
-    "lat2": "25.79319954",
-    "lon2": "-80.29060364",
-    "passengers": 6150
+    "passengers": 3925
   },
   {
     "from": "BOS",
@@ -174,95 +20,7 @@ export const rutasMapa = [
     "lon1": "-71.00520325",
     "lat2": "28.42939949",
     "lon2": "-81.30899811",
-    "passengers": 9469
-  },
-  {
-    "from": "BOS",
-    "to": "SFO",
-    "cityFrom": "Boston, MA (Metropolitan Area)",
-    "cityTo": "San Francisco, CA (Metropolitan Area)",
-    "lat1": "42.36429977",
-    "lon1": "-71.00520325",
-    "lat2": "37.61899948",
-    "lon2": "-122.375",
-    "passengers": 6317
-  },
-  {
-    "from": "BOS",
-    "to": "TPA",
-    "cityFrom": "Boston, MA (Metropolitan Area)",
-    "cityTo": "Tampa,  FL",
-    "lat1": "42.36429977",
-    "lon1": "-71.00520325",
-    "lat2": "27.97550011",
-    "lon2": "-82.53320313",
-    "passengers": 5160
-  },
-  {
-    "from": "BOS",
-    "to": "DCA",
-    "cityFrom": "Boston, MA (Metropolitan Area)",
-    "cityTo": "Washington,  DC",
-    "lat1": "42.36429977",
-    "lon1": "-71.00520325",
-    "lat2": "38.8521",
-    "lon2": "-77.037697",
-    "passengers": 5973
-  },
-  {
-    "from": "ORD",
-    "to": "DFW",
-    "cityFrom": "Chicago, IL",
-    "cityTo": "Dallas/Fort Worth, TX",
-    "lat1": "41.9786",
-    "lon1": "-87.9048",
-    "lat2": "32.896801",
-    "lon2": "-97.038002",
-    "passengers": 6917
-  },
-  {
-    "from": "ORD",
-    "to": "DEN",
-    "cityFrom": "Chicago, IL",
-    "cityTo": "Denver, CO",
-    "lat1": "41.9786",
-    "lon1": "-87.9048",
-    "lat2": "39.86169815",
-    "lon2": "-104.6729965",
-    "passengers": 7922
-  },
-  {
-    "from": "ORD",
-    "to": "RSW",
-    "cityFrom": "Chicago, IL",
-    "cityTo": "Fort Myers, FL",
-    "lat1": "41.9786",
-    "lon1": "-87.9048",
-    "lat2": "26.53619957",
-    "lon2": "-81.75520325",
-    "passengers": 5311
-  },
-  {
-    "from": "ORD",
-    "to": "IAH",
-    "cityFrom": "Chicago, IL",
-    "cityTo": "Houston, TX",
-    "lat1": "41.9786",
-    "lon1": "-87.9048",
-    "lat2": "29.9843998",
-    "lon2": "-95.34140015",
-    "passengers": 5482
-  },
-  {
-    "from": "ORD",
-    "to": "LAS",
-    "cityFrom": "Chicago, IL",
-    "cityTo": "Las Vegas, NV",
-    "lat1": "41.9786",
-    "lon1": "-87.9048",
-    "lat2": "36.08010101",
-    "lon2": "-115.1520004",
-    "passengers": 8149
+    "passengers": 3829
   },
   {
     "from": "ORD",
@@ -273,40 +31,7 @@ export const rutasMapa = [
     "lon1": "-87.9048",
     "lat2": "33.94250107",
     "lon2": "-118.4079971",
-    "passengers": 11916
-  },
-  {
-    "from": "ORD",
-    "to": "FLL",
-    "cityFrom": "Chicago, IL",
-    "cityTo": "Miami, FL (Metropolitan Area)",
-    "lat1": "41.9786",
-    "lon1": "-87.9048",
-    "lat2": "26.072599",
-    "lon2": "-80.152702",
-    "passengers": 5700
-  },
-  {
-    "from": "ORD",
-    "to": "MIA",
-    "cityFrom": "Chicago, IL",
-    "cityTo": "Miami, FL (Metropolitan Area)",
-    "lat1": "41.9786",
-    "lon1": "-87.9048",
-    "lat2": "25.79319954",
-    "lon2": "-80.29060364",
-    "passengers": 6334
-  },
-  {
-    "from": "ORD",
-    "to": "EWR",
-    "cityFrom": "Chicago, IL",
-    "cityTo": "New York City, NY (Metropolitan Area)",
-    "lat1": "41.9786",
-    "lon1": "-87.9048",
-    "lat2": "40.69250107",
-    "lon2": "-74.16870117",
-    "passengers": 5680
+    "passengers": 3168
   },
   {
     "from": "ORD",
@@ -317,7 +42,7 @@ export const rutasMapa = [
     "lon1": "-87.9048",
     "lat2": "40.77719879",
     "lon2": "-73.87259674",
-    "passengers": 9591
+    "passengers": 3772
   },
   {
     "from": "ORD",
@@ -328,7 +53,7 @@ export const rutasMapa = [
     "lon1": "-87.9048",
     "lat2": "28.42939949",
     "lon2": "-81.30899811",
-    "passengers": 8895
+    "passengers": 3241
   },
   {
     "from": "ORD",
@@ -339,117 +64,7 @@ export const rutasMapa = [
     "lon1": "-87.9048",
     "lat2": "33.43429947",
     "lon2": "-112.012001",
-    "passengers": 9310
-  },
-  {
-    "from": "ORD",
-    "to": "SFO",
-    "cityFrom": "Chicago, IL",
-    "cityTo": "San Francisco, CA (Metropolitan Area)",
-    "lat1": "41.9786",
-    "lon1": "-87.9048",
-    "lat2": "37.61899948",
-    "lon2": "-122.375",
-    "passengers": 6757
-  },
-  {
-    "from": "ORD",
-    "to": "SEA",
-    "cityFrom": "Chicago, IL",
-    "cityTo": "Seattle,  WA",
-    "lat1": "41.9786",
-    "lon1": "-87.9048",
-    "lat2": "47.449001",
-    "lon2": "-122.308998",
-    "passengers": 5491
-  },
-  {
-    "from": "ORD",
-    "to": "TPA",
-    "cityFrom": "Chicago, IL",
-    "cityTo": "Tampa,  FL",
-    "lat1": "41.9786",
-    "lon1": "-87.9048",
-    "lat2": "27.97550011",
-    "lon2": "-82.53320313",
-    "passengers": 5354
-  },
-  {
-    "from": "DFW",
-    "to": "DEN",
-    "cityFrom": "Dallas/Fort Worth, TX",
-    "cityTo": "Denver, CO",
-    "lat1": "32.896801",
-    "lon1": "-97.038002",
-    "lat2": "39.86169815",
-    "lon2": "-104.6729965",
-    "passengers": 6120
-  },
-  {
-    "from": "DFW",
-    "to": "LAS",
-    "cityFrom": "Dallas/Fort Worth, TX",
-    "cityTo": "Las Vegas, NV",
-    "lat1": "32.896801",
-    "lon1": "-97.038002",
-    "lat2": "36.08010101",
-    "lon2": "-115.1520004",
-    "passengers": 6512
-  },
-  {
-    "from": "DFW",
-    "to": "LAX",
-    "cityFrom": "Dallas/Fort Worth, TX",
-    "cityTo": "Los Angeles, CA (Metropolitan Area)",
-    "lat1": "32.896801",
-    "lon1": "-97.038002",
-    "lat2": "33.94250107",
-    "lon2": "-118.4079971",
-    "passengers": 9074
-  },
-  {
-    "from": "DFW",
-    "to": "LGA",
-    "cityFrom": "Dallas/Fort Worth, TX",
-    "cityTo": "New York City, NY (Metropolitan Area)",
-    "lat1": "32.896801",
-    "lon1": "-97.038002",
-    "lat2": "40.77719879",
-    "lon2": "-73.87259674",
-    "passengers": 6325
-  },
-  {
-    "from": "DFW",
-    "to": "MCO",
-    "cityFrom": "Dallas/Fort Worth, TX",
-    "cityTo": "Orlando,  FL",
-    "lat1": "32.896801",
-    "lon1": "-97.038002",
-    "lat2": "28.42939949",
-    "lon2": "-81.30899811",
-    "passengers": 5713
-  },
-  {
-    "from": "DEN",
-    "to": "IAH",
-    "cityFrom": "Denver, CO",
-    "cityTo": "Houston, TX",
-    "lat1": "39.86169815",
-    "lon1": "-104.6729965",
-    "lat2": "29.9843998",
-    "lon2": "-95.34140015",
-    "passengers": 5002
-  },
-  {
-    "from": "DEN",
-    "to": "LAX",
-    "cityFrom": "Denver, CO",
-    "cityTo": "Los Angeles, CA (Metropolitan Area)",
-    "lat1": "39.86169815",
-    "lon1": "-104.6729965",
-    "lat2": "33.94250107",
-    "lon2": "-118.4079971",
-    "passengers": 7103
+    "passengers": 3026
   },
   {
     "from": "DEN",
@@ -460,95 +75,7 @@ export const rutasMapa = [
     "lon1": "-104.6729965",
     "lat2": "33.43429947",
     "lon2": "-112.012001",
-    "passengers": 9055
-  },
-  {
-    "from": "DTW",
-    "to": "LAX",
-    "cityFrom": "Detroit, MI",
-    "cityTo": "Los Angeles, CA (Metropolitan Area)",
-    "lat1": "42.21239853",
-    "lon1": "-83.35340118",
-    "lat2": "33.94250107",
-    "lon2": "-118.4079971",
-    "passengers": 5101
-  },
-  {
-    "from": "DTW",
-    "to": "FLL",
-    "cityFrom": "Detroit, MI",
-    "cityTo": "Miami, FL (Metropolitan Area)",
-    "lat1": "42.21239853",
-    "lon1": "-83.35340118",
-    "lat2": "26.072599",
-    "lon2": "-80.152702",
-    "passengers": 5170
-  },
-  {
-    "from": "IAH",
-    "to": "LAX",
-    "cityFrom": "Houston, TX",
-    "cityTo": "Los Angeles, CA (Metropolitan Area)",
-    "lat1": "29.9843998",
-    "lon1": "-95.34140015",
-    "lat2": "33.94250107",
-    "lon2": "-118.4079971",
-    "passengers": 6978
-  },
-  {
-    "from": "LAS",
-    "to": "LAX",
-    "cityFrom": "Las Vegas, NV",
-    "cityTo": "Los Angeles, CA (Metropolitan Area)",
-    "lat1": "36.08010101",
-    "lon1": "-115.1520004",
-    "lat2": "33.94250107",
-    "lon2": "-118.4079971",
-    "passengers": 7536
-  },
-  {
-    "from": "LAS",
-    "to": "EWR",
-    "cityFrom": "Las Vegas, NV",
-    "cityTo": "New York City, NY (Metropolitan Area)",
-    "lat1": "36.08010101",
-    "lon1": "-115.1520004",
-    "lat2": "40.69250107",
-    "lon2": "-74.16870117",
-    "passengers": 6364
-  },
-  {
-    "from": "LAS",
-    "to": "SFO",
-    "cityFrom": "Las Vegas, NV",
-    "cityTo": "San Francisco, CA (Metropolitan Area)",
-    "lat1": "36.08010101",
-    "lon1": "-115.1520004",
-    "lat2": "37.61899948",
-    "lon2": "-122.375",
-    "passengers": 5299
-  },
-  {
-    "from": "LAX",
-    "to": "FLL",
-    "cityFrom": "Los Angeles, CA (Metropolitan Area)",
-    "cityTo": "Miami, FL (Metropolitan Area)",
-    "lat1": "33.94250107",
-    "lon1": "-118.4079971",
-    "lat2": "26.072599",
-    "lon2": "-80.152702",
-    "passengers": 5471
-  },
-  {
-    "from": "LAX",
-    "to": "MIA",
-    "cityFrom": "Los Angeles, CA (Metropolitan Area)",
-    "cityTo": "Miami, FL (Metropolitan Area)",
-    "lat1": "33.94250107",
-    "lon1": "-118.4079971",
-    "lat2": "25.79319954",
-    "lon2": "-80.29060364",
-    "passengers": 7733
+    "passengers": 3497
   },
   {
     "from": "LAX",
@@ -559,7 +86,7 @@ export const rutasMapa = [
     "lon1": "-118.4079971",
     "lat2": "40.69250107",
     "lon2": "-74.16870117",
-    "passengers": 10116
+    "passengers": 4048
   },
   {
     "from": "LAX",
@@ -570,51 +97,7 @@ export const rutasMapa = [
     "lon1": "-118.4079971",
     "lat2": "40.63980103",
     "lon2": "-73.77890015",
-    "passengers": 19028
-  },
-  {
-    "from": "LAX",
-    "to": "MCO",
-    "cityFrom": "Los Angeles, CA (Metropolitan Area)",
-    "cityTo": "Orlando,  FL",
-    "lat1": "33.94250107",
-    "lon1": "-118.4079971",
-    "lat2": "28.42939949",
-    "lon2": "-81.30899811",
-    "passengers": 8192
-  },
-  {
-    "from": "LAX",
-    "to": "PHL",
-    "cityFrom": "Los Angeles, CA (Metropolitan Area)",
-    "cityTo": "Philadelphia,  PA",
-    "lat1": "33.94250107",
-    "lon1": "-118.4079971",
-    "lat2": "39.87189865",
-    "lon2": "-75.2410965",
-    "passengers": 5477
-  },
-  {
-    "from": "LAX",
-    "to": "PDX",
-    "cityFrom": "Los Angeles, CA (Metropolitan Area)",
-    "cityTo": "Portland,  OR",
-    "lat1": "33.94250107",
-    "lon1": "-118.4079971",
-    "lat2": "45.58869934",
-    "lon2": "-122.5979996",
-    "passengers": 5935
-  },
-  {
-    "from": "LAX",
-    "to": "SLC",
-    "cityFrom": "Los Angeles, CA (Metropolitan Area)",
-    "cityTo": "Salt Lake City,  UT",
-    "lat1": "33.94250107",
-    "lon1": "-118.4079971",
-    "lat2": "40.78839874",
-    "lon2": "-111.9779968",
-    "passengers": 5352
+    "passengers": 5351
   },
   {
     "from": "LAX",
@@ -625,29 +108,7 @@ export const rutasMapa = [
     "lon1": "-118.4079971",
     "lat2": "37.61899948",
     "lon2": "-122.375",
-    "passengers": 8737
-  },
-  {
-    "from": "LAX",
-    "to": "SEA",
-    "cityFrom": "Los Angeles, CA (Metropolitan Area)",
-    "cityTo": "Seattle,  WA",
-    "lat1": "33.94250107",
-    "lon1": "-118.4079971",
-    "lat2": "47.449001",
-    "lon2": "-122.308998",
-    "passengers": 10589
-  },
-  {
-    "from": "SNA",
-    "to": "SEA",
-    "cityFrom": "Los Angeles, CA (Metropolitan Area)",
-    "cityTo": "Seattle,  WA",
-    "lat1": "33.67570114",
-    "lon1": "-117.8679962",
-    "lat2": "47.449001",
-    "lon2": "-122.308998",
-    "passengers": 5052
+    "passengers": 3790
   },
   {
     "from": "FLL",
@@ -658,18 +119,7 @@ export const rutasMapa = [
     "lon1": "-80.152702",
     "lat2": "40.69250107",
     "lon2": "-74.16870117",
-    "passengers": 9802
-  },
-  {
-    "from": "FLL",
-    "to": "JFK",
-    "cityFrom": "Miami, FL (Metropolitan Area)",
-    "cityTo": "New York City, NY (Metropolitan Area)",
-    "lat1": "26.072599",
-    "lon1": "-80.152702",
-    "lat2": "40.63980103",
-    "lon2": "-73.77890015",
-    "passengers": 8658
+    "passengers": 3673
   },
   {
     "from": "FLL",
@@ -680,18 +130,7 @@ export const rutasMapa = [
     "lon1": "-80.152702",
     "lat2": "40.77719879",
     "lon2": "-73.87259674",
-    "passengers": 6810
-  },
-  {
-    "from": "MIA",
-    "to": "EWR",
-    "cityFrom": "Miami, FL (Metropolitan Area)",
-    "cityTo": "New York City, NY (Metropolitan Area)",
-    "lat1": "25.79319954",
-    "lon1": "-80.29060364",
-    "lat2": "40.69250107",
-    "lon2": "-74.16870117",
-    "passengers": 8880
+    "passengers": 3409
   },
   {
     "from": "MIA",
@@ -702,7 +141,7 @@ export const rutasMapa = [
     "lon1": "-80.29060364",
     "lat2": "40.63980103",
     "lon2": "-73.77890015",
-    "passengers": 10672
+    "passengers": 3107
   },
   {
     "from": "MIA",
@@ -713,7 +152,7 @@ export const rutasMapa = [
     "lon1": "-80.29060364",
     "lat2": "40.77719879",
     "lon2": "-73.87259674",
-    "passengers": 7971
+    "passengers": 3552
   },
   {
     "from": "MSP",
@@ -724,7 +163,7 @@ export const rutasMapa = [
     "lon1": "-93.221802",
     "lat2": "33.43429947",
     "lon2": "-112.012001",
-    "passengers": 8377
+    "passengers": 3228
   },
   {
     "from": "EWR",
@@ -735,18 +174,7 @@ export const rutasMapa = [
     "lon1": "-74.16870117",
     "lat2": "28.42939949",
     "lon2": "-81.30899811",
-    "passengers": 13266
-  },
-  {
-    "from": "JFK",
-    "to": "MCO",
-    "cityFrom": "New York City, NY (Metropolitan Area)",
-    "cityTo": "Orlando,  FL",
-    "lat1": "40.63980103",
-    "lon1": "-73.77890015",
-    "lat2": "28.42939949",
-    "lon2": "-81.30899811",
-    "passengers": 9331
+    "passengers": 4586
   },
   {
     "from": "LGA",
@@ -757,18 +185,7 @@ export const rutasMapa = [
     "lon1": "-73.87259674",
     "lat2": "28.42939949",
     "lon2": "-81.30899811",
-    "passengers": 7899
-  },
-  {
-    "from": "EWR",
-    "to": "SFO",
-    "cityFrom": "New York City, NY (Metropolitan Area)",
-    "cityTo": "San Francisco, CA (Metropolitan Area)",
-    "lat1": "40.69250107",
-    "lon1": "-74.16870117",
-    "lat2": "37.61899948",
-    "lon2": "-122.375",
-    "passengers": 7785
+    "passengers": 3737
   },
   {
     "from": "JFK",
@@ -779,62 +196,7 @@ export const rutasMapa = [
     "lon1": "-73.77890015",
     "lat2": "37.61899948",
     "lon2": "-122.375",
-    "passengers": 10377
-  },
-  {
-    "from": "EWR",
-    "to": "TPA",
-    "cityFrom": "New York City, NY (Metropolitan Area)",
-    "cityTo": "Tampa,  FL",
-    "lat1": "40.69250107",
-    "lon1": "-74.16870117",
-    "lat2": "27.97550011",
-    "lon2": "-82.53320313",
-    "passengers": 6531
-  },
-  {
-    "from": "EWR",
-    "to": "PBI",
-    "cityFrom": "New York City, NY (Metropolitan Area)",
-    "cityTo": "West Palm Beach,  FL",
-    "lat1": "40.69250107",
-    "lon1": "-74.16870117",
-    "lat2": "26.68320084",
-    "lon2": "-80.09559631",
-    "passengers": 6465
-  },
-  {
-    "from": "MCO",
-    "to": "BWI",
-    "cityFrom": "Orlando,  FL",
-    "cityTo": "Baltimore,  MD",
-    "lat1": "28.42939949",
-    "lon1": "-81.30899811",
-    "lat2": "39.1754",
-    "lon2": "-76.668297",
-    "passengers": 6108
-  },
-  {
-    "from": "PHX",
-    "to": "PDX",
-    "cityFrom": "Phoenix, AZ",
-    "cityTo": "Portland,  OR",
-    "lat1": "33.43429947",
-    "lon1": "-112.012001",
-    "lat2": "45.58869934",
-    "lon2": "-122.5979996",
-    "passengers": 5499
-  },
-  {
-    "from": "PHX",
-    "to": "SLC",
-    "cityFrom": "Phoenix, AZ",
-    "cityTo": "Salt Lake City,  UT",
-    "lat1": "33.43429947",
-    "lon1": "-112.012001",
-    "lat2": "40.78839874",
-    "lon2": "-111.9779968",
-    "passengers": 5046
+    "passengers": 3390
   },
   {
     "from": "PHX",
@@ -845,41 +207,14 @@ export const rutasMapa = [
     "lon1": "-112.012001",
     "lat2": "47.449001",
     "lon2": "-122.308998",
-    "passengers": 11004
-  },
-  {
-    "from": "SAN",
-    "to": "SFO",
-    "cityFrom": "San Diego, CA",
-    "cityTo": "San Francisco, CA (Metropolitan Area)",
-    "lat1": "32.73360062",
-    "lon1": "-117.1900024",
-    "lat2": "37.61899948",
-    "lon2": "-122.375",
-    "passengers": 5940
-  },
-  {
-    "from": "SAN",
-    "to": "SJC",
-    "cityFrom": "San Diego, CA",
-    "cityTo": "San Francisco, CA (Metropolitan Area)",
-    "lat1": "32.73360062",
-    "lon1": "-117.1900024",
-    "lat2": "37.362598",
-    "lon2": "-121.929001",
-    "passengers": 5004
-  },
-  {
-    "from": "SFO",
-    "to": "SEA",
-    "cityFrom": "San Francisco, CA (Metropolitan Area)",
-    "cityTo": "Seattle,  WA",
-    "lat1": "37.61899948",
-    "lon1": "-122.375",
-    "lat2": "47.449001",
-    "lon2": "-122.308998",
-    "passengers": 5898
+    "passengers": 3117
   }
 ];
+
+
+
+
+
+
 
 
