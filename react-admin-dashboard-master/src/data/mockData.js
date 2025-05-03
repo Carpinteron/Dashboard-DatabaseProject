@@ -36,7 +36,7 @@ export const mockDataTeam = [
    
   
 ];
-
+// aqui se muestra la info de las rutas recientes
 export const mockTransactions = [
   {
     "txId": "ID1",

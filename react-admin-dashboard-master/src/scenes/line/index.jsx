@@ -5,7 +5,7 @@ import LineChart from "../../components/LineChart";
 const Line = () => {
   return (
     <Box m="20px">
-      <Header title="Line Chart" subtitle="Tendencia de la cantidad de vuelos y tarifa promedio por año" />
+      <Header title="Tendencia de la cantidad de vuelos y tarifa promedio por año" subtitle="Line Chart" />
       <Box height="75vh">
         <LineChart />
       </Box>
