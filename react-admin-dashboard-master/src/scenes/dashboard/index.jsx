@@ -49,7 +49,7 @@ const Dashboard = () => {
                 fontWeight="600"
                 color={colors.grey[100]}
               >
-                1) Line Chart
+                Line Chart
               </Typography>
               <Typography
                 variant="h3"
