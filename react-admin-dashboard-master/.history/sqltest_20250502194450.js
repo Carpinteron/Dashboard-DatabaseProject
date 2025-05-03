@@ -262,14 +262,12 @@ async function agregarLineChartFlightFareData(exportName = "lineChartFlightFareD
   
   agregarRutasPopularesPorAnio();
   
-  async function rutasMapa(year = 2021, minPassengers = 5000, exportName = "rutasMapa") { 
+  async function rutasMapa(year = 2021, minPassengers = 5000, exportName = "rutasMapa") {
     try {
       const poolConnection = await sql.connect(config);
   
       const resultSet = await poolConnection.request().query(`
         SELECT  
-          city1,
-          city2,
           airport1,
           airport2,
           latitude_airport1,
@@ -277,10 +275,9 @@ async function agregarLineChartFlightFareData(exportName = "lineChartFlightFareD
           latitude_airport2,
           longitude_airport2,
           SUM(passengers) AS total_passengers
-        FROM Flights_US_final
+        FROM Flights_US_Final
         WHERE YEAR(date) = ${year}
         GROUP BY  
-          city1, city2,
           airport1, airport2,  
           latitude_airport1, longitude_airport1,  
           latitude_airport2, longitude_airport2
@@ -292,8 +289,6 @@ async function agregarLineChartFlightFareData(exportName = "lineChartFlightFareD
       const processedData = rows.map(r => ({
         from: r.airport1,
         to: r.airport2,
-        cityFrom: r.city1,
-        cityTo: r.city2,
         lat1: r.latitude_airport1,
         lon1: r.longitude_airport1,
         lat2: r.latitude_airport2,
@@ -307,9 +302,10 @@ async function agregarLineChartFlightFareData(exportName = "lineChartFlightFareD
       const exportRegex = new RegExp(`export const ${exportName} = (\\[.*?\\]);`, 's');
       const newExport = `export const ${exportName} = ${JSON.stringify(processedData, null, 2)};\n`;
   
+      // Sobrescribir el contenido existente
       const updatedContent = mockDataContent.includes(`export const ${exportName}`)
-        ? mockDataContent.replace(exportRegex, newExport)
-        : mockDataContent + '\n' + newExport;
+        ? mockDataContent.replace(exportRegex, newExport) // Actualiza si ya existe
+        : mockDataContent + '\n' + newExport; // Si no existe, lo agrega
   
       fs.writeFileSync(mockDataPath, updatedContent);
       console.log(`${exportName} actualizado en mockGeo.js`);
@@ -319,6 +315,4 @@ async function agregarLineChartFlightFareData(exportName = "lineChartFlightFareD
       console.error("Error al agregar rutas de vuelo para el mapa:", err.message);
     }
   }
-  
   rutasMapa(2021, 5000, "rutasMapa");
-  

@@ -60,34 +60,24 @@ const FlightMap = () => {
         {Object.values(airportData).map((airport, index) => (
           <Marker key={index} position={[airport.lat, airport.lon]} icon={airplaneIcon}>
             <Popup>
-  <strong>{airport.city}</strong><br />
-  <hr />
-  <div>
-    <ul style={{ paddingLeft: "1em" }}>
-      {airport.departures.map((r, i) => (
-        <li key={i}>
-          <span role="img" aria-label="takeoff">🛫</span> {r.from} 🠮 {r.to}
-        </li>
-      ))}
-    </ul>
-    <ul style={{ paddingLeft: "1em" }}>
-      {airport.arrivals.map((r, i) => (
-        <li key={i}>
-          <span role="img" aria-label="landing">🛬</span> {r.from} 🠮 {r.to}
-        </li>
-      ))}
-    </ul>
-    <div>
-      <strong>Total salidas:</strong>{" "}
-      <span style={{ color: "#007bff" }}>🛫</span> {airport.departures.length}
-    </div>
-    <div>
-      <strong>Total llegadas:</strong>{" "}
-      <span style={{ color: "#28a745" }}>🛬</span> {airport.arrivals.length}
-    </div>
-  </div>
-</Popup>
-
+              <strong>{airport.city}</strong><br />
+              <em>{airport.code}</em>
+              <hr />
+              <div>
+                <strong>Salidas:</strong>
+                <ul style={{ paddingLeft: "1em" }}>
+                  {airport.departures.map((r, i) => (
+                    <li key={i}>{r.from} 🠮 {r.to}</li>
+                  ))}
+                </ul>
+                <strong>Llegadas:</strong>
+                <ul style={{ paddingLeft: "1em" }}>
+                  {airport.arrivals.map((r, i) => (
+                    <li key={i}>{r.from} 🠮 {}</li>
+                  ))}
+                </ul>
+              </div>
+            </Popup>
           </Marker>
         ))}
 

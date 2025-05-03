@@ -5,7 +5,7 @@ import Sidebar from "./scenes/global/Sidebar";
 import Dashboard from "./scenes/dashboard";
 import Team from "./scenes/team";
 import 'leaflet/dist/leaflet.css';
-import './index.css';
+import './.css';
 
 
 import Bar from "./scenes/bar";

@@ -70,6 +70,7 @@ const FlightMap = () => {
         </li>
       ))}
     </ul>
+    <div><strong>Llegadas:</strong></div>
     <ul style={{ paddingLeft: "1em" }}>
       {airport.arrivals.map((r, i) => (
         <li key={i}>

@@ -1603,46 +1603,892 @@ export const lineChartFlightFareData = [
 
 export const rutasPopularesPorAnio = [
   {
+    "year": 1990,
+    "origen": "HNL",
+    "destino": "ITO",
+    "pasajerosAnuales": 591711,
+    "pasajerosTotales": 12753744
+  },
+  {
+    "year": 1990,
+    "origen": "LAS",
+    "destino": "RNO",
+    "pasajerosAnuales": 207641,
+    "pasajerosTotales": 9277357
+  },
+  {
+    "year": 1990,
+    "origen": "SEA",
+    "destino": "RNO",
+    "pasajerosAnuales": 130533,
+    "pasajerosTotales": 4559707
+  },
+  {
+    "year": 1990,
+    "origen": "LAX",
+    "destino": "RNO",
+    "pasajerosAnuales": 91510,
+    "pasajerosTotales": 4033096
+  },
+  {
+    "year": 1990,
+    "origen": "PHX",
+    "destino": "RNO",
+    "pasajerosAnuales": 77927,
+    "pasajerosTotales": 3585693
+  },
+  {
+    "year": 1991,
+    "origen": "HNL",
+    "destino": "ITO",
+    "pasajerosAnuales": 581346,
+    "pasajerosTotales": 12753744
+  },
+  {
+    "year": 1991,
+    "origen": "LAS",
+    "destino": "RNO",
+    "pasajerosAnuales": 386138,
+    "pasajerosTotales": 9277357
+  },
+  {
+    "year": 1991,
+    "origen": "SEA",
+    "destino": "RNO",
+    "pasajerosAnuales": 103395,
+    "pasajerosTotales": 4559707
+  },
+  {
+    "year": 1991,
+    "origen": "LAX",
+    "destino": "RNO",
+    "pasajerosAnuales": 83641,
+    "pasajerosTotales": 4033096
+  },
+  {
+    "year": 1991,
+    "origen": "PHX",
+    "destino": "RNO",
+    "pasajerosAnuales": 75776,
+    "pasajerosTotales": 3585693
+  },
+  {
+    "year": 1992,
+    "origen": "HNL",
+    "destino": "ITO",
+    "pasajerosAnuales": 635692,
+    "pasajerosTotales": 12753744
+  },
+  {
+    "year": 1992,
+    "origen": "LAS",
+    "destino": "RNO",
+    "pasajerosAnuales": 372589,
+    "pasajerosTotales": 9277357
+  },
+  {
+    "year": 1992,
+    "origen": "SEA",
+    "destino": "RNO",
+    "pasajerosAnuales": 172113,
+    "pasajerosTotales": 4559707
+  },
+  {
+    "year": 1992,
+    "origen": "LAX",
+    "destino": "RNO",
+    "pasajerosAnuales": 144363,
+    "pasajerosTotales": 4033096
+  },
+  {
+    "year": 1992,
+    "origen": "PHX",
+    "destino": "RNO",
+    "pasajerosAnuales": 63123,
+    "pasajerosTotales": 3585693
+  },
+  {
+    "year": 1993,
+    "origen": "HNL",
+    "destino": "ITO",
+    "pasajerosAnuales": 650094,
+    "pasajerosTotales": 12753744
+  },
+  {
+    "year": 1993,
+    "origen": "LAS",
+    "destino": "RNO",
+    "pasajerosAnuales": 425470,
+    "pasajerosTotales": 9277357
+  },
+  {
+    "year": 1993,
+    "origen": "SEA",
+    "destino": "RNO",
+    "pasajerosAnuales": 323296,
+    "pasajerosTotales": 4559707
+  },
+  {
+    "year": 1993,
+    "origen": "LAX",
+    "destino": "RNO",
+    "pasajerosAnuales": 202401,
+    "pasajerosTotales": 4033096
+  },
+  {
+    "year": 1993,
+    "origen": "PHX",
+    "destino": "RNO",
+    "pasajerosAnuales": 99467,
+    "pasajerosTotales": 3585693
+  },
+  {
+    "year": 1994,
+    "origen": "HNL",
+    "destino": "ITO",
+    "pasajerosAnuales": 675574,
+    "pasajerosTotales": 12753744
+  },
+  {
+    "year": 1994,
+    "origen": "LAS",
+    "destino": "RNO",
+    "pasajerosAnuales": 553421,
+    "pasajerosTotales": 9277357
+  },
+  {
+    "year": 1994,
+    "origen": "SEA",
+    "destino": "RNO",
+    "pasajerosAnuales": 350590,
+    "pasajerosTotales": 4559707
+  },
+  {
+    "year": 1994,
+    "origen": "LAX",
+    "destino": "RNO",
+    "pasajerosAnuales": 160991,
+    "pasajerosTotales": 4033096
+  },
+  {
+    "year": 1994,
+    "origen": "PHX",
+    "destino": "RNO",
+    "pasajerosAnuales": 167185,
+    "pasajerosTotales": 3585693
+  },
+  {
+    "year": 1995,
+    "origen": "HNL",
+    "destino": "ITO",
+    "pasajerosAnuales": 669366,
+    "pasajerosTotales": 12753744
+  },
+  {
+    "year": 1995,
+    "origen": "LAS",
+    "destino": "RNO",
+    "pasajerosAnuales": 536708,
+    "pasajerosTotales": 9277357
+  },
+  {
+    "year": 1995,
+    "origen": "SEA",
+    "destino": "RNO",
+    "pasajerosAnuales": 317891,
+    "pasajerosTotales": 4559707
+  },
+  {
+    "year": 1995,
+    "origen": "LAX",
+    "destino": "RNO",
+    "pasajerosAnuales": 202947,
+    "pasajerosTotales": 4033096
+  },
+  {
+    "year": 1995,
+    "origen": "PHX",
+    "destino": "RNO",
+    "pasajerosAnuales": 215512,
+    "pasajerosTotales": 3585693
+  },
+  {
+    "year": 1996,
+    "origen": "HNL",
+    "destino": "ITO",
+    "pasajerosAnuales": 675167,
+    "pasajerosTotales": 12753744
+  },
+  {
+    "year": 1996,
+    "origen": "LAS",
+    "destino": "RNO",
+    "pasajerosAnuales": 473274,
+    "pasajerosTotales": 9277357
+  },
+  {
+    "year": 1996,
+    "origen": "SEA",
+    "destino": "RNO",
+    "pasajerosAnuales": 442285,
+    "pasajerosTotales": 4559707
+  },
+  {
+    "year": 1996,
+    "origen": "LAX",
+    "destino": "RNO",
+    "pasajerosAnuales": 292309,
+    "pasajerosTotales": 4033096
+  },
+  {
+    "year": 1996,
+    "origen": "PHX",
+    "destino": "RNO",
+    "pasajerosAnuales": 234194,
+    "pasajerosTotales": 3585693
+  },
+  {
+    "year": 1997,
+    "origen": "HNL",
+    "destino": "ITO",
+    "pasajerosAnuales": 674162,
+    "pasajerosTotales": 12753744
+  },
+  {
+    "year": 1997,
+    "origen": "LAS",
+    "destino": "RNO",
+    "pasajerosAnuales": 509024,
+    "pasajerosTotales": 9277357
+  },
+  {
+    "year": 1997,
+    "origen": "SEA",
+    "destino": "RNO",
+    "pasajerosAnuales": 413873,
+    "pasajerosTotales": 4559707
+  },
+  {
+    "year": 1997,
+    "origen": "LAX",
+    "destino": "RNO",
+    "pasajerosAnuales": 248589,
+    "pasajerosTotales": 4033096
+  },
+  {
+    "year": 1997,
+    "origen": "PHX",
+    "destino": "RNO",
+    "pasajerosAnuales": 225198,
+    "pasajerosTotales": 3585693
+  },
+  {
+    "year": 1998,
+    "origen": "HNL",
+    "destino": "ITO",
+    "pasajerosAnuales": 656028,
+    "pasajerosTotales": 12753744
+  },
+  {
+    "year": 1998,
+    "origen": "LAS",
+    "destino": "RNO",
+    "pasajerosAnuales": 559633,
+    "pasajerosTotales": 9277357
+  },
+  {
+    "year": 1998,
+    "origen": "SEA",
+    "destino": "RNO",
+    "pasajerosAnuales": 405094,
+    "pasajerosTotales": 4559707
+  },
+  {
+    "year": 1998,
+    "origen": "LAX",
+    "destino": "RNO",
+    "pasajerosAnuales": 267755,
+    "pasajerosTotales": 4033096
+  },
+  {
+    "year": 1998,
+    "origen": "PHX",
+    "destino": "RNO",
+    "pasajerosAnuales": 236792,
+    "pasajerosTotales": 3585693
+  },
+  {
+    "year": 1999,
+    "origen": "HNL",
+    "destino": "ITO",
+    "pasajerosAnuales": 668459,
+    "pasajerosTotales": 12753744
+  },
+  {
+    "year": 1999,
+    "origen": "LAS",
+    "destino": "RNO",
+    "pasajerosAnuales": 530693,
+    "pasajerosTotales": 9277357
+  },
+  {
+    "year": 1999,
+    "origen": "SEA",
+    "destino": "RNO",
+    "pasajerosAnuales": 360848,
+    "pasajerosTotales": 4559707
+  },
+  {
+    "year": 1999,
+    "origen": "LAX",
+    "destino": "RNO",
+    "pasajerosAnuales": 245889,
+    "pasajerosTotales": 4033096
+  },
+  {
+    "year": 1999,
+    "origen": "PHX",
+    "destino": "RNO",
+    "pasajerosAnuales": 220411,
+    "pasajerosTotales": 3585693
+  },
+  {
+    "year": 2000,
+    "origen": "HNL",
+    "destino": "ITO",
+    "pasajerosAnuales": 670149,
+    "pasajerosTotales": 12753744
+  },
+  {
+    "year": 2000,
+    "origen": "LAS",
+    "destino": "RNO",
+    "pasajerosAnuales": 474454,
+    "pasajerosTotales": 9277357
+  },
+  {
+    "year": 2000,
+    "origen": "SEA",
+    "destino": "RNO",
+    "pasajerosAnuales": 267208,
+    "pasajerosTotales": 4559707
+  },
+  {
+    "year": 2000,
+    "origen": "LAX",
+    "destino": "RNO",
+    "pasajerosAnuales": 294632,
+    "pasajerosTotales": 4033096
+  },
+  {
+    "year": 2000,
+    "origen": "PHX",
+    "destino": "RNO",
+    "pasajerosAnuales": 245061,
+    "pasajerosTotales": 3585693
+  },
+  {
+    "year": 2001,
+    "origen": "HNL",
+    "destino": "ITO",
+    "pasajerosAnuales": 626701,
+    "pasajerosTotales": 12753744
+  },
+  {
+    "year": 2001,
+    "origen": "LAS",
+    "destino": "RNO",
+    "pasajerosAnuales": 431184,
+    "pasajerosTotales": 9277357
+  },
+  {
+    "year": 2001,
+    "origen": "SEA",
+    "destino": "RNO",
+    "pasajerosAnuales": 217248,
+    "pasajerosTotales": 4559707
+  },
+  {
+    "year": 2001,
+    "origen": "LAX",
+    "destino": "RNO",
+    "pasajerosAnuales": 278734,
+    "pasajerosTotales": 4033096
+  },
+  {
+    "year": 2001,
+    "origen": "PHX",
+    "destino": "RNO",
+    "pasajerosAnuales": 249998,
+    "pasajerosTotales": 3585693
+  },
+  {
+    "year": 2002,
+    "origen": "HNL",
+    "destino": "ITO",
+    "pasajerosAnuales": 603813,
+    "pasajerosTotales": 12753744
+  },
+  {
+    "year": 2002,
+    "origen": "LAS",
+    "destino": "RNO",
+    "pasajerosAnuales": 434532,
+    "pasajerosTotales": 9277357
+  },
+  {
+    "year": 2002,
+    "origen": "SEA",
+    "destino": "RNO",
+    "pasajerosAnuales": 200054,
+    "pasajerosTotales": 4559707
+  },
+  {
+    "year": 2002,
+    "origen": "LAX",
+    "destino": "RNO",
+    "pasajerosAnuales": 209317,
+    "pasajerosTotales": 4033096
+  },
+  {
+    "year": 2002,
+    "origen": "PHX",
+    "destino": "RNO",
+    "pasajerosAnuales": 223773,
+    "pasajerosTotales": 3585693
+  },
+  {
+    "year": 2003,
+    "origen": "HNL",
+    "destino": "ITO",
+    "pasajerosAnuales": 626419,
+    "pasajerosTotales": 12753744
+  },
+  {
+    "year": 2003,
+    "origen": "LAS",
+    "destino": "RNO",
+    "pasajerosAnuales": 459528,
+    "pasajerosTotales": 9277357
+  },
+  {
+    "year": 2003,
+    "origen": "LAX",
+    "destino": "RNO",
+    "pasajerosAnuales": 133353,
+    "pasajerosTotales": 4033096
+  },
+  {
+    "year": 2004,
+    "origen": "HNL",
+    "destino": "ITO",
+    "pasajerosAnuales": 564597,
+    "pasajerosTotales": 12753744
+  },
+  {
+    "year": 2004,
+    "origen": "LAS",
+    "destino": "RNO",
+    "pasajerosAnuales": 520609,
+    "pasajerosTotales": 9277357
+  },
+  {
+    "year": 2004,
+    "origen": "SEA",
+    "destino": "RNO",
+    "pasajerosAnuales": 207164,
+    "pasajerosTotales": 4559707
+  },
+  {
+    "year": 2004,
+    "origen": "LAX",
+    "destino": "RNO",
+    "pasajerosAnuales": 187242,
+    "pasajerosTotales": 4033096
+  },
+  {
+    "year": 2004,
+    "origen": "PHX",
+    "destino": "RNO",
+    "pasajerosAnuales": 253808,
+    "pasajerosTotales": 3585693
+  },
+  {
+    "year": 2005,
+    "origen": "HNL",
+    "destino": "ITO",
+    "pasajerosAnuales": 589732,
+    "pasajerosTotales": 12753744
+  },
+  {
+    "year": 2005,
+    "origen": "LAS",
+    "destino": "RNO",
+    "pasajerosAnuales": 508981,
+    "pasajerosTotales": 9277357
+  },
+  {
+    "year": 2005,
+    "origen": "LAX",
+    "destino": "RNO",
+    "pasajerosAnuales": 194230,
+    "pasajerosTotales": 4033096
+  },
+  {
+    "year": 2006,
+    "origen": "HNL",
+    "destino": "ITO",
+    "pasajerosAnuales": 634017,
+    "pasajerosTotales": 12753744
+  },
+  {
+    "year": 2006,
+    "origen": "LAS",
+    "destino": "RNO",
+    "pasajerosAnuales": 537661,
+    "pasajerosTotales": 9277357
+  },
+  {
+    "year": 2006,
+    "origen": "SEA",
+    "destino": "RNO",
+    "pasajerosAnuales": 194328,
+    "pasajerosTotales": 4559707
+  },
+  {
+    "year": 2006,
+    "origen": "LAX",
+    "destino": "RNO",
+    "pasajerosAnuales": 197116,
+    "pasajerosTotales": 4033096
+  },
+  {
+    "year": 2006,
+    "origen": "PHX",
+    "destino": "RNO",
+    "pasajerosAnuales": 275493,
+    "pasajerosTotales": 3585693
+  },
+  {
+    "year": 2007,
+    "origen": "HNL",
+    "destino": "ITO",
+    "pasajerosAnuales": 734649,
+    "pasajerosTotales": 12753744
+  },
+  {
+    "year": 2007,
+    "origen": "LAS",
+    "destino": "RNO",
+    "pasajerosAnuales": 511530,
+    "pasajerosTotales": 9277357
+  },
+  {
+    "year": 2007,
+    "origen": "SEA",
+    "destino": "RNO",
+    "pasajerosAnuales": 183279,
+    "pasajerosTotales": 4559707
+  },
+  {
+    "year": 2007,
+    "origen": "LAX",
+    "destino": "RNO",
+    "pasajerosAnuales": 210288,
+    "pasajerosTotales": 4033096
+  },
+  {
+    "year": 2007,
+    "origen": "PHX",
+    "destino": "RNO",
+    "pasajerosAnuales": 248014,
+    "pasajerosTotales": 3585693
+  },
+  {
+    "year": 2008,
+    "origen": "HNL",
+    "destino": "ITO",
+    "pasajerosAnuales": 602940,
+    "pasajerosTotales": 12753744
+  },
+  {
+    "year": 2008,
+    "origen": "LAS",
+    "destino": "RNO",
+    "pasajerosAnuales": 446252,
+    "pasajerosTotales": 9277357
+  },
+  {
+    "year": 2008,
+    "origen": "SEA",
+    "destino": "RNO",
+    "pasajerosAnuales": 155671,
+    "pasajerosTotales": 4559707
+  },
+  {
+    "year": 2008,
+    "origen": "LAX",
+    "destino": "RNO",
+    "pasajerosAnuales": 189102,
+    "pasajerosTotales": 4033096
+  },
+  {
+    "year": 2008,
+    "origen": "PHX",
+    "destino": "RNO",
+    "pasajerosAnuales": 224806,
+    "pasajerosTotales": 3585693
+  },
+  {
+    "year": 2009,
+    "origen": "HNL",
+    "destino": "ITO",
+    "pasajerosAnuales": 623128,
+    "pasajerosTotales": 12753744
+  },
+  {
+    "year": 2009,
+    "origen": "LAS",
+    "destino": "RNO",
+    "pasajerosAnuales": 398035,
+    "pasajerosTotales": 9277357
+  },
+  {
+    "year": 2009,
+    "origen": "SEA",
+    "destino": "RNO",
+    "pasajerosAnuales": 114837,
+    "pasajerosTotales": 4559707
+  },
+  {
+    "year": 2009,
+    "origen": "LAX",
+    "destino": "RNO",
+    "pasajerosAnuales": 161230,
+    "pasajerosTotales": 4033096
+  },
+  {
+    "year": 2009,
+    "origen": "PHX",
+    "destino": "RNO",
+    "pasajerosAnuales": 224522,
+    "pasajerosTotales": 3585693
+  },
+  {
+    "year": 2010,
+    "origen": "LAX",
+    "destino": "RNO",
+    "pasajerosAnuales": 2787,
+    "pasajerosTotales": 4033096
+  },
+  {
+    "year": 2010,
+    "origen": "PHX",
+    "destino": "RNO",
+    "pasajerosAnuales": 1646,
+    "pasajerosTotales": 3585693
+  },
+  {
+    "year": 2011,
+    "origen": "LAX",
+    "destino": "RNO",
+    "pasajerosAnuales": 2808,
+    "pasajerosTotales": 4033096
+  },
+  {
+    "year": 2011,
+    "origen": "PHX",
+    "destino": "RNO",
+    "pasajerosAnuales": 1824,
+    "pasajerosTotales": 3585693
+  },
+  {
+    "year": 2012,
+    "origen": "LAX",
+    "destino": "RNO",
+    "pasajerosAnuales": 2746,
+    "pasajerosTotales": 4033096
+  },
+  {
+    "year": 2012,
+    "origen": "PHX",
+    "destino": "RNO",
+    "pasajerosAnuales": 1709,
+    "pasajerosTotales": 3585693
+  },
+  {
+    "year": 2013,
+    "origen": "LAX",
+    "destino": "RNO",
+    "pasajerosAnuales": 2655,
+    "pasajerosTotales": 4033096
+  },
+  {
+    "year": 2013,
+    "origen": "PHX",
+    "destino": "RNO",
+    "pasajerosAnuales": 1782,
+    "pasajerosTotales": 3585693
+  },
+  {
+    "year": 2014,
+    "origen": "LAX",
+    "destino": "RNO",
+    "pasajerosAnuales": 2598,
+    "pasajerosTotales": 4033096
+  },
+  {
+    "year": 2014,
+    "origen": "PHX",
+    "destino": "RNO",
+    "pasajerosAnuales": 1720,
+    "pasajerosTotales": 3585693
+  },
+  {
+    "year": 2015,
+    "origen": "LAX",
+    "destino": "RNO",
+    "pasajerosAnuales": 2605,
+    "pasajerosTotales": 4033096
+  },
+  {
+    "year": 2015,
+    "origen": "PHX",
+    "destino": "RNO",
+    "pasajerosAnuales": 1830,
+    "pasajerosTotales": 3585693
+  },
+  {
+    "year": 2016,
+    "origen": "LAX",
+    "destino": "RNO",
+    "pasajerosAnuales": 2494,
+    "pasajerosTotales": 4033096
+  },
+  {
+    "year": 2016,
+    "origen": "PHX",
+    "destino": "RNO",
+    "pasajerosAnuales": 1591,
+    "pasajerosTotales": 3585693
+  },
+  {
+    "year": 2017,
+    "origen": "LAX",
+    "destino": "RNO",
+    "pasajerosAnuales": 2789,
+    "pasajerosTotales": 4033096
+  },
+  {
+    "year": 2017,
+    "origen": "PHX",
+    "destino": "RNO",
+    "pasajerosAnuales": 1589,
+    "pasajerosTotales": 3585693
+  },
+  {
+    "year": 2018,
+    "origen": "LAX",
+    "destino": "RNO",
+    "pasajerosAnuales": 2964,
+    "pasajerosTotales": 4033096
+  },
+  {
+    "year": 2018,
+    "origen": "PHX",
+    "destino": "RNO",
+    "pasajerosAnuales": 1784,
+    "pasajerosTotales": 3585693
+  },
+  {
+    "year": 2019,
+    "origen": "LAX",
+    "destino": "RNO",
+    "pasajerosAnuales": 3237,
+    "pasajerosTotales": 4033096
+  },
+  {
+    "year": 2019,
+    "origen": "PHX",
+    "destino": "RNO",
+    "pasajerosAnuales": 1799,
+    "pasajerosTotales": 3585693
+  },
+  {
     "year": 2020,
-    "HNL 🠮 ITO": 0,
-    "LAS 🠮 RNO": 0,
-    "LAX 🠮 RNO": 1088,
-    "PHX 🠮 RNO": 1039,
-    "SEA 🠮 RNO": 0
+    "origen": "LAX",
+    "destino": "RNO",
+    "pasajerosAnuales": 1088,
+    "pasajerosTotales": 4033096
+  },
+  {
+    "year": 2020,
+    "origen": "PHX",
+    "destino": "RNO",
+    "pasajerosAnuales": 1039,
+    "pasajerosTotales": 3585693
   },
   {
     "year": 2021,
-    "HNL 🠮 ITO": 0,
-    "LAS 🠮 RNO": 0,
-    "LAX 🠮 RNO": 2398,
-    "PHX 🠮 RNO": 1753,
-    "SEA 🠮 RNO": 0
+    "origen": "LAX",
+    "destino": "RNO",
+    "pasajerosAnuales": 2398,
+    "pasajerosTotales": 4033096
+  },
+  {
+    "year": 2021,
+    "origen": "PHX",
+    "destino": "RNO",
+    "pasajerosAnuales": 1753,
+    "pasajerosTotales": 3585693
   },
   {
     "year": 2022,
-    "HNL 🠮 ITO": 0,
-    "LAS 🠮 RNO": 0,
-    "LAX 🠮 RNO": 2840,
-    "PHX 🠮 RNO": 2027,
-    "SEA 🠮 RNO": 0
+    "origen": "LAX",
+    "destino": "RNO",
+    "pasajerosAnuales": 2840,
+    "pasajerosTotales": 4033096
+  },
+  {
+    "year": 2022,
+    "origen": "PHX",
+    "destino": "RNO",
+    "pasajerosAnuales": 2027,
+    "pasajerosTotales": 3585693
   },
   {
     "year": 2023,
-    "HNL 🠮 ITO": 0,
-    "LAS 🠮 RNO": 0,
-    "LAX 🠮 RNO": 2769,
-    "PHX 🠮 RNO": 2038,
-    "SEA 🠮 RNO": 0
+    "origen": "LAX",
+    "destino": "RNO",
+    "pasajerosAnuales": 2769,
+    "pasajerosTotales": 4033096
+  },
+  {
+    "year": 2023,
+    "origen": "PHX",
+    "destino": "RNO",
+    "pasajerosAnuales": 2038,
+    "pasajerosTotales": 3585693
   },
   {
     "year": 2024,
-    "HNL 🠮 ITO": 0,
-    "LAS 🠮 RNO": 0,
-    "LAX 🠮 RNO": 679,
-    "PHX 🠮 RNO": 502,
-    "SEA 🠮 RNO": 0
+    "origen": "LAX",
+    "destino": "RNO",
+    "pasajerosAnuales": 679,
+    "pasajerosTotales": 4033096
+  },
+  {
+    "year": 2024,
+    "origen": "PHX",
+    "destino": "RNO",
+    "pasajerosAnuales": 502,
+    "pasajerosTotales": 3585693
   }
 ];
+
+
+
+
 
 
 
