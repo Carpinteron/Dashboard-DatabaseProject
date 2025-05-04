@@ -29,7 +29,7 @@ const Bar = () => {
         <Box display="flex" backgroundColor={colors.primary[400]} borderRadius="2px">
           <InputBase
             sx={{ ml: 2, flex: 1 }}
-            placeholder="Ingrese Year 1"
+            placeholder="Ingrese Año 1"
             value={year1b}
             onChange={(e) => setYear1(e.target.value)}
           />
@@ -39,13 +39,11 @@ const Bar = () => {
         <Box display="flex" backgroundColor={colors.primary[400]} borderRadius="2px">
           <InputBase
             sx={{ ml: 2, flex: 1 }}
-            placeholder="Ingrese Year 2"
+            placeholder="Ingrese Año 2"
             value={year2b}
             onChange={(e) => setYear2(e.target.value)}
           />
         </Box>
-
-        {/* BOTÓN PARA GUARDAR AÑOS */}
       
       </Box>
 

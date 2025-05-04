@@ -20,7 +20,7 @@ const Line = () => {
               <Box display="flex" backgroundColor={colors.primary[400]} borderRadius="2px">
                 <InputBase
                   sx={{ ml: 2, flex: 1 }}
-                  placeholder="Ingrese Year 1"
+                  placeholder="Ingrese Año 1"
                   value={year1l}
                   onChange={(e) => setYear1(e.target.value)}
                 />
@@ -30,7 +30,7 @@ const Line = () => {
               <Box display="flex" backgroundColor={colors.primary[400]} borderRadius="2px">
                 <InputBase
                   sx={{ ml: 2, flex: 1 }}
-                  placeholder="Ingrese Year 2"
+                  placeholder="Ingrese Año 2"
                   value={year2l}
                   onChange={(e) => setYear2(e.target.value)}
                 />
