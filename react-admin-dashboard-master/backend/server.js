@@ -7,7 +7,7 @@ const port = 3001;
 app.use(cors());
 app.use(express.json());
 
-// Configuración SQL Server - AQUI PONE EL LOCAL
+// Configuración SQL Server - AQUI PONE EL LOCAL <3
 const config = {
   user: "sqluser",
   password: "NIPS-lab#1",
