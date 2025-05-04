@@ -3,6 +3,7 @@ import { Box } from '@mui/material';
 import { useState, useEffect } from 'react';
 import { useTheme } from "@mui/material";
 import L from 'leaflet';
+import { tokens } from "../theme";
 
 const airplaneIcon = new L.Icon({
   iconUrl: "https://cdn-icons-png.flaticon.com/512/61/61212.png",
@@ -11,26 +12,23 @@ const airplaneIcon = new L.Icon({
   popupAnchor: [0, -12],
 });
 
-// 🎨 Tus colores personalizados
-const colores = ["#3399ff", "#ff5733", "#28a745", "#f39c12", "#8e44ad", "#00bcd4", "#e91e63"];
-
 const FlightMap = () => {
   const [routes, setRoutes] = useState([]);
   const theme = useTheme();
-  const isDark = theme.palette.mode === "dark";
+  const colors = tokens(theme.palette.mode);
 
-  // 🎨 Estilo para popups según el modo
+  // 🎨 Aplica estilo del sistema al popup
   useEffect(() => {
-    const styleId = 'leaflet-popup-custom';
+    const styleId = 'leaflet-popup-theme';
     let styleTag = document.getElementById(styleId);
 
-    const popupBg = isDark ? "#141b2d" : "#ffffff";
-    const popupText = isDark ? "#f0f0f0" : "#111111";
-    const popupTip = isDark ? "#1c1c1c" : "#eeeeee";
+    const popupBackground = theme.palette.mode === "dark" ? colors.primary[400] : "#fff";
+    const popupText = theme.palette.mode === "dark" ? colors.grey[100] : "#111";
+    const popupTip = theme.palette.mode === "dark" ? "#2c2c2c" : "#eee";
 
     const css = `
       .leaflet-container .leaflet-popup-content-wrapper {
-        background-color: ${popupBg} !important;
+        background-color: ${popupBackground} !important;
         color: ${popupText} !important;
         border-radius: 8px !important;
         box-shadow: 0 0 10px rgba(0,0,0,0.5) !important;
@@ -47,9 +45,11 @@ const FlightMap = () => {
     }
 
     styleTag.innerHTML = css;
-  }, [isDark]);
+  }, [theme.palette.mode, colors]);
 
+  // 📦 Carga de rutas desde la API
   useEffect(() => {
+    document.title = "Geography Chart - Skylar";
     const fetchRoutes = async () => {
       try {
         const res = await fetch("http://localhost:3001/api/rutas-mapa?year=2024&minPassengers=3000");
@@ -62,6 +62,7 @@ const FlightMap = () => {
     fetchRoutes();
   }, []);
 
+  // 🧭 Agrupamos aeropuertos por código
   const airportData = {};
   routes.forEach(route => {
     if (!airportData[route.from]) {
@@ -88,6 +89,18 @@ const FlightMap = () => {
     airportData[route.to].arrivals.push(route);
   });
 
+  // 🎨 Lista de colores del sistema para rutas
+  const polylineColors = [
+    colors.greenAccent[400],
+    colors.greenAccent[500],
+    colors.greenAccent[600],
+    colors.blueAccent[400],
+    colors.blueAccent[500],
+    colors.blueAccent[600],
+    colors.redAccent[400],
+    colors.redAccent[500],
+  ];
+
   return (
     <Box height="100%" width="100%">
       <MapContainer center={[39.8283, -98.5795]} zoom={4} style={{ height: "100%", width: "100%" }}>
@@ -96,6 +109,7 @@ const FlightMap = () => {
           attribution='&copy; OpenStreetMap contributors, &copy; Thunderforest'
         />
 
+        {/* 🔵 Marcadores de aeropuertos */}
         {Object.values(airportData).map((airport, index) => (
           <Marker key={index} position={[airport.lat, airport.lon]} icon={airplaneIcon}>
             <Popup>
@@ -119,7 +133,7 @@ const FlightMap = () => {
           </Marker>
         ))}
 
-        {/* 🚀 Rutas de vuelo con colores personalizados */}
+        {/* 🔷 Líneas de vuelo usando colores del sistema */}
         {routes.map((route, idx) => {
           const from = [parseFloat(route.lat1), parseFloat(route.lon1)];
           const to = [parseFloat(route.lat2), parseFloat(route.lon2)];
@@ -128,10 +142,10 @@ const FlightMap = () => {
               key={idx}
               positions={[from, to]}
               pathOptions={{
-                color: colores[idx % colores.length],
+                color: polylineColors[idx % polylineColors.length],
                 weight: 4,
-                opacity: isDark ? 0.7 : 0.9,
-                dashArray: "6, 10"
+                opacity: 0.8,
+                dashArray: "5, 10",
               }}
             />
           );

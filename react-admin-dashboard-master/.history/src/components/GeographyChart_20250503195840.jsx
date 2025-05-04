@@ -1,8 +1,8 @@
-import { MapContainer, TileLayer, Marker, Popup, Polyline } from 'react-leaflet';
+import { MapContainer, TileLayer, Polyline, Marker, Popup } from 'react-leaflet';
 import { Box } from '@mui/material';
 import { useState, useEffect } from 'react';
-import { useTheme } from "@mui/material";
 import L from 'leaflet';
+import 'leaflet/dist/leaflet.css';
 
 const airplaneIcon = new L.Icon({
   iconUrl: "https://cdn-icons-png.flaticon.com/512/61/61212.png",
@@ -11,45 +11,13 @@ const airplaneIcon = new L.Icon({
   popupAnchor: [0, -12],
 });
 
-// 🎨 Tus colores personalizados
 const colores = ["#3399ff", "#ff5733", "#28a745", "#f39c12", "#8e44ad", "#00bcd4", "#e91e63"];
 
 const FlightMap = () => {
   const [routes, setRoutes] = useState([]);
-  const theme = useTheme();
-  const isDark = theme.palette.mode === "dark";
-
-  // 🎨 Estilo para popups según el modo
-  useEffect(() => {
-    const styleId = 'leaflet-popup-custom';
-    let styleTag = document.getElementById(styleId);
-
-    const popupBg = isDark ? "#141b2d" : "#ffffff";
-    const popupText = isDark ? "#f0f0f0" : "#111111";
-    const popupTip = isDark ? "#1c1c1c" : "#eeeeee";
-
-    const css = `
-      .leaflet-container .leaflet-popup-content-wrapper {
-        background-color: ${popupBg} !important;
-        color: ${popupText} !important;
-        border-radius: 8px !important;
-        box-shadow: 0 0 10px rgba(0,0,0,0.5) !important;
-      }
-      .leaflet-container .leaflet-popup-tip {
-        background-color: ${popupTip} !important;
-      }
-    `;
-
-    if (!styleTag) {
-      styleTag = document.createElement('style');
-      styleTag.id = styleId;
-      document.head.appendChild(styleTag);
-    }
-
-    styleTag.innerHTML = css;
-  }, [isDark]);
 
   useEffect(() => {
+    document.title = "Geography Chart - Skylar";
     const fetchRoutes = async () => {
       try {
         const res = await fetch("http://localhost:3001/api/rutas-mapa?year=2024&minPassengers=3000");
@@ -59,6 +27,7 @@ const FlightMap = () => {
         console.error("Error cargando rutas del mapa:", err);
       }
     };
+
     fetchRoutes();
   }, []);
 
@@ -104,22 +73,21 @@ const FlightMap = () => {
               <div>
                 <ul style={{ paddingLeft: "1em" }}>
                   {airport.departures.map((r, i) => (
-                    <li key={i}>🛫 {r.from} → {r.to}</li>
+                    <li key={i}>🛫 {r.from} 🠮 {r.to}</li>
                   ))}
                 </ul>
                 <ul style={{ paddingLeft: "1em" }}>
                   {airport.arrivals.map((r, i) => (
-                    <li key={i}>🛬 {r.from} → {r.to}</li>
+                    <li key={i}>🛬 {r.from} 🠮 {r.to}</li>
                   ))}
                 </ul>
-                <div><strong>Total salidas:</strong> {airport.departures.length}</div>
-                <div><strong>Total llegadas:</strong> {airport.arrivals.length}</div>
+                <div><strong>Total salidas:</strong> 🛫 {airport.departures.length}</div>
+                <div><strong>Total llegadas:</strong> 🛬 {airport.arrivals.length}</div>
               </div>
             </Popup>
           </Marker>
         ))}
 
-        {/* 🚀 Rutas de vuelo con colores personalizados */}
         {routes.map((route, idx) => {
           const from = [parseFloat(route.lat1), parseFloat(route.lon1)];
           const to = [parseFloat(route.lat2), parseFloat(route.lon2)];
@@ -130,8 +98,8 @@ const FlightMap = () => {
               pathOptions={{
                 color: colores[idx % colores.length],
                 weight: 4,
-                opacity: isDark ? 0.7 : 0.9,
-                dashArray: "6, 10"
+                opacity: 0.8,
+                dashArray: "5, 10",
               }}
             />
           );

@@ -24,7 +24,7 @@ const FlightMap = () => {
     const styleId = 'leaflet-popup-custom';
     let styleTag = document.getElementById(styleId);
 
-    const popupBg = isDark ? "#141b2d" : "#ffffff";
+    const popupBg = isDark ? "#2c2c2c" : "#ffffff";
     const popupText = isDark ? "#f0f0f0" : "#111111";
     const popupTip = isDark ? "#1c1c1c" : "#eeeeee";
 
@@ -33,7 +33,7 @@ const FlightMap = () => {
         background-color: ${popupBg} !important;
         color: ${popupText} !important;
         border-radius: 8px !important;
-        box-shadow: 0 0 10px rgba(0,0,0,0.5) !important;
+        box-shadow: 0 0 10px rgba(0,0,0,0.4) !important;
       }
       .leaflet-container .leaflet-popup-tip {
         background-color: ${popupTip} !important;
