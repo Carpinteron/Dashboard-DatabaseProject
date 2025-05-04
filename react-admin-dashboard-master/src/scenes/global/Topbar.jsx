@@ -29,7 +29,7 @@ const Topbar = () => {
  
 
   return (
-    <Box display="flex" justifyContent="center" gap={2} p={2}>
+    <Box display="flex" justifyContent="right" gap={2} p={2}>
       {/* SEARCH BAR */}
       
 
@@ -46,12 +46,12 @@ const Topbar = () => {
         <IconButton>
           <RefreshOutlinedIcon />
         </IconButton>
-        <IconButton>
+        {/*<IconButton>
           <SettingsOutlinedIcon />
         </IconButton>
         <IconButton>
           <PersonOutlinedIcon />
-        </IconButton>
+        </IconButton>*/}
       </Box>
     </Box>
   );

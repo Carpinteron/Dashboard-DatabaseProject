@@ -25,7 +25,6 @@ const Dashboard = () => {
 const [recentFlights, setRecentFlights] = useState([]);
 
 useEffect(() => {
-  document.title = "Skylar";
   fetch("http://localhost:3001/api/lista-vuelos")
     .then((res) => res.json())
     .then((data) => setRecentFlights(data))
@@ -229,7 +228,7 @@ useEffect(() => {
           backgroundColor={colors.primary[400]}
           padding="10px"
         >
-          Mapa
+          Vuelos Historicos con N Pasajeros
           <Box height="260px">
             <GeographyChart isDashboard={true} />
           </Box>
