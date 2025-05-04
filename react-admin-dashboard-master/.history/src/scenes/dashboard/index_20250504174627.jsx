@@ -24,53 +24,12 @@ const Dashboard = () => {
   //Para los ultimos vuelos
 const [recentFlights, setRecentFlights] = useState([]);
 
-const [totalvuelos, setTotalVuelos] = useState(0);
-const [avgdistancia, setAvgDistancia] = useState(0);
-
 useEffect(() => {
   fetch("http://localhost:3001/api/lista-vuelos")
     .then((res) => res.json())
     .then((data) => setRecentFlights(data))
     .catch((error) => console.error("Error al obtener vuelos recientes:", error));
 }, []);
-
-//Para el total de vuelos
-useEffect(() => {
-  const fetchTotalVuelos = async () => {
-    try {
-      const res = await fetch(`http://localhost:3001/api/infogeneral1`);
-      const data = await res.json(); 
-      if (data.success) { 
-        setTotalVuelos(data.data.totalvuelos);
-      } else {
-        console.error('Error en la respuesta:', data.message);
-      }
-    } catch (error) {
-      console.error("Error al obtener el total de vuelos:", error);
-    }
-  };
-  fetchTotalVuelos(); 
-}, []);
-
-
-//Para la distancia promedio
-useEffect(() => {
-  const fetchAvgDistancia = async () => {
-    try {
-      const res = await fetch(`http://localhost:3001/api/infogeneral2`);
-      const data = await res.json(); 
-      if (data.success) {
-        setAvgDistancia(data.data.avgdistancia); 
-      } else {
-        console.error('Error en la respuesta:', data.message);
-      }
-    } catch (error) {
-      console.error("Error al obtener la distancia promedio:", error);
-    }
-  };
-  fetchAvgDistancia();
-}, []);
-
   return (
     <Box m="20px">
       {/* HEADER */}
@@ -172,10 +131,10 @@ useEffect(() => {
           justifyContent="center"
         >
           <StatBox
-            title={totalvuelos ||"Cargando..."} 
-            subtitle="Total de vuelos registrados"
-            progress=""
-            increase=""
+            title="12,361"
+            subtitle="Emails Sent"
+            progress="0.75"
+            increase="+14%"
             icon={
               <EmailIcon
                 sx={{ color: colors.greenAccent[600], fontSize: "26px" }}
@@ -191,10 +150,10 @@ useEffect(() => {
           justifyContent="center"
         >
           <StatBox
-            title={avgdistancia ||"Cargando..."} 
-            subtitle="Promedio de distancia recorrida"
-            progress=""
-            increase=""
+            title="431,225"
+            subtitle="Sales Obtained"
+            progress="0.25"
+            increase="+21%"
             icon={
               <PointOfSaleIcon
                 sx={{ color: colors.greenAccent[600], fontSize: "26px" }}

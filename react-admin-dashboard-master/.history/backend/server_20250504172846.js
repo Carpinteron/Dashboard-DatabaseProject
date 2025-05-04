@@ -277,7 +277,7 @@ app.get('/api/rutas-populares', async (req, res) => {
 
   //mapa dos
    // Ruta: Rutas para el mapa
-   app.get('/api/rutas-mapa2', async (req, res) => {
+   app.get('/api/rutas-mapa4', async (req, res) => {
     const fecha = req.query.fecha || new Date().toISOString().split('T')[0];;
     const airportOriginIataCode = req.query.airportOriginIataCode || 'JFK'; // Cambia esto por el código IATA del aeropuerto de origen que desees
   
@@ -325,55 +325,6 @@ app.get('/api/rutas-populares', async (req, res) => {
   });
 
   
-// 6. Información general (total de vuelos)
-app.get('/api/infogeneral1', async (req, res) => {
-  try {
-    const result = await pool.request().query(`
-      select count(*) as totalvuelos
-      from Flights_US f
-    `);
-
-    const rows = result.recordset;
-    const processedData = rows.map(r => ({
-    totalvuelos: r.totalvuelos
-    }));
-
-    res.json({
-      success: true,
-      data: {
-      totalvuelos: result.recordset[0].totalvuelos
-      }
-    });
-  } catch (err) {
-    console.error("Error al obtener el total de vuelos:", err.message);
-    res.status(500).send("Error interno del servidor");
-  }
-});
-
-// 7. Información general (distancia promedio
-app.get('/api/infogeneral2', async (req, res) => {
-  try {
-    const query = fs.readFileSync("./Queries/queries_franja.sql", "utf8");
-    const result = await pool.request().query(query);
-
-    const rows = result.recordset;
-    const processedData = rows.map(r => ({
-    avgdistancia: r.avgdistancia
-    }));
-
-    res.json({
-      success: true,
-      data: {
-      avgdistancia: result.recordset[0].avgdistancia
-      }
-    });
-  } catch (err) {
-    console.error("Error al obtener la distancia promedio:", err.message);
-    res.status(500).send("Error interno del servidor");
-  }
-});
-
-
 // Arranca el servidor
 app.listen(port, () => {
   console.log(`🚀 Servidor corriendo en http://localhost:${port}`);

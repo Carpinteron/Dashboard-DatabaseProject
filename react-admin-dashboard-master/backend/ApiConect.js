@@ -1,6 +1,6 @@
 const axios = require('axios'); //npm install axios --legacy-peer-deps
 const sql = require('mssql');
-
+//import axios from 'axios'; //npm install axios --legacy-peer-deps
 const config = {
     user: 'adminsql', // better stored in an app setting such as process.env.DB_USER
     password: 'NIPS-lab#1', // better stored in an app setting such as process.env.DB_PASSWORD
@@ -14,18 +14,6 @@ const config = {
         encrypt: true
     }
 }
-
-let airportOriginIataCode='LAX' // Código IATA del aeropuerto de origen
-let fecharequest='2024-10-01' // YYYY-MM-DD
-
-const options = {
-    method: 'GET',
-    url: 'https://aerodatabox.p.rapidapi.com/airports/iata/'+airportOriginIataCode+'/stats/routes/daily/'+fecharequest,
-    headers: {
-      'x-rapidapi-key': '06b34d4afcmsh5cac558248f45d5p190369jsn37aee013c529',
-      'x-rapidapi-host': 'aerodatabox.p.rapidapi.com'
-    }
-  };
 
   async function saveFilteredFlightsToDatabase(flights) {
     let pool; // Declarar pool aquí para que esté accesible en el bloque finally
@@ -152,13 +140,23 @@ function calcularDistancia(lat1, lon1, lat2, lon2) {
     };
   }
 
-
-// Consumir la API y procesar los datos
-axios.request(options).then(response => {
-    const flights = response.data.routes; // Obtener las rutas de la API
-    console.log('Datos obtenidos de la API:)');
-
-    saveFilteredFlightsToDatabase(flights); // Guardar los vuelos filtrados en la base de datos
-}).catch(error => {
-    console.error('Error al consumir la API:', error);
-});
+export async function Api_lol(fecha,IataCode) {
+    let airportOriginIataCode=IataCode // Código IATA del aeropuerto de origen
+    let fecharequest=fecha // YYYY-MM-DD  
+    const options = {
+        method: 'GET',
+        url: 'https://aerodatabox.p.rapidapi.com/airports/iata/'+airportOriginIataCode+'/stats/routes/daily/'+fecharequest,
+        headers: {
+          'x-rapidapi-key': '06b34d4afcmsh5cac558248f45d5p190369jsn37aee013c529',
+          'x-rapidapi-host': 'aerodatabox.p.rapidapi.com'
+        }
+    };
+    // Consumir la API y procesar los datos
+    axios.request(options).then(response => {
+        const flights = response.data.routes; // Obtener las rutas de la API
+        console.log('Datos obtenidos de la API:)');
+        saveFilteredFlightsToDatabase(flights); // Guardar los vuelos filtrados en la base de datos
+    }).catch(error => {
+        console.error('Error al consumir la API:', error);
+    });
+}
