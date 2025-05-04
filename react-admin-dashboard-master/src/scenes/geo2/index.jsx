@@ -18,18 +18,18 @@ const Geography2 = () => {
   return (
     <Box m="20px">
       <Header title={`no se que`} subtitle={`Geography Chart | Fecha: ${fecha || hoy}`} />
-      <Box display="flex" backgroundColor={colors.primary[400]} borderRadius="2px" p={1} mb={2}>
+      <Box display="inline-block" backgroundColor={colors.primary[400]} borderRadius="7px" p={0} mb={1}>
         <InputBase
           type="date" // Tipo nativo
-          sx={{ ml: 2, flex: 10, color: "white" }}
+          sx={{ ml: 2, flex: 1, color: "white" }}
           value={fecha}
           onChange={(e) => setFecha(e.target.value)}
           InputLabelProps={{ shrink: true }}
           inputProps={{ max: hoy }} // Limitar la fecha máxima a hoy
         />
       </Box>
-
-      <Box display="flex" backgroundColor={colors.primary[400]} borderRadius="2px">
+      
+      <Box display="flex" backgroundColor={colors.primary[400]} borderRadius="10px">
         <InputBase
           sx={{ ml: 2, flex: 1 }}
           placeholder="Ingrese Codigo IATA de Aeropuerto de Origen"
