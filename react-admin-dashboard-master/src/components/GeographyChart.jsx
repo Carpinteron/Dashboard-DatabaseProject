@@ -14,7 +14,7 @@ const airplaneIcon = new L.Icon({
 // 🎨 Tus colores personalizados
 const colores = ["#3399ff", "#ff5733", "#28a745", "#f39c12", "#8e44ad", "#00bcd4", "#e91e63"];
 
-const FlightMap = () => {
+const FlightMap = ({year,npasag}) => {
   const [routes, setRoutes] = useState([]);
   const theme = useTheme();
   const isDark = theme.palette.mode === "dark";
@@ -52,15 +52,29 @@ const FlightMap = () => {
   useEffect(() => {
     const fetchRoutes = async () => {
       try {
-        const res = await fetch("http://localhost:3001/api/rutas-mapa?year=2024&minPassengers=3000");
+        const res = await fetch(`http://localhost:3001/api/rutas-mapa?year=${year}&minPassengers=${npasag}`);
         const data = await res.json();
         setRoutes(data);
       } catch (err) {
         console.error("Error cargando rutas del mapa:", err);
       }
     };
-    fetchRoutes();
-  }, []);
+    const fetchRoutes2 = async () => {
+      try {
+        const res = await fetch(`http://localhost:3001/api/rutas-mapa?year=${year}&minPassengers=${npasag}`);
+        const data = await res.json();
+        setRoutes(data);
+      } catch (error) {
+        console.error("Error al cargar datos del backend:", error);
+      }
+    };
+
+    if (year && npasag) {
+      fetchRoutes();
+    }else{
+      fetchRoutes2();
+    }
+  }, [year, npasag]); // Dependencias para actualizar el mapa cuando cambien los años o el número de pasajeros.
 
   const airportData = {};
   routes.forEach(route => {

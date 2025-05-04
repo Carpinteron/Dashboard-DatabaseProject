@@ -210,8 +210,8 @@ app.get('/api/rutas-populares', async (req, res) => {
   });
   // Ruta: Rutas para el mapa
   app.get('/api/rutas-mapa', async (req, res) => {
-      const year = parseInt(req.query.year) || 2021;
-      const minPassengers = parseInt(req.query.minPassengers) || 5000;
+      const year = parseInt(req.query.year) || 2024;
+      const minPassengers = parseInt(req.query.minPassengers) || 3000;
     
       try {
         const result = await pool.request().query(`
