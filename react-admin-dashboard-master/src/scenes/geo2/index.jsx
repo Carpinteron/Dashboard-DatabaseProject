@@ -5,6 +5,7 @@ import Header from "../../components/Header";
 import { tokens } from "../../theme";
 import { useState } from "react";
 import { InputBase } from "@mui/material";
+//import { HolidayVillageTwoTone } from "@mui/icons-material";
 
 const Geography2 = () => {
   const theme = useTheme();
@@ -22,7 +23,7 @@ const Geography2 = () => {
         <InputBase
           type="date" // Tipo nativo
           sx={{ ml: 2, flex: 1, color: "white" }}
-          value={fecha}
+          value={fecha || hoy}
           onChange={(e) => setFecha(e.target.value)}
           InputLabelProps={{ shrink: true }}
           inputProps={{ max: hoy }} // Limitar la fecha máxima a hoy

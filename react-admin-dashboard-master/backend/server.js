@@ -1,17 +1,18 @@
 const express = require("express");
 const sql = require("mssql");
 const cors = require("cors");
+const WebSocket = require("ws");
 
 const app = express();
 const port = 3001;
 app.use(cors());
 app.use(express.json());
 
-// Configuración SQL Server - AQUI PONE EL LOCAL <3
+// Configuración SQL Server
 const config = {
   user: "sqluser",
   password: "NIPS-lab#1",
-  server: "Localhost",
+  server: "localhost",
   database: "Flights_Data",
   port: 1433,
   authentication: { type: "default" },
@@ -30,7 +31,6 @@ async function connectToDatabase() {
   }
 }
 connectToDatabase();
-
 
 
 // 1. Rutas populares por año barchart apilado
@@ -210,7 +210,7 @@ app.get('/api/rutas-populares', async (req, res) => {
     }
   });
   // Ruta: Rutas para el mapa
-  app.get('/api/rutas-mapa', async (req, res) => {
+  app.get('/api/rutas-mapa2', async (req, res) => {
       const year = parseInt(req.query.year) || 2024;
       const minPassengers = parseInt(req.query.minPassengers) || 3000;
     
@@ -271,6 +271,55 @@ app.get('/api/rutas-populares', async (req, res) => {
       res.json(rows);
     } catch (err) {
       console.error("Error en lista-vuelos:", err.message);
+      res.status(500).send("Error interno del servidor");
+    }
+  });
+
+  //mapa dos
+   // Ruta: Rutas para el mapa
+   app.get('/api/rutas-mapa4', async (req, res) => {
+    const fecha = req.query.fecha || new Date().toISOString().split('T')[0];;
+    const airportOriginIataCode = req.query.airportOriginIataCode || 'JFK'; // Cambia esto por el código IATA del aeropuerto de origen que desees
+  
+    try {
+      const result = await pool.request().query(`
+        SELECT  
+          city1,
+          city2,
+          airport1,
+          airport2,
+          latitude_airport1,
+          longitude_airport1,
+          latitude_airport2,
+          longitude_airport2,
+          SUM(passengers) AS total_passengers
+        FROM Flights_US
+        WHERE date = ${fecha}
+        GROUP BY  
+          city1, city2,
+          airport1, airport2,  
+          latitude_airport1, longitude_airport1,  
+          latitude_airport2, longitude_airport2
+        HAVING airport1 =${airportOriginIataCode};
+      `);
+  
+      const rows = result.recordset;
+  
+      const processedData = rows.map(r => ({
+        from: r.airport1,
+        to: r.airport2,
+        cityFrom: r.city1,
+        cityTo: r.city2,
+        lat1: r.latitude_airport1,
+        lon1: r.longitude_airport1,
+        lat2: r.latitude_airport2,
+        lon2: r.longitude_airport2,
+        passengers: r.total_passengers
+      }));
+  
+      res.json(processedData);
+    } catch (err) {
+      console.error("Error en rutas-mapa:", err.message);
       res.status(500).send("Error interno del servidor");
     }
   });
