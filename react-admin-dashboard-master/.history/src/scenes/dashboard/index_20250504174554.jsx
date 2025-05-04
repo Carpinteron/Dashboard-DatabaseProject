@@ -67,7 +67,7 @@ useEffect(() => {
                 fontWeight="bold"
                 color={colors.greenAccent[300]}
               >
-                Tendencia de Vuelos y Tarifas Promedio Anuales
+                Tendencia de Vuelos y Tarifas promedio Anuales
               </Typography>
             </Box>
 
