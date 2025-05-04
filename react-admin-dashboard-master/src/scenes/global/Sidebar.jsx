@@ -16,6 +16,7 @@ import PieChartOutlineOutlinedIcon from "@mui/icons-material/PieChartOutlineOutl
 import TimelineOutlinedIcon from "@mui/icons-material/TimelineOutlined";
 import MenuOutlinedIcon from "@mui/icons-material/MenuOutlined";
 import MapOutlinedIcon from "@mui/icons-material/MapOutlined";
+import AirplanemodeActiveIcon from '@mui/icons-material/AirplanemodeActive';
 
 const Item = ({ title, to, icon, selected, setSelected }) => {
   const theme = useTheme();
@@ -103,7 +104,6 @@ const Sidebar = () => {
                   fontWeight="bold"
                   sx={{ m: "10px 0 0 0" }}
                 >
-
                 </Typography>
                 <Typography variant="h5" color={colors.greenAccent[500]}>
                 </Typography>
@@ -134,7 +134,6 @@ const Sidebar = () => {
               selected={selected}
               setSelected={setSelected}
             />
-
             <Typography
               variant="h6"
               color={colors.grey[300]}
@@ -187,9 +186,9 @@ const Sidebar = () => {
               setSelected={setSelected}
             />
               <Item
-              title="Geography Chart 2"
+              title="Aereopuerto Origen"
               to="/geo2"
-              icon={<HelpOutlineOutlinedIcon />}
+              icon={< AirplanemodeActiveIcon/>}
               selected={selected}
               setSelected={setSelected}
             />
