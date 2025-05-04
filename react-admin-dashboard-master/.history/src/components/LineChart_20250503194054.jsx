@@ -9,7 +9,7 @@ const LineChart = ({ year1l,year2l, isDashboard = false }) => {
   const [data, setData] = useState([]);
   const fixedColors = ["#4FC3F7", "#81C784", "#BA68C8", "#FFB74D", "#90A4AE"];
   useEffect(() => {
-    document.title = "Line Chart - Skylar";
+    document.title = "Pie Chart";
     const fetchData = async () => {
       try {
         const res = await fetch(`http://localhost:3001/api/precios-promedio?year1=${year1l}&year2=${year2l}`);

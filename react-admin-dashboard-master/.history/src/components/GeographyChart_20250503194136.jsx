@@ -17,7 +17,7 @@ const FlightMap = () => {
   const [routes, setRoutes] = useState([]);
 
   useEffect(() => {
-    document.title = "Geography Chart - Skylar";
+    document.title = "Geogr Chart";
     const fetchRoutes = async () => {
       try {
         const res = await fetch("http://localhost:3001/api/rutas-mapa?year=2024&minPassengers=3000");

@@ -25,7 +25,7 @@ const Dashboard = () => {
 const [recentFlights, setRecentFlights] = useState([]);
 
 useEffect(() => {
-  document.title = "Skylar";
+  document.title = "Bar Chart";
   fetch("http://localhost:3001/api/lista-vuelos")
     .then((res) => res.json())
     .then((data) => setRecentFlights(data))

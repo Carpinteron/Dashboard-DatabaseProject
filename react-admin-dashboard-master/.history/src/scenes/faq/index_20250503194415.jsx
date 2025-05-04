@@ -6,11 +6,11 @@ import AccordionDetails from "@mui/material/AccordionDetails";
 import Typography from "@mui/material/Typography";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import { tokens } from "../../theme";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 const FAQ = () => {
   useEffect(() => {
-      document.title = "Proposito - Skylar";
+      document.title = "Team";
     }, []);
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);

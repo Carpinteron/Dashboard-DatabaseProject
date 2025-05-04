@@ -10,7 +10,7 @@ import { useEffect } from "react";
 
 const FAQ = () => {
   useEffect(() => {
-      document.title = "Proposito - Skylar";
+      document.title = "Proposito";
     }, []);
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);

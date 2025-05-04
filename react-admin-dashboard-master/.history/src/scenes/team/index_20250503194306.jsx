@@ -10,7 +10,7 @@ import { useEffect } from "react";
 
 const Team = () => {
   useEffect(() => {
-    document.title = "Team - Skylar";
+    document.title = "Team";
   }, []);
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);

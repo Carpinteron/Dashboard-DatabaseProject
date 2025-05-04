@@ -11,8 +11,8 @@ const BarChart = ({ year1b, year2b, isDashboard = false }) => {
   const [data, setData] = useState([]);
 
   useEffect(() => {
-    document.title = "Bar Chart - Skylar";
     const fetchData = async () => {
+      document.title = "Dashboard | Sky Project";
       try {
         const res = await fetch(`http://localhost:3001/api/rutas-populares?year1=${year1b||2020}&year2=${year2b||2025}`);
         const json = await res.json();

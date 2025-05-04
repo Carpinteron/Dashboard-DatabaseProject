@@ -9,7 +9,7 @@ const PieChart = () => {
   const [data, setData] = useState([]);
 
   useEffect(() => {
-    document.title = "Pie Chart - Skylar";
+    document.title = "Pie Chart";
     const fetchTopCities = async () => {
       try {
         const response = await fetch("http://localhost:3001/api/top-ciudades");
