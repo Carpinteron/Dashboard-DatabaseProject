@@ -1,34 +1,35 @@
 const express = require("express");
 const sql = require("mssql");
 const cors = require("cors");
-const WebSocket = require("ws");
 
 const app = express();
 const port = 3001;
 app.use(cors());
 app.use(express.json());
 
-// Configuración SQL Server
+// Configuración SQL Server - AQUI PONE EL LOCAL
 const config = {
-  user: "adminsql",
+  user: "sqluser",
   password: "NIPS-lab#1",
-  server: "servidorskysql.database.windows.net",
-  database: "FlightsData",
+  server: "Localhost",
+  database: "Flights_Data",
   port: 1433,
   authentication: { type: "default" },
-  options: { encrypt: true }
+  options: { encrypt: false, trustServerCertificate: true },
 };
 
 // Conexión a SQL Server
 let pool;
-sql.connect(config)
-  .then((p) => {
-    pool = p;
-    console.log("✅ Conectado a SQL Server");
-  })
-  .catch((err) => {
+async function connectToDatabase() {
+  try {
+    pool = await sql.connect(config);
+    console.log("✅ Conectado a SQL Server local");
+  } catch (err) {
     console.error("❌ Error de conexión:", err.message);
-  });
+    process.exit(1); // Termina la aplicación si no puede conectar
+  }
+}
+connectToDatabase();
 
 
 
