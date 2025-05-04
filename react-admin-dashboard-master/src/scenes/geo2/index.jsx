@@ -1,5 +1,6 @@
 import { Box, useTheme } from "@mui/material";
 import GeographyChart2 from "../../components/GeographyChart2";
+import PieChart2 from "../../components/PieChart2";
 import Header from "../../components/Header";
 import { tokens } from "../../theme";
 import { useState } from "react";
@@ -13,11 +14,11 @@ const Geography2 = () => {
   const [npasag, setPasag] = useState("");
   const [fecha, setFecha] = useState(hoy);
 
-// Ejemplo: "2023-08-28"
+  // Ejemplo: "2023-08-28"
   return (
     <Box m="20px">
       <Header title={`no se que`} subtitle={`Geography Chart | Fecha: ${fecha || hoy}`} />
-      <Box display="flex" backgroundColor={colors.primary[400]} borderRadius="2px" p={1}>
+      <Box display="flex" backgroundColor={colors.primary[400]} borderRadius="2px" p={1} mb={2}>
         <InputBase
           type="date" // Tipo nativo
           sx={{ ml: 2, flex: 10, color: "white" }}
@@ -37,11 +38,24 @@ const Geography2 = () => {
         />
       </Box>
       <Box
-        height="75vh"
-        border={`1px solid ${colors.grey[100]}`}
-        borderRadius="4px"
-      >
-        <GeographyChart2 year={fecha} npasag={npasag} />
+        display={"flex"}
+        gap="6px"
+        height={"75vh"}>
+        <Box
+          flex={7}
+          //height="75vh"
+          border={`1px solid ${colors.grey[100]}`}
+          borderRadius="4px"
+        >
+          <GeographyChart2 year={fecha} npasag={npasag} />
+        </Box>
+        <Box
+          flex={3}
+          //height="75vh"
+          border={`1px solid ${colors.grey[100]}`}
+          borderRadius="4px">
+          <PieChart2 />
+        </Box>
       </Box>
     </Box>
   );
