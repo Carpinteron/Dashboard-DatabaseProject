@@ -277,7 +277,7 @@ app.get('/api/rutas-populares', async (req, res) => {
 
   //mapa dos
    // Ruta: Rutas para el mapa
-   app.get('/api/rutas-mapa2', async (req, res) => {
+   app.get('/api/rutas-mapa4', async (req, res) => {
     const fecha = req.query.fecha || new Date().toISOString().split('T')[0];;
     const airportOriginIataCode = req.query.airportOriginIataCode || 'JFK'; // Cambia esto por el código IATA del aeropuerto de origen que desees
   
