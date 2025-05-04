@@ -11,13 +11,13 @@ const Geography2 = () => {
   const colors = tokens(theme.palette.mode);
   // Estado para los años
   const hoy = new Date().toISOString().split('T')[0];
-  const [npasag, setPasag] = useState("");
+  const [orig, setPasag] = useState("");
   const [fecha, setFecha] = useState(hoy);
 
   // Ejemplo: "2023-08-28"
   return (
     <Box m="20px">
-      <Header title={`no se que`} subtitle={`Geography Chart | Fecha: ${fecha || hoy}`} />
+      <Header title={`Destinos desde el aerepuerto ${orig||"LAX"}`} subtitle={`Geography Chart | Fecha: ${fecha || hoy}`} />
       <Box display="inline-block" backgroundColor={colors.primary[400]} borderRadius="7px" p={0} mb={1}>
         <InputBase
           type="date" // Tipo nativo
@@ -33,7 +33,7 @@ const Geography2 = () => {
         <InputBase
           sx={{ ml: 2, flex: 1 }}
           placeholder="Ingrese Codigo IATA de Aeropuerto de Origen"
-          value={npasag}
+          value={orig}
           onChange={(e) => setPasag(e.target.value)}
         />
       </Box>
@@ -47,7 +47,7 @@ const Geography2 = () => {
           border={`1px solid ${colors.grey[100]}`}
           borderRadius="4px"
         >
-          <GeographyChart2 year={fecha} npasag={npasag} />
+          <GeographyChart2 year={fecha} npasag={orig} />
         </Box>
         <Box
           flex={3}
