@@ -15,33 +15,32 @@ const Team = () => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
   const columns = [
-    { field: "id", headerName: "ID" },
     {
       field: "name",
-      headerName: "Name",
+      headerName: "Nombre",
       flex: 1,
       cellClassName: "name-column--cell",
     },
     {
       field: "age",
-      headerName: "Age",
+      headerName: "Edad",
       type: "number",
       headerAlign: "left",
       align: "left",
     },
     {
       field: "phone",
-      headerName: "Phone Number",
+      headerName: "Telefono",
       flex: 1,
     },
     {
       field: "email",
-      headerName: "Email",
+      headerName: "Correo",
       flex: 1,
     },
     {
       field: "accessLevel",
-      headerName: "Access Level",
+      headerName: "Nivel de Acceso",
       flex: 1,
       renderCell: ({ row: { access } }) => {
         return (
@@ -63,7 +62,7 @@ const Team = () => {
             {access === "admin" && <AdminPanelSettingsOutlinedIcon />}
             {access === "manager" && <SecurityOutlinedIcon />}
             {access === "user" && <LockOpenOutlinedIcon />}
-            <Typography color={colors.grey[100]} sx={{ ml: "5px" }}>
+            <Typography color={colors.grey[100]} sx={{ ml: "8px" }}>
               {access}
             </Typography>
           </Box>
@@ -74,7 +73,7 @@ const Team = () => {
 
   return (
     <Box m="20px">
-      <Header title="TEAM" subtitle="Meeting the Team Members" />
+      <Header title="EQUIPO" subtitle="Conoce a los Miembros del Equipo" />
       <Box
         m="40px 0 0 0"
         height="75vh"
@@ -99,12 +98,21 @@ const Team = () => {
             borderTop: "none",
             backgroundColor: colors.blueAccent[700],
           },
-          "& .MuiCheckbox-root": {
-            color: `${colors.greenAccent[200]} !important`,
-          },
+          
         }}
       >
-        <DataGrid checkboxSelection rows={mockDataTeam} columns={columns} />
+        <DataGrid rows={mockDataTeam} columns={columns}
+         sx={{
+          fontSize: '15px', // Tamaño base (ajusta según necesites)
+          '& .MuiDataGrid-cell': {
+            fontSize: 'inherit', // Hereda el tamaño de la tabla
+          },
+          '& .MuiDataGrid-columnHeaders': {
+            fontSize: '16px', // Tamaño para encabezados (puede ser diferente)
+          }
+        }}
+        
+        />
       </Box>
     </Box>
   );

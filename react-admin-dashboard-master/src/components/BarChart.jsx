@@ -56,8 +56,8 @@ const BarChart = ({ year1b, year2b, isDashboard = false }) => {
         },
         legends: { text: { fill: colors.grey[100] } },
       }}
-      margin={{ top: 50, right: 130, bottom: 50, left: 60 }}
-      padding={0.3}
+      margin={{ top: 50, right: 130, bottom: 50, left: 70 }}
+      padding={0.5}
       valueScale={{ type: "linear" }}
       indexScale={{ type: "band", round: true }}
       colors={{ scheme: "nivo" }}
@@ -74,11 +74,11 @@ const BarChart = ({ year1b, year2b, isDashboard = false }) => {
       }}
       axisLeft={{
         tickSize: 5,
-        tickPadding: 5,
+        tickPadding: 10,
         tickRotation: 0,
         legend: isDashboard ? undefined : "Passengers (Millions)",
         legendPosition: "middle",
-        legendOffset: -40,
+        legendOffset: -50,
       }}
       enableLabel={false}
       labelSkipWidth={12}
