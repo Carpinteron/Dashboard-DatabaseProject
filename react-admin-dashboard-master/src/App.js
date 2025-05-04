@@ -11,6 +11,7 @@ import './index.css';
 import Bar from "./scenes/bar";
 import Bar2 from "./scenes/bar2";
 import Form from "./scenes/form";
+import Geography2 from "./scenes/geo2";
 import Line from "./scenes/line";
 import Pie from "./scenes/pie";
 import FAQ from "./scenes/faq";
@@ -36,6 +37,7 @@ function App() {
               <Route path="/team" element={<Team />} />
               <Route path="/form" element={<Form />} />
               <Route path="/bar" element={<Bar />} />
+              <Route path="/geo2" element={<Geography2 />} />
               <Route path="/bar2" element={<Bar2 />} />
               <Route path="/pie" element={<Pie />} />
               <Route path="/line" element={<Line />} />
