@@ -16,7 +16,8 @@ import ProgressCircle from "../../components/ProgressCircle";
 import { useEffect, useState } from "react";
 import AirplaneTicketIcon from '@mui/icons-material/AirplaneTicket';
 import RouteIcon from '@mui/icons-material/Route';
-
+import LuggageIcon from '@mui/icons-material/Luggage';
+import MonetizationOnIcon from '@mui/icons-material/MonetizationOn';
 
 
 
