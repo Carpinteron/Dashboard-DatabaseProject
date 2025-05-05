@@ -21,7 +21,7 @@ const LineChart = ({ isDashboard = false }) => {
 
         const formattedData = [
           {
-            id: "Cantidad",
+            id: "Cantidad de Vuelos",
             data: ultimos5Anios.map((item) => ({
               x: item.Año.toString(),
               y: item.Cant_Vuelos,
