@@ -356,31 +356,6 @@ app.get('/api/top-ciudades', async (req, res) => {
       res.status(500).send("Error interno del servidor");
     }
   });
-
-  // 4. Top ciudades salidas (pie chart)
-app.get('/api/top-ciudades-origen', async (req, res) => {
-  try {
-    const result = await pool.request().query(`
-        select top 5 f.city1, sum(f.passengers) as Cant_Pasajeros
-        from Flights_US f
-        where f.city1!=''
-        group by f.city1
-        order by Cant_Pasajeros desc
-      `); // Tu SQL para topCitiesPieData
-      const rows = result.recordset;
-  
-      const processedData = rows.map(row => ({
-        id: row.city1,
-        label: row.city1,
-        value: row.Cant_Pasajeros
-      }));
-  
-      res.json(processedData);
-    } catch (err) {
-      console.error("Error en top ciudades:", err.message);
-      res.status(500).send("Error interno del servidor");
-    }
-  });
   // Ruta: Rutas para el mapa
   app.get('/api/rutas-mapa', async (req, res) => {
       const year = parseInt(req.query.year) || 2024;
