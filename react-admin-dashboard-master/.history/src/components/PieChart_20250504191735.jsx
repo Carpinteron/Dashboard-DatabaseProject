@@ -10,23 +10,18 @@ const PieChart = ({ tipo })  => {
 
   useEffect(() => {
     document.title = "Pie Chart - Skylar";
-    const fetchData = async () => {
+    const fetchTopCities = async () => {
       try {
-        const endpoint =
-          tipo === "salidas"
-            ? "http://localhost:3001/api/top-ciudades-origen"
-            : "http://localhost:3001/api/top-ciudades";
-
-        const response = await fetch(endpoint);
+        const response = await fetch("http://localhost:3001/api/top-ciudades");
         const result = await response.json();
         setData(result);
       } catch (error) {
-        console.error("Error al obtener los datos:", error);
+        console.error("Error al obtener los datos de top ciudades:", error);
       }
     };
 
-    fetchData();
-  }, [tipo]); // Se vuelve a ejecutar cada vez que cambia 'tipo'
+    fetchTopCities();
+  }, []);
 
   return (
     <ResponsivePie

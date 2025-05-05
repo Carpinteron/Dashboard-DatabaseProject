@@ -210,21 +210,21 @@ app.get('/api/rutas-populares', async (req, res) => {
     }
   });
 
-   // 4.1 Top ciudades origen
-   app.get('/api/top-ciudades-origen', async (req, res) => {
+   // 4.1 Top ciudades (ejemplo incompleto)
+   app.get('/api/top-ciudades', async (req, res) => {
     try {
       const result = await pool.request().query(`
-        select top 5 f.city1, sum(f.passengers) as Cant_Pasajeros
-        from Flights_US f
-        where f.city1!=''
-        group by f.city1
-        order by Cant_Pasajeros desc
+        SELECT TOP 5 f.city2, SUM(f.passengers) AS Cant_Pasajeros
+        FROM Flights_US f
+        WHERE f.city2 != ''
+        GROUP BY f.city2
+        ORDER BY Cant_Pasajeros DESC
       `); // Tu SQL para topCitiesPieData
       const rows = result.recordset;
   
       const processedData = rows.map(row => ({
-        id: row.city1,
-        label: row.city1,
+        id: row.city2,
+        label: row.city2,
         value: row.Cant_Pasajeros
       }));
   

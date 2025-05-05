@@ -14,8 +14,8 @@ const PieChart = ({ tipo })  => {
       try {
         const endpoint =
           tipo === "salidas"
-            ? "http://localhost:3001/api/top-ciudades-origen"
-            : "http://localhost:3001/api/top-ciudades";
+            ? "http://localhost:3001/api/top-ciudades"
+            : "http://localhost:3001/api/top-ciudades-origen";
 
         const response = await fetch(endpoint);
         const result = await response.json();

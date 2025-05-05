@@ -13,8 +13,8 @@ const PieChart = ({ tipo })  => {
     const fetchData = async () => {
       try {
         const endpoint =
-          tipo === "salidas"
-            ? "http://localhost:3001/api/top-ciudades-origen"
+          tipo === "visitada"
+            ? "http://localhost:3001/api/top-ciudades"
             : "http://localhost:3001/api/top-ciudades";
 
         const response = await fetch(endpoint);
