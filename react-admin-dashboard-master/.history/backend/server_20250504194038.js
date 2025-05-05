@@ -370,8 +370,8 @@ app.get('/api/top-ciudades-origen', async (req, res) => {
       const rows = result.recordset;
   
       const processedData = rows.map(row => ({
-        id: row.city1,
-        label: row.city1,
+        id: row.city2,
+        label: row.city2,
         value: row.Cant_Pasajeros
       }));
   
