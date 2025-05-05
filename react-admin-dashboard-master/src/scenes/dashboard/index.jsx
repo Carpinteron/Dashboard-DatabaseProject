@@ -18,16 +18,16 @@ import AirplaneTicketIcon from '@mui/icons-material/AirplaneTicket';
 import RouteIcon from '@mui/icons-material/Route';
 
 
-
-
 const Dashboard = () => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
   //Para los ultimos vuelos
 const [recentFlights, setRecentFlights] = useState([]);
-
+// info general
 const [totalvuelos, setTotalVuelos] = useState(0);
 const [avgdistancia, setAvgDistancia] = useState(0);
+const [totalaeropuertos, setTotalAeropuertos] = useState(0);
+const [avgprecio, setAvgPrecio] = useState(0);
 
 useEffect(() => {
   fetch("http://localhost:3001/api/lista-vuelos")
@@ -71,6 +71,40 @@ useEffect(() => {
     }
   };
   fetchAvgDistancia();
+}, []);
+
+// Para el total de aeropuertos
+useEffect(() => {
+  const fetchTotalAeropuertos = async () => {
+    try {
+      const res = await fetch(`http://localhost:3001/api/infogeneral3`);
+      const data = await res.json();
+      
+      if (data.success) {
+        setTotalAeropuertos(data.data.totalaeropuertos);
+      }
+    } catch (error) {
+      console.error("Error al obtener el total de aeropuertos:", error);
+    }
+  };
+  fetchTotalAeropuertos();
+}, []);
+
+// Para el precio promedio
+useEffect(() => {
+  const fetchAvgPrecio = async () => {
+    try {
+      const res = await fetch(`http://localhost:3001/api/infogeneral4`);
+      const data = await res.json();
+      
+      if (data.success) {
+        setAvgPrecio(data.data.avgprecio);
+      }
+    } catch (error) {
+      console.error("Error al obtener el precio promedio:", error);
+    }
+  };
+  fetchAvgPrecio();
 }, []);
 
   return (
@@ -212,10 +246,10 @@ useEffect(() => {
           justifyContent="center"
         >
           <StatBox
-            title="32,441"
-            subtitle="New Clients"
-            progress="0.30"
-            increase="+5%"
+            title="Total de aeropuertos registrados"
+            subtitle={totalaeropuertos ||"Cargando..."} 
+            progress=""
+            increase=""
             icon={
               <PersonAddIcon
                 sx={{ color: colors.greenAccent[600], fontSize: "26px" }}
@@ -231,10 +265,10 @@ useEffect(() => {
           justifyContent="center"
         >
           <StatBox
-            title="1,325,134"
-            subtitle="Traffic Received"
-            progress="0.80"
-            increase="+43%"
+            title="Precio promedio de los vuelos"
+            subtitle={"$"+avgprecio.toFixed(2)+" USD" ||"Cargando..."} 
+            progress=""
+            increase=""
             icon={
               <TrafficIcon
                 sx={{ color: colors.greenAccent[600], fontSize: "26px" }}
@@ -259,7 +293,7 @@ useEffect(() => {
             fontWeight="600"
             sx={{ padding: "30px 30px 0 30px" }}
           >
-            Sales Quantity
+        
           </Typography>
           <Box height="250px" mt="-20px">
             <BarChart isDashboard={true} />
@@ -271,7 +305,7 @@ useEffect(() => {
           backgroundColor={colors.primary[400]}
           padding="10px"
         >
-          Vuelos Historicos con N Pasajeros
+       
           <Box height="260px">
             <GeographyChart isDashboard={true} />
           </Box>
@@ -286,7 +320,7 @@ useEffect(() => {
             fontWeight="600"
             sx={{ padding: "30px 30px 0 30px" }}
           >
-            esto se cambia en el index de el dashboard
+           
           </Typography>
           <Box height="250px" mt="-20px">
             <BarChart2 isDashboard={true} />

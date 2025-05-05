@@ -515,7 +515,7 @@ app.get('/api/infogeneral1', async (req, res) => {
 app.get('/api/infogeneral2', async (req, res) => {
   try {
     const result = await pool.request().query(`
-      select avg(cast(nsmiles as float)) as avgdistancia
+      select avg(cast(f.nsmiles as float)) as avgdistancia
 from Flights_US f
     `);
 
@@ -527,6 +527,46 @@ from Flights_US f
     });
   } catch (err) {
     console.error("Error al obtener la distancia promedio:", err.message);
+    res.status(500).send("Error interno del servidor");
+  }
+});
+
+// 8. Información general (total de aeropuertos)
+app.get('/api/infogeneral3', async (req, res) => {
+  try {
+    const result = await pool.request().query(`
+      select count(distinct f.airport1) + count(distinct f.airport2) as totalaeropuertos
+from Flights_US f
+    `);
+
+    res.json({
+      success: true,
+      data: {
+        totalaeropuertos: result.recordset[0].totalaeropuertos
+      }
+    });
+  } catch (err) {
+    console.error("Error al obtener el total de aeropuertos:", err.message);
+    res.status(500).send("Error interno del servidor");
+  }
+});
+
+// 9. Información general (precio promedio)
+app.get('/api/infogeneral4', async (req, res) => {
+  try {
+    const result = await pool.request().query(`
+      select avg(cast(f.fare as float)) as avgprecio
+from Flights_US f
+    `);
+
+    res.json({
+      success: true,
+      data: {
+        avgprecio: result.recordset[0].avgprecio
+      }
+    });
+  } catch (err) {
+    console.error("Error al obtener el precio promedio:", err.message);
     res.status(500).send("Error interno del servidor");
   }
 });
