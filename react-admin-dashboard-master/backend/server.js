@@ -449,12 +449,14 @@ app.get('/api/lista-vuelos', async (req, res) => {
 //mapa dos
 // Ruta: Rutas para el mapa
 app.get('/api/rutas-mapa2', async (req, res) => {
-  const fecha = req.query.fecha || new Date().toISOString().split('T')[0];;
-  const airportOriginIataCode = req.query.airportOriginIataCode || 'LAX'; // Código IATA del aeropuerto de origen
-  // Cambia esto por el código IATA del aeropuerto de origen que desees
+  const fecha = req.query.fecha || new Date().toISOString().split('T')[0];
+  const airportOriginIataCode = req.query.airportOriginIataCode || 'LAX';
+
+  console.log("📥 Parámetros recibidos:");
+  console.log("Fecha:", fecha);
+  console.log("Aeropuerto origen:", airportOriginIataCode);
 
   try {
-    // Consulta SQL con parámetros
     const result = await pool.request()
       .input('fecha', sql.Date, fecha)
       .input('airportOriginIataCode', sql.VarChar, airportOriginIataCode)
@@ -473,8 +475,8 @@ app.get('/api/rutas-mapa2', async (req, res) => {
           AND airport1 = @airportOriginIataCode;
       `);
 
-
     const rows = result.recordset;
+    console.log("🔍 Resultados obtenidos de la base de datos:", rows.length);
 
     if (rows.length > 0) {
       const processedData = rows.map(r => ({
@@ -488,15 +490,12 @@ app.get('/api/rutas-mapa2', async (req, res) => {
         lon2: r.longitude_airport2,
       }));
 
+      console.log("✅ Datos procesados para respuesta:", processedData);
       res.json(processedData);
     } else {
-      // Si no hay datos, llamar a la API
-      console.log("No se encontraron datos en la base de datos. Llamando a la API...");
+      console.log("⚠️ No se encontraron datos en la BD. Llamando a la API...");
       await Api_lol(fecha, airportOriginIataCode);
 
-      // Intentar consultar nuevamente la base de datos después de llamar a la API
-
-      // Intentar consultar nuevamente la base de datos
       const retryResult = await pool.request()
         .input('fecha', sql.Date, fecha)
         .input('airportOriginIataCode', sql.VarChar, airportOriginIataCode)
@@ -509,12 +508,15 @@ app.get('/api/rutas-mapa2', async (req, res) => {
               latitude_airport1,
               longitude_airport1,
               latitude_airport2,
-              longitude_airport2
+              longitude_airport2,
+              nsmiles
           FROM Flights_US
           WHERE date = @fecha
             AND airport1 = @airportOriginIataCode;
         `);
+
       const retryRows = retryResult.recordset;
+      console.log("🔁 Resultado después de llamar a la API:", retryRows.length);
 
       if (retryRows.length > 0) {
         const processedRetryData = retryRows.map(r => ({
@@ -529,19 +531,19 @@ app.get('/api/rutas-mapa2', async (req, res) => {
           nsmiles: r.nsmiles,
         }));
 
+        console.log("✅ Datos tras reintento con API:", processedRetryData);
         res.json(processedRetryData);
       } else {
+        console.log("❌ No se encontraron datos tras consultar la API.");
         res.status(404).send("No se encontraron datos después de consultar la API.");
       }
-
     }
 
   } catch (err) {
-    console.error("Error en rutas-mapa:", err.message);
+    console.error("❗ Error en rutas-mapa:", err.message);
     res.status(500).send("Error interno del servidor");
   }
 });
-
 
 
 // 7. Información general (distancia promedio)
