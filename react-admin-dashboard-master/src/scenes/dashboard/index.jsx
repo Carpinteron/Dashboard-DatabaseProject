@@ -308,7 +308,15 @@ useEffect(() => {
           backgroundColor={colors.primary[400]}
           padding="10px"
         >
-          Vuelos Historicos con N Pasajeros
+            <Typography
+            variant="h5"
+            fontWeight="600"
+            ml="120px"
+            sx={{ padding: "0px 0px 0 0px" }}
+          >
+           Vuelos Historicos con N Pasajeros
+          </Typography>
+         
           <Box height="260px">
             <GeographyChart isDashboard={true} />
           </Box>
