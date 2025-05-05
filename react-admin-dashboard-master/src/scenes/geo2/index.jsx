@@ -19,6 +19,7 @@ const Geography2 = () => {
   return (
     <Box m="20px">
       <Header title={`Destinos desde el aerepuerto ${orig||"LAX"}`} subtitle={`Geography Chart | Fecha: ${fecha || hoy}`} />
+      <Box display="flex" justifyContent="center" gap={2} p={2}>
       <Box display="inline-block" backgroundColor={colors.primary[400]} borderRadius="7px" p={0} mb={1}>
         <InputBase
           type="date" // Tipo nativo
@@ -37,6 +38,7 @@ const Geography2 = () => {
           value={orig}
           onChange={(e) => setPasag(e.target.value)}
         />
+      </Box>
       </Box>
       <Box
         display={"flex"}

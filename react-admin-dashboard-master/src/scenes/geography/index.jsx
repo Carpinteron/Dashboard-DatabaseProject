@@ -14,6 +14,8 @@ const Geography = () => {
   return (
     <Box m="20px">
       <Header title={`Vuelos por Año con más de ${npasag ||3000} pasajeros` }subtitle="Geography Chart" />
+      
+      <Box display="flex" justifyContent="center" gap={2} p={2}>
       <Box display="flex" backgroundColor={colors.primary[400]} borderRadius="2px">
         <InputBase
           sx={{ ml: 2, flex: 1 }}
@@ -31,6 +33,8 @@ const Geography = () => {
           onChange={(e) => setPasag(e.target.value)}
         />
       </Box>
+     </Box>
+
       <Box
         height="75vh"
         border={`1px solid ${colors.grey[100]}`}
