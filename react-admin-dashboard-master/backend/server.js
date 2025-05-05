@@ -535,8 +535,15 @@ from Flights_US f
 app.get('/api/infogeneral3', async (req, res) => {
   try {
     const result = await pool.request().query(`
-      select count(distinct f.airport1) + count(distinct f.airport2) as totalaeropuertos
-from Flights_US f
+      with Aeropuertos as (
+    select f.airport1 as aeropuerto
+	from Flights_US f
+    union 
+    select f.airport2 
+	from Flights_US f
+)
+select count(*) totalaeropuertos
+from Aeropuertos;
     `);
 
     res.json({
