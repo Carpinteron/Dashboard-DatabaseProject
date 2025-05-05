@@ -18,6 +18,8 @@ import AirplaneTicketIcon from '@mui/icons-material/AirplaneTicket';
 import RouteIcon from '@mui/icons-material/Route';
 
 
+
+
 const Dashboard = () => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
@@ -251,7 +253,7 @@ useEffect(() => {
             progress=""
             increase=""
             icon={
-              <PersonAddIcon
+              <LuggageIcon
                 sx={{ color: colors.greenAccent[600], fontSize: "26px" }}
               />
             }
@@ -270,7 +272,7 @@ useEffect(() => {
             progress=""
             increase=""
             icon={
-              <TrafficIcon
+              <MonetizationOnIcon
                 sx={{ color: colors.greenAccent[600], fontSize: "26px" }}
               />
             }
@@ -305,7 +307,7 @@ useEffect(() => {
           backgroundColor={colors.primary[400]}
           padding="10px"
         >
-       
+          Vuelos Historicos con N Pasajeros
           <Box height="260px">
             <GeographyChart isDashboard={true} />
           </Box>

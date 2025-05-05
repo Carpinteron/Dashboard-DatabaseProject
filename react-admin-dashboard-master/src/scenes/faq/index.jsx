@@ -21,24 +21,34 @@ const FAQ = () => {
       <Accordion falseExpanded>
         <AccordionSummary expandIcon={<ExpandMoreIcon />}>
           <Typography color={colors.greenAccent[500]} variant="h5">
-            Descripción y Consideraciones:
+            Descripción y Consideraciones
           </Typography>
         </AccordionSummary>
         <AccordionDetails>
           <Typography>
-            Escribir Aqui una descripcion de lo que muestra el dashboard, que es lo que hace, como se usa, etc.
+          El proyecto consiste en el desarrollo de un dashboard interactivo que gestiona y visualiza información proveniente de una base de datos de aeropuertos.<br />
+           Además, se integra con una API externa para mantener actualizado el registro de los vuelos. <br />
+           Esta herramienta tiene como objetivo facilitar la consulta, análisis y monitoreo de la información aeroportuaria en una sola interfaz intuitiva.
           </Typography>
         </AccordionDetails>
       </Accordion>
       <Accordion falseExpanded>
         <AccordionSummary expandIcon={<ExpandMoreIcon />}>
           <Typography color={colors.greenAccent[500]} variant="h5">
-            Objetivo Principal: "Titulos del objetico, como la idea principal resumida"
+            Objetivo Principal
           </Typography>
         </AccordionSummary>
         <AccordionDetails>
           <Typography>
-            Texto LARGO
+          • Diseñar e implementar un modelo relacional que estructure la información clave sobre aeropuertos.<br />
+          <br />
+          • Permitir operaciones CRUD (crear, leer, actualizar, eliminar) sobre los registros de la base de datos.<br />
+          <br />
+          • Conectar e integrar una API externa que proporcione datos actualizados (por ejemplo, clima o vuelos).<br />
+          <br />
+          • Visualizar de manera clara e interactiva los datos históricos y en tiempo real mediante gráficos o tablas.<br />
+          <br />
+          • Facilitar la búsqueda y filtrado de información según criterios definidos por el usuario.
           </Typography>
         </AccordionDetails>
       </Accordion>
