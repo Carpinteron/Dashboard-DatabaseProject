@@ -33,7 +33,7 @@ const Geography2 = () => {
       
       <Box display="flex" backgroundColor={colors.primary[400]} borderRadius="10px">
         <InputBase
-          sx={{ ml: 2, flex: 1 }}
+          sx={{ ml: 2, flex: 2 }}
           placeholder="Ingrese Codigo IATA de Aeropuerto de Origen"
           value={orig}
           onChange={(e) => setPasag(e.target.value)}
