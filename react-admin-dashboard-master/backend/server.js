@@ -55,7 +55,7 @@ function calcularDistancia(lat1, lon1, lat2, lon2) {
   };
 }
 
-async function saveFilteredFlightsToDatabase(flights,airportOriginIataCode, fecharequest) {
+async function saveFilteredFlightsToDatabase(flights, airportOriginIataCode, fecharequest) {
   let pool; // Declarar pool aquí para que esté accesible en el bloque finally
   try {
     pool = await sql.connect(config); // Conectar al pool de conexiones
@@ -172,7 +172,7 @@ async function Api_lol(fecha, IataCode) {
   axios.request(options).then(response => {
     const flights = response.data.routes; // Obtener las rutas de la API
     console.log('Datos obtenidos de la API:)');
-    saveFilteredFlightsToDatabase(flights,airportOriginIataCode,fecharequest); // Guardar los vuelos filtrados en la base de datos
+    saveFilteredFlightsToDatabase(flights, airportOriginIataCode, fecharequest); // Guardar los vuelos filtrados en la base de datos
   }).catch(error => {
     console.error('Error al consumir la API:', error);
   });
@@ -341,22 +341,22 @@ app.get('/api/top-ciudades', async (req, res) => {
         GROUP BY f.city2
         ORDER BY Cant_Pasajeros DESC
       `); // Tu SQL para topCitiesPieData
-      const rows = result.recordset;
-  
-      const processedData = rows.map(row => ({
-        id: row.city2,
-        label: row.city2,
-        value: row.Cant_Pasajeros
-      }));
-  
-      res.json(processedData);
-    } catch (err) {
-      console.error("Error en top ciudades:", err.message);
-      res.status(500).send("Error interno del servidor");
-    }
-  });
+    const rows = result.recordset;
 
-  // 4. Top ciudades salidas (pie chart)
+    const processedData = rows.map(row => ({
+      id: row.city2,
+      label: row.city2,
+      value: row.Cant_Pasajeros
+    }));
+
+    res.json(processedData);
+  } catch (err) {
+    console.error("Error en top ciudades:", err.message);
+    res.status(500).send("Error interno del servidor");
+  }
+});
+
+// 4. Top ciudades salidas (pie chart)
 app.get('/api/top-ciudades-origen', async (req, res) => {
   try {
     const result = await pool.request().query(`
@@ -366,27 +366,27 @@ app.get('/api/top-ciudades-origen', async (req, res) => {
         group by f.city1
         order by Cant_Pasajeros desc
       `); // Tu SQL para topCitiesPieData
-      const rows = result.recordset;
-  
-      const processedData = rows.map(row => ({
-        id: row.city1,
-        label: row.city1,
-        value: row.Cant_Pasajeros
-      }));
-  
-      res.json(processedData);
-    } catch (err) {
-      console.error("Error en top ciudades:", err.message);
-      res.status(500).send("Error interno del servidor");
-    }
-  });
-  // Ruta: Rutas para el mapa
-  app.get('/api/rutas-mapa', async (req, res) => {
-      const year = parseInt(req.query.year) || 2024;
-      const minPassengers = parseInt(req.query.minPassengers) || 3000;
-    
-      try {
-        const result = await pool.request().query(`
+    const rows = result.recordset;
+
+    const processedData = rows.map(row => ({
+      id: row.city1,
+      label: row.city1,
+      value: row.Cant_Pasajeros
+    }));
+
+    res.json(processedData);
+  } catch (err) {
+    console.error("Error en top ciudades:", err.message);
+    res.status(500).send("Error interno del servidor");
+  }
+});
+// Ruta: Rutas para el mapa
+app.get('/api/rutas-mapa', async (req, res) => {
+  const year = parseInt(req.query.year) || 2024;
+  const minPassengers = parseInt(req.query.minPassengers) || 3000;
+
+  try {
+    const result = await pool.request().query(`
           SELECT  
             city1,
             city2,
@@ -420,7 +420,7 @@ app.get('/api/top-ciudades-origen', async (req, res) => {
       lon2: r.longitude_airport2,
       passengers: r.total_passengers
     }));
-
+    console.log("Datos encontrados en la base de datos. Devolviendo datos...", processedData);
     res.json(processedData);
   } catch (err) {
     console.error("Error en rutas-mapa:", err.message);
@@ -450,73 +450,60 @@ app.get('/api/lista-vuelos', async (req, res) => {
 // Ruta: Rutas para el mapa
 app.get('/api/rutas-mapa2', async (req, res) => {
   const fecha = req.query.fecha || new Date().toISOString().split('T')[0];
-  const airportOriginIataCode = req.query.airportOriginIataCode || 'LAX';
+  const airportOriginIataCode = req.query.airportOriginIataCode;
+  const forceUpdate = req.query.forceUpdate === 'true';
 
-  console.log("📥 Parámetros recibidos:");
-  console.log("Fecha:", fecha);
-  console.log("Aeropuerto origen:", airportOriginIataCode);
-
+   // 👇 Imprime en consola los datos recibidos
+   console.log("📥 Datos recibidos en /api/rutas-mapa2:");
+   console.log("Fecha:", fecha);
+   console.log("airportOriginIataCode:", airportOriginIataCode);
+   console.log("forceUpdate:", forceUpdate);
   try {
-    const result = await pool.request()
-      .input('fecha', sql.Date, fecha)
-      .input('airportOriginIataCode', sql.VarChar, airportOriginIataCode)
-      .query(`
-        SELECT  
-            city1,
-            city2,
-            airport1,
-            airport2,
-            latitude_airport1,
-            longitude_airport1,
-            latitude_airport2,
-            longitude_airport2
-        FROM Flights_US
-        WHERE date = @fecha
-          AND airport1 = @airportOriginIataCode;
-      `);
+    if (forceUpdate) {
+      const result = await pool.request()
+        .input('fecha', sql.Date, fecha)
+        .input('airportOriginIataCode', sql.VarChar, airportOriginIataCode)
+        .query(`
+          SELECT city1, city2, airport1, airport2, latitude_airport1, longitude_airport1, latitude_airport2, longitude_airport2
+          FROM Flights_US
+          WHERE date = @fecha AND airport1 = @airportOriginIataCode;
+        `);
 
-    const rows = result.recordset;
-    console.log("🔍 Resultados obtenidos de la base de datos:", rows.length);
+      const rows = result.recordset;
 
-    if (rows.length > 0) {
-      const processedData = rows.map(r => ({
-        from: r.airport1,
-        to: r.airport2,
-        cityFrom: r.city1,
-        cityTo: r.city2,
-        lat1: r.latitude_airport1,
-        lon1: r.longitude_airport1,
-        lat2: r.latitude_airport2,
-        lon2: r.longitude_airport2,
-      }));
+      if (rows.length > 0) {
+        
+        // Procesar los datos para el mapa
+        const processedData = rows.map(r => ({
+          from: r.airport1,
+          to: r.airport2,
+          cityFrom: r.city1,
+          cityTo: r.city2,
+          lat1: r.latitude_airport1,
+          lon1: r.longitude_airport1,
+          lat2: r.latitude_airport2,
+          lon2: r.longitude_airport2
+        }));
+        console.log("Datos encontrados en la base de datos. Devolviendo datos...", processedData);
+        return res.json(processedData);
+      }
+    }
 
-      console.log("✅ Datos procesados para respuesta:", processedData);
-      res.json(processedData);
-    } else {
-      console.log("⚠️ No se encontraron datos en la BD. Llamando a la API...");
-      await Api_lol(fecha, airportOriginIataCode);
+    console.log("No se encontraron datos en la base de datos. Llamando a la API...");
+    const flights = await Api_lol(fecha, airportOriginIataCode);
 
+    if (flights && flights.length > 0) {
+      // vuelve a consultar la base de datos para devolver los nuevos datos
       const retryResult = await pool.request()
         .input('fecha', sql.Date, fecha)
         .input('airportOriginIataCode', sql.VarChar, airportOriginIataCode)
         .query(`
-          SELECT  
-              city1,
-              city2,
-              airport1,
-              airport2,
-              latitude_airport1,
-              longitude_airport1,
-              latitude_airport2,
-              longitude_airport2,
-              nsmiles
+          SELECT city1, city2, airport1, airport2, latitude_airport1, longitude_airport1, latitude_airport2, longitude_airport2
           FROM Flights_US
-          WHERE date = @fecha
-            AND airport1 = @airportOriginIataCode;
+          WHERE date = @fecha AND airport1 = @airportOriginIataCode;
         `);
 
       const retryRows = retryResult.recordset;
-      console.log("🔁 Resultado después de llamar a la API:", retryRows.length);
 
       if (retryRows.length > 0) {
         const processedRetryData = retryRows.map(r => ({
@@ -527,23 +514,20 @@ app.get('/api/rutas-mapa2', async (req, res) => {
           lat1: r.latitude_airport1,
           lon1: r.longitude_airport1,
           lat2: r.latitude_airport2,
-          lon2: r.longitude_airport2,
-          nsmiles: r.nsmiles,
+          lon2: r.longitude_airport2
         }));
 
-        console.log("✅ Datos tras reintento con API:", processedRetryData);
-        res.json(processedRetryData);
-      } else {
-        console.log("❌ No se encontraron datos tras consultar la API.");
-        res.status(404).send("No se encontraron datos después de consultar la API.");
+        return res.json(processedRetryData);
       }
     }
 
+    res.status(404).send("No se encontraron datos después de consultar la API.");
   } catch (err) {
-    console.error("❗ Error en rutas-mapa:", err.message);
+    console.error("Error en rutas-mapa:", err.message);
     res.status(500).send("Error interno del servidor");
   }
 });
+
 
 
 // 7. Información general (distancia promedio)

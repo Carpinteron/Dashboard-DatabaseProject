@@ -14,7 +14,7 @@ const airplaneIcon = new L.Icon({
 // 🎨 Tus colores personalizados
 const colores = ["#3399ff", "#ff5733", "#28a745", "#f39c12", "#8e44ad", "#00bcd4", "#e91e63"];
 
-const GeographyChart2 = ({year,npasag}) => {
+const GeographyChart2 = ({ fecha, iataCode, forceUpdate, shouldFetch, setShouldFetch }) => {
   const [routes, setRoutes] = useState([]);
   const theme = useTheme();
   const isDark = theme.palette.mode === "dark";
@@ -49,58 +49,81 @@ const GeographyChart2 = ({year,npasag}) => {
     styleTag.innerHTML = css;
   }, [isDark]);
 
+  // Realizar la búsqueda solo cuando `shouldFetch` sea true
   useEffect(() => {
-    const fetchRoutes = async () => {
-      try {
-        const res = await fetch(`http://localhost:3001/api/rutas-mapa2?year=${year}&minPassengers=${npasag}`);
-        const data = await res.json();
-        setRoutes(data);
-      } catch (err) {
-        console.error("Error cargando rutas del mapa:", err);
-      }
-    };
-    const fetchRoutes2 = async () => {
-      try {
-        const res = await fetch(`http://localhost:3001/api/rutas-mapa2?year=${year}&minPassengers=${npasag}`);
-        const data = await res.json();
-        setRoutes(data);
-      } catch (error) {
-        console.error("Error al cargar datos del backend:", error);
-      }
-    };
+    if (shouldFetch) {
+      const fetchRoutes = async () => {
+        try {
+          // Validar parámetros antes de realizar la solicitud
+          if (!fecha || !iataCode) {
+            console.warn("Parámetros inválidos: fecha o iataCode están vacíos.");
+            setShouldFetch(false);
+            return;
+          }
 
-    if (year && npasag) {
+          const res = await fetch(`http://localhost:3001/api/rutas-mapa2?fecha=${fecha}&airportOriginIataCode=${iataCode}&forceUpdate=${forceUpdate}`);
+
+          // Verificar si la respuesta es exitosa
+          if (!res.ok) {
+            throw new Error(`Error en la solicitud: ${res.status} ${res.statusText}`);
+          }
+
+          const data = await res.json();
+          console.log("Rutas recibidas:", data);
+
+          // Validar si los datos están vacíos
+          if (!data || data.length === 0) {
+            console.warn("No hay rutas para mostrar.");
+          }
+
+          setRoutes(data); // Actualiza las rutas en el estado
+        } catch (err) {
+          console.error("Error cargando rutas del mapa:", err.message);
+        } finally {
+          setShouldFetch(false); // Resetea el estado para evitar búsquedas repetidas
+        }
+      };
+
       fetchRoutes();
-    }else{
-      fetchRoutes2();
     }
-  }, [year, npasag]); // Dependencias para actualizar el mapa cuando cambien los años o el número de pasajeros.
+  }, [shouldFetch, fecha, iataCode, forceUpdate, setShouldFetch]);
 
+  // Procesar los datos de las rutas para el mapa
   const airportData = {};
-  routes.forEach(route => {
-    if (!airportData[route.from]) {
-      airportData[route.from] = {
-        code: route.from,
-        city: route.cityFrom,
-        lat: parseFloat(route.lat1),
-        lon: parseFloat(route.lon1),
-        departures: [],
-        arrivals: []
-      };
-    }
-    if (!airportData[route.to]) {
-      airportData[route.to] = {
-        code: route.to,
-        city: route.cityTo,
-        lat: parseFloat(route.lat2),
-        lon: parseFloat(route.lon2),
-        departures: [],
-        arrivals: []
-      };
-    }
-    airportData[route.from].departures.push(route);
-    airportData[route.to].arrivals.push(route);
-  });
+  if (routes && routes.length > 0) {
+    routes.forEach(route => {
+      if (!airportData[route.airport1]) {
+        airportData[route.airport1] = {
+          code: route.airport1,
+          city: route.city1,
+          lat: parseFloat(route.latitude_airport1),
+          lon: parseFloat(route.longitude_airport1),
+          departures: [],
+          arrivals: []
+        };
+      }
+      if (!airportData[route.airport2]) {
+        airportData[route.airport2] = {
+          code: route.airport2,
+          city: route.city2,
+          lat: parseFloat(route.latitude_airport2),
+          lon: parseFloat(route.longitude_airport2),
+          departures: [],
+          arrivals: []
+        };
+      }
+      airportData[route.airport1].departures.push(route);
+      airportData[route.airport2].arrivals.push(route);
+    });
+  }
+
+  if (!routes || routes.length === 0) {
+    return (
+      <Box height="100%" width="100%" display="flex" justifyContent="center" alignItems="center">
+        <p>No hay rutas disponibles para los parámetros seleccionados.</p>
+      </Box>
+    );
+  }
 
   return (
     <Box height="100%" width="100%">
@@ -118,12 +141,12 @@ const GeographyChart2 = ({year,npasag}) => {
               <div>
                 <ul style={{ paddingLeft: "1em" }}>
                   {airport.departures.map((r, i) => (
-                    <li key={i}>🛫 {r.from} → {r.to}</li>
+                    <li key={i}>🛫 {r.city1} → {r.city2}</li>
                   ))}
                 </ul>
                 <ul style={{ paddingLeft: "1em" }}>
                   {airport.arrivals.map((r, i) => (
-                    <li key={i}>🛬 {r.from} → {r.to}</li>
+                    <li key={i}>🛬 {r.city1} → {r.city2}</li>
                   ))}
                 </ul>
                 <div><strong>Total salidas:</strong> {airport.departures.length}</div>
@@ -133,10 +156,15 @@ const GeographyChart2 = ({year,npasag}) => {
           </Marker>
         ))}
 
-        {/* 🚀 Rutas de vuelo con colores personalizados */}
         {routes.map((route, idx) => {
           const from = [parseFloat(route.lat1), parseFloat(route.lon1)];
           const to = [parseFloat(route.lat2), parseFloat(route.lon2)];
+
+          if (isNaN(from[0]) || isNaN(from[1]) || isNaN(to[0]) || isNaN(to[1])) {
+            console.warn("Coordenadas inválidas para la ruta:", route);
+            return null;
+          }
+
           return (
             <Polyline
               key={idx}
@@ -151,7 +179,6 @@ const GeographyChart2 = ({year,npasag}) => {
           );
         })}
       </MapContainer>
-      
     </Box>
   );
 };

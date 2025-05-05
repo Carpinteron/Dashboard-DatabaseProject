@@ -7,63 +7,73 @@ import IconButton from "@mui/material/IconButton";
 import { tokens } from "../../theme";
 import { useState } from "react";
 import { InputBase } from "@mui/material";
-//import { HolidayVillageTwoTone } from "@mui/icons-material";
 
 const Geography2 = () => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
-  // Estado para los años
-  const hoy = new Date().toISOString().split('T')[0];
-  const [orig, setPasag] = useState("");
-  const [fecha, setFecha] = useState(hoy);
 
-  // Ejemplo: "2023-08-28"
+  // Estados para el código IATA y la fecha
+  const hoy = new Date().toISOString().split('T')[0];
+  const [orig, setOrig] = useState(""); // Código IATA
+  const [fecha, setFecha] = useState(hoy); // Fecha
+  const [routes, setRoutes] = useState([]); // Rutas obtenidas del backend
+
+  // Función para obtener rutas
+  const fetchRoutes = async (forceUpdate = false) => {
+    try {
+      const res = await fetch(`http://localhost:3001/api/rutas-mapa2?fecha=${fecha}&airportOriginIataCode=${orig}&forceUpdate=${forceUpdate}`);
+      const data = await res.json();
+      setRoutes(data); // Actualiza las rutas en el estado
+    } catch (err) {
+      console.error("Error al cargar rutas:", err);
+    }
+  };
+
   return (
     <Box m="20px">
-      <Header title={`Destinos desde el aerepuerto ${orig || "LAX"}`} subtitle={`Geography Chart | Fecha: ${fecha || hoy}`} />
+      <Header title={`Destinos desde el aeropuerto ${orig || "LAX"}`} subtitle={`Geography Chart | Fecha: ${fecha || hoy}`} />
       <Box display="flex" justifyContent="center" gap={2} p={2}>
+        {/* Input para la fecha */}
         <Box display="inline-block" backgroundColor={colors.primary[400]} borderRadius="7px" p={0} mb={1}>
           <InputBase
-            type="date" // Tipo nativo
+            type="date"
             sx={{ ml: 2, flex: 1, color: "white" }}
             value={fecha || hoy}
-            onChange={(e) => setFecha(e.target.value)}
+            onChange={(e) => setFecha(e.target.value)} // Actualiza el estado de la fecha
             InputLabelProps={{ shrink: true }}
             inputProps={{ max: hoy }} // Limitar la fecha máxima a hoy
           />
         </Box>
 
+        {/* Input para el código IATA */}
         <Box display="flex" backgroundColor={colors.primary[400]} borderRadius="10px">
           <InputBase
             sx={{ ml: 2, flex: 2 }}
-            placeholder="Ingrese Codigo IATA de Aeropuerto de Origen"
+            placeholder="Ingrese Código IATA de Aeropuerto de Origen"
             value={orig}
-            onChange={(e) => setPasag(e.target.value)}
+            onChange={(e) => setOrig(e.target.value)} // Actualiza el estado del código IATA
           />
         </Box>
+
+        {/* Botón de Refresh */}
         <Box display="flex">
-          <IconButton>
+          <IconButton onClick={() => fetchRoutes(true)}> {/* Llama a fetchRoutes con forceUpdate=true */}
             <RefreshOutlinedIcon />
           </IconButton>
-
         </Box>
-
       </Box>
-      <Box
-        display={"flex"}
-        gap="6px"
-        height={"75vh"}>
+
+      {/* Contenedor para los gráficos */}
+      <Box display={"flex"} gap="6px" height={"75vh"}>
         <Box
           flex={7}
-          //height="75vh"
           border={`1px solid ${colors.grey[100]}`}
           borderRadius="4px"
         >
-          <GeographyChart2 year={fecha} npasag={orig} />
+          <GeographyChart2 fecha={fecha} iataCode={orig} forceUpdate={true} />
         </Box>
         <Box
           flex={3}
-          //height="75vh"
           borderRadius="4px">
           <PieChart2 />
         </Box>
