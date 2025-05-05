@@ -14,6 +14,8 @@ import BarChart2 from "../../components/BarChart2";
 import StatBox from "../../components/StatBox";
 import ProgressCircle from "../../components/ProgressCircle";
 import { useEffect, useState } from "react";
+import AirplaneTicketIcon from '@mui/icons-material/AirplaneTicket';
+import RouteIcon from '@mui/icons-material/Route';
 
 
 
@@ -172,12 +174,11 @@ useEffect(() => {
           justifyContent="center"
         >
           <StatBox
-            title={totalvuelos ||"Cargando..."} 
-            subtitle="Total de vuelos registrados"
-            progress=""
-            increase=""
+            title="Total de vuelos registrados"
+            subtitle={totalvuelos ||"Cargando..."} 
+          
             icon={
-              <EmailIcon
+              <AirplaneTicketIcon
                 sx={{ color: colors.greenAccent[600], fontSize: "26px" }}
               />
             }
@@ -191,12 +192,11 @@ useEffect(() => {
           justifyContent="center"
         >
           <StatBox
-            title={avgdistancia ||"Cargando..."} 
-            subtitle="Promedio de distancia recorrida"
-            progress=""
-            increase=""
+            title="Promedio de distancia recorrida"
+            subtitle={avgdistancia ||"Cargando..."} 
+            
             icon={
-              <PointOfSaleIcon
+              <RouteIcon
                 sx={{ color: colors.greenAccent[600], fontSize: "26px" }}
               />
             }
