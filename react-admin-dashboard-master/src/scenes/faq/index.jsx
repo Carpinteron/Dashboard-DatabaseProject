@@ -10,24 +10,24 @@ import { useEffect } from "react";
 
 const FAQ = () => {
   useEffect(() => {
-    document.title = "Proposito - Skylar";
+    document.title = "Propósitos - Skylar";
   }, []);
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
   return (
     <Box m="20px">
-      <Header title="Propósito - Skylar Dashboard" subtitle="Consideraciones del proyecto." />
+      <Header title="Propósitos - Skylar Dashboard" subtitle="Consideraciones del proyecto." />
 
       <Accordion falseExpanded>
         <AccordionSummary expandIcon={<ExpandMoreIcon />}>
           <Typography color={colors.greenAccent[500]} variant="h5">
-            Descripción y Consideraciones
+            Descripción
           </Typography>
         </AccordionSummary>
         <AccordionDetails>
           <Typography>
-          El proyecto consiste en el desarrollo de un dashboard interactivo que gestiona y visualiza información proveniente de una base de datos de aeropuertos.<br />
-           Además, se integra con una API externa para mantener actualizado el registro de los vuelos. <br />
+          El proyecto consiste en el desarrollo de un dashboard interactivo que gestiona y visualiza información proveniente de una base de datos de vuelos en Estados Unidos.
+           Además, se integra con una API externa para mantener actualizado el registro de los vuelos.
            Esta herramienta tiene como objetivo facilitar la consulta, análisis y monitoreo de la información aeroportuaria en una sola interfaz intuitiva.
           </Typography>
         </AccordionDetails>
@@ -35,81 +35,55 @@ const FAQ = () => {
       <Accordion falseExpanded>
         <AccordionSummary expandIcon={<ExpandMoreIcon />}>
           <Typography color={colors.greenAccent[500]} variant="h5">
-            Objetivo Principal
+            Objetivos Principales
           </Typography>
         </AccordionSummary>
         <AccordionDetails>
           <Typography>
-          • Diseñar e implementar un modelo relacional que estructure la información clave sobre aeropuertos.<br />
+          • Implementar los conocimientos adquiridos en bases de datos SQL.<br />
           <br />
-          • Permitir operaciones CRUD (crear, leer, actualizar, eliminar) sobre los registros de la base de datos.<br />
+          • Conectar una base de datos real para visualizar datos dinámicos mediante un sitio web interactivo. <br />
           <br />
-          • Conectar e integrar una API externa que proporcione datos actualizados (por ejemplo, clima o vuelos).<br />
-          <br />
-          • Visualizar de manera clara e interactiva los datos históricos y en tiempo real mediante gráficos o tablas.<br />
-          <br />
-          • Facilitar la búsqueda y filtrado de información según criterios definidos por el usuario.
+          • Integrar los datos a una API que permita actualizar automáticamente parte de la información.<br />
           </Typography>
         </AccordionDetails>
       </Accordion>
       <Accordion falseExpanded>
         <AccordionSummary expandIcon={<ExpandMoreIcon />}>
           <Typography color={colors.greenAccent[500]} variant="h5">
-            Objetivos Secundarios:"Titulos del objetico, como la idea principal resumida"
+          → Manejo de base de datos SQL
           </Typography>
         </AccordionSummary>
         <AccordionDetails>
           <Typography component={"div"}>
-            bli bli bli bli
-            <List dense sx={{ py: 0 }}>
-              <ListItem sx={{ px: 0 }}>
-                <ListItemText
-                  primary={
-                    <>
-                      <strong>Fuente primaria:</strong>
-                      <Link
-                        href="https://aerodatabox.com"
-                        target="_blank"
-                        sx={{ ml: 1 }}
-                      >
-                        Aerodatabox API
-                      </Link>
-                    </>
-                  }
-                />
-              </ListItem>
-              <ListItem sx={{ px: 0 }}>
-                <ListItemText primary="• Metodología: Limpieza con OpenRefine y Python" />
-              </ListItem>
-            </List>
-
+          • Mostrar datos actualizados directamente desde la base de datos.
+          <br />
+          • Diseñar consultas SQL optimizadas que generen datos relevantes para el usuario.
+          <br />
+          • Incluir información clave como el número de vuelos, aeropuertos o rutas más populares.
           </Typography>
         </AccordionDetails>
       </Accordion>
       <Accordion falseExpanded>
         <AccordionSummary expandIcon={<ExpandMoreIcon />}>
           <Typography color={colors.greenAccent[500]} variant="h5">
-            Otro objertivo "Titulos del objetico, como la idea principal resumida":
+          → Interacción y Visualización de Datos
           </Typography>
         </AccordionSummary>
         <AccordionDetails>
           <Typography component={"div"}>
-            Parla
-            Parla
-            <p style={{ margin: '4px 0' }}>
-              <strong>Procesamiento de datos:</strong>
-            </p>
-            <ul>
-              <li>Normalización de fechas UTC.</li>
-              <li>Filtrado de vuelos cancelados.</li>
-            </ul>
+          • Permitir la comparación de tendencias entre diferentes aspectos como periodos o rutas.
+          <br />
+          • Organizar datos relevantes de la base de datos para que sea facil de buscar y entender.
+          <br />
+          • Usar herramientas visuales que permitan identificar datos rápidamente.
           </Typography>
         </AccordionDetails>
       </Accordion>
       <Accordion falseExpanded>
         <AccordionSummary expandIcon={<ExpandMoreIcon />}>
           <Typography color={colors.greenAccent[500]} variant="h5">
-            Referencias: Api y  Dataset
+            Referencias
           </Typography>
         </AccordionSummary>
         <AccordionDetails >

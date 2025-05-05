@@ -544,7 +544,7 @@ app.get('/api/rutas-mapa2', async (req, res) => {
 
 
 
-// 7. Información general (distancia promedio
+// 7. Información general (distancia promedio)
 app.get('/api/infogeneral2', async (req, res) => {
   try {
     const result = await pool.request().query(`
