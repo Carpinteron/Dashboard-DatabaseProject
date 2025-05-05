@@ -192,9 +192,11 @@ useEffect(() => {
           justifyContent="center"
         >
           <StatBox
-            title="Promedio de distancia recorrida"
-            subtitle={avgdistancia ||"Cargando..."} 
-            
+            title={avgdistancia.toFixed(2)+" millas" ||"Cargando..."} 
+            subtitle="Promedio de distancia recorrida"
+            progress=""
+            increase=""
+
             icon={
               <RouteIcon
                 sx={{ color: colors.greenAccent[600], fontSize: "26px" }}
