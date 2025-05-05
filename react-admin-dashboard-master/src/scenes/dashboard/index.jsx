@@ -191,7 +191,7 @@ useEffect(() => {
           justifyContent="center"
         >
           <StatBox
-            title={avgdistancia ||"Cargando..."} 
+            title={avgdistancia.toFixed(2)+" millas" ||"Cargando..."} 
             subtitle="Promedio de distancia recorrida"
             progress=""
             increase=""
