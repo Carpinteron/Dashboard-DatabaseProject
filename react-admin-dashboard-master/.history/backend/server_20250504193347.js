@@ -332,7 +332,7 @@ app.get('/api/precios-promedio', async (req, res) => {
   }
 });
 
-// 4. Top ciudades visitadas (pie chart)
+// 4. Top ciudades (ejemplo incompleto)
 app.get('/api/top-ciudades', async (req, res) => {
   try {
     const result = await pool.request().query(`
@@ -347,31 +347,6 @@ app.get('/api/top-ciudades', async (req, res) => {
       const processedData = rows.map(row => ({
         id: row.city2,
         label: row.city2,
-        value: row.Cant_Pasajeros
-      }));
-  
-      res.json(processedData);
-    } catch (err) {
-      console.error("Error en top ciudades:", err.message);
-      res.status(500).send("Error interno del servidor");
-    }
-  });
-
-  // 4. Top ciudades salidas (pie chart)
-app.get('/api/top-ciudades-origen', async (req, res) => {
-  try {
-    const result = await pool.request().query(`
-        select top 5 f.city1, sum(f.passengers) as Cant_Pasajeros
-        from Flights_US f
-        where f.city1!=''
-        group by f.city1
-        order by Cant_Pasajeros desc
-      `); // Tu SQL para topCitiesPieData
-      const rows = result.recordset;
-  
-      const processedData = rows.map(row => ({
-        id: row.city1,
-        label: row.city1,
         value: row.Cant_Pasajeros
       }));
   
@@ -499,6 +474,11 @@ app.get('/api/infogeneral1', async (req, res) => {
       from Flights_US f
     `);
 
+    const rows = result.recordset;
+    const processedData = rows.map(r => ({
+      totalvuelos: r.totalvuelos
+    }));
+
     res.json({
       success: true,
       data: {
@@ -514,10 +494,13 @@ app.get('/api/infogeneral1', async (req, res) => {
 // 7. Información general (distancia promedio
 app.get('/api/infogeneral2', async (req, res) => {
   try {
-    const result = await pool.request().query(`
-      select avg(cast(nsmiles as float)) as avgdistancia
-from Flights_US f
-    `);
+    const query = fs.readFileSync("./Queries/queries_franja.sql", "utf8");
+    const result = await pool.request().query(query);
+
+    const rows = result.recordset;
+    const processedData = rows.map(r => ({
+      avgdistancia: r.avgdistancia
+    }));
 
     res.json({
       success: true,

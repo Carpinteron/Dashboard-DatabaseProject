@@ -10,23 +10,18 @@ const PieChart = ({ tipo })  => {
 
   useEffect(() => {
     document.title = "Pie Chart - Skylar";
-    const fetchData = async () => {
+    const fetchTopCities = async () => {
       try {
-        const endpoint =
-          tipo === "salidas"
-            ? "http://localhost:3001/api/top-ciudades-origen"
-            : "http://localhost:3001/api/top-ciudades";
-
-        const response = await fetch(endpoint);
+        const response = await fetch("http://localhost:3001/api/top-ciudades");
         const result = await response.json();
         setData(result);
       } catch (error) {
-        console.error("Error al obtener los datos:", error);
+        console.error("Error al obtener los datos de top ciudades:", error);
       }
     };
 
-    fetchData();
-  }, [tipo]); // Se vuelve a ejecutar cada vez que cambia 'tipo'
+    fetchTopCities();
+  }, []);
 
   return (
     <ResponsivePie
@@ -42,7 +37,7 @@ const PieChart = ({ tipo })  => {
         },
         legends: { text: { fill: colors.grey[100] } },
       }}
-      margin={{ top: 50, right: 80, bottom: 100, left: 80 }}
+      margin={{ top: 40, right: 80, bottom: 80, left: 80 }}
       innerRadius={0.5}
       padAngle={0.7}
       cornerRadius={3}
@@ -52,7 +47,7 @@ const PieChart = ({ tipo })  => {
       arcLinkLabelsTextColor={colors.grey[100]}
       arcLinkLabelsThickness={2}
       arcLinkLabelsColor={{ from: "color" }}
-      
+      enableArcLabels={false}
       arcLabelsRadiusOffset={0.4}
       arcLabelsSkipAngle={7}
       arcLabelsTextColor={{ from: "color", modifiers: [["darker", 2]] }}
@@ -76,7 +71,31 @@ const PieChart = ({ tipo })  => {
           spacing: 10,
         },
       ]}
-      
+      legends={[
+        {
+          anchor: "bottom",
+          direction: "row",
+          justify: false,
+          translateX: 0,
+          translateY: 56,
+          itemsSpacing: 0,
+          itemWidth: 100,
+          itemHeight: 18,
+          itemTextColor: "#999",
+          itemDirection: "left-to-right",
+          itemOpacity: 1,
+          symbolSize: 18,
+          symbolShape: "circle",
+          effects: [
+            {
+              on: "hover",
+              style: {
+                itemTextColor: "#000",
+              },
+            },
+          ],
+        },
+      ]}
     />
   );
 };

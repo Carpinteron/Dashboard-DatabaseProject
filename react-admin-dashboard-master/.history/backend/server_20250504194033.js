@@ -362,16 +362,16 @@ app.get('/api/top-ciudades-origen', async (req, res) => {
   try {
     const result = await pool.request().query(`
         select top 5 f.city1, sum(f.passengers) as Cant_Pasajeros
-        from Flights_US f
-        where f.city1!=''
-        group by f.city1
-        order by Cant_Pasajeros desc
+from Flights_US f
+where f.city1!=''
+group by f.city1
+order by Cant_Pasajeros desc
       `); // Tu SQL para topCitiesPieData
       const rows = result.recordset;
   
       const processedData = rows.map(row => ({
-        id: row.city1,
-        label: row.city1,
+        id: row.city2,
+        label: row.city2,
         value: row.Cant_Pasajeros
       }));
   
@@ -499,6 +499,11 @@ app.get('/api/infogeneral1', async (req, res) => {
       from Flights_US f
     `);
 
+    const rows = result.recordset;
+    const processedData = rows.map(r => ({
+      totalvuelos: r.totalvuelos
+    }));
+
     res.json({
       success: true,
       data: {
@@ -514,10 +519,13 @@ app.get('/api/infogeneral1', async (req, res) => {
 // 7. Información general (distancia promedio
 app.get('/api/infogeneral2', async (req, res) => {
   try {
-    const result = await pool.request().query(`
-      select avg(cast(nsmiles as float)) as avgdistancia
-from Flights_US f
-    `);
+    const query = fs.readFileSync("./Queries/queries_franja.sql", "utf8");
+    const result = await pool.request().query(query);
+
+    const rows = result.recordset;
+    const processedData = rows.map(r => ({
+      avgdistancia: r.avgdistancia
+    }));
 
     res.json({
       success: true,
