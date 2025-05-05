@@ -52,7 +52,7 @@ const GeographyChart2 = ({year,npasag}) => {
   useEffect(() => {
     const fetchRoutes = async () => {
       try {
-        const res = await fetch(`http://localhost:3001/api/rutas-mapa?year=${year}&minPassengers=${npasag}`);
+        const res = await fetch(`http://localhost:3001/api/rutas-mapa2?year=${year}&minPassengers=${npasag}`);
         const data = await res.json();
         setRoutes(data);
       } catch (err) {
@@ -61,7 +61,7 @@ const GeographyChart2 = ({year,npasag}) => {
     };
     const fetchRoutes2 = async () => {
       try {
-        const res = await fetch(`http://localhost:3001/api/rutas-mapa?year=${year}&minPassengers=${npasag}`);
+        const res = await fetch(`http://localhost:3001/api/rutas-mapa2?year=${year}&minPassengers=${npasag}`);
         const data = await res.json();
         setRoutes(data);
       } catch (error) {
