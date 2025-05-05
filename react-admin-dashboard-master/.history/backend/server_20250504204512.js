@@ -570,7 +570,7 @@ from Flights_US f
     res.status(500).send("Error interno del servidor");
   }
 });
-// 10. Información general (cantidad de vuelos por año)
+//
 app.get('/api/vuelos-por-ano', async (req, res) => {
   try {
     const result = await pool.request().query(`

@@ -3,40 +3,41 @@ import { useTheme } from "@mui/material";
 import { tokens } from "../theme";
 import { useEffect, useState } from "react";
 
-const LineChart = ({ isDashboard = false }) => {
+const LineChart = ({ year1l,year2l, isDashboard = false }) => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
   const [data, setData] = useState([]);
   const fixedColors = ["#4FC3F7", "#81C784", "#BA68C8", "#FFB74D", "#90A4AE"];
-
   useEffect(() => {
     document.title = "Line Chart - Skylar";
     const fetchData = async () => {
       try {
-        const res = await fetch("http://localhost:3001/api/vuelos-por-ano");
+        const res = await fetch(`http://localhost:3001/api/precios-promedio?year1=${year1l}&year2=${year2l}`);
         const json = await res.json();
-
-        const currentYear = new Date().getFullYear();
-        const ultimos5Anios = json.data.filter((item) => item.Año >= currentYear - 4);
-
-        const formattedData = [
-          {
-            id: "Cantidad",
-            data: ultimos5Anios.map((item) => ({
-              x: item.Año.toString(),
-              y: item.Cant_Vuelos,
-            })),
-          },
-        ];
-
-        setData(formattedData);
+        console.log("Datos recibidos line ", json);
+        setData(json);
       } catch (error) {
         console.error("Error al cargar los datos del gráfico:", error);
       }
     };
+  
+    const fetchData2 = async () => {
+      try {
+        const res = await fetch(`http://localhost:3001/api/precios-promedio?year1=${year1l}&year2=${year2l}`);
+        const json = await res.json();
+        setData(json);
+      } catch (error) {
+        console.error("Error al cargar datos del backend:", error);
+      }
+    };
 
-    fetchData();
-  }, []);
+    if (year1l && year2l) {
+      fetchData();
+    }else{
+      fetchData2();
+    }
+  }, [year1l, year2l]); // Dependencias para actualizar la gráfica cuando cambien los años.
+
 
   return (
     <ResponsiveLine
@@ -82,7 +83,7 @@ const LineChart = ({ isDashboard = false }) => {
         tickSize: 3,
         tickPadding: 6,
         tickRotation: 0,
-        legend: "Cantidad de Vuelos",
+        legend:  "Precio Promedio (USD)",
         legendOffset: -44,
         legendPosition: "middle",
       }}

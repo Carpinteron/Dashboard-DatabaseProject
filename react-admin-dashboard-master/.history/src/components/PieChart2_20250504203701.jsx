@@ -1,42 +1,43 @@
-import { ResponsiveLine } from "@nivo/line";
-import { useTheme } from "@mui/material";
-import { tokens } from "../theme";
 import { useEffect, useState } from "react";
+import { useTheme } from "@mui/material";
+import { ResponsiveLine } from "@nivo/line";
+import { tokens } from "../theme";
 
-const LineChart = ({ isDashboard = false }) => {
+const LineChart = () => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
   const [data, setData] = useState([]);
-  const fixedColors = ["#4FC3F7", "#81C784", "#BA68C8", "#FFB74D", "#90A4AE"];
 
   useEffect(() => {
-    document.title = "Line Chart - Skylar";
     const fetchData = async () => {
       try {
         const res = await fetch("http://localhost:3001/api/vuelos-por-ano");
         const json = await res.json();
-
+  
         const currentYear = new Date().getFullYear();
         const ultimos5Anios = json.data.filter((item) => item.Año >= currentYear - 4);
-
+  
         const formattedData = [
           {
-            id: "Cantidad",
+            id: "Cantidad de vuelos",
+            color: tokens("dark").greenAccent[500],
             data: ultimos5Anios.map((item) => ({
               x: item.Año.toString(),
               y: item.Cant_Vuelos,
             })),
           },
         ];
-
+  
         setData(formattedData);
       } catch (error) {
         console.error("Error al cargar los datos del gráfico:", error);
       }
     };
-
+  
     fetchData();
   }, []);
+  
+  
 
   return (
     <ResponsiveLine
@@ -51,10 +52,14 @@ const LineChart = ({ isDashboard = false }) => {
           },
         },
         legends: { text: { fill: colors.grey[100] } },
-        tooltip: { container: { color: colors.primary[500] } },
+        tooltip: {
+          container: {
+            color: "#000",
+          },
+        },
       }}
-      colors={fixedColors}
-      margin={{ top: 40, right: 110, bottom: 70, left: 60 }}
+      colors={{ datum: "color" }}
+      margin={{ top: 50, right: 110, bottom: 50, left: 60 }}
       xScale={{ type: "point" }}
       yScale={{
         type: "linear",
@@ -63,17 +68,15 @@ const LineChart = ({ isDashboard = false }) => {
         stacked: false,
         reverse: false,
       }}
-      yFormat=" >-.2f"
-      curve="catmullRom"
       axisTop={null}
       axisRight={null}
       axisBottom={{
         orient: "bottom",
-        tickSize: 0,
+        tickSize: 5,
         tickPadding: 5,
-        tickRotation: -90,
+        tickRotation: 0,
         legend: "Año",
-        legendOffset: 43,
+        legendOffset: 36,
         legendPosition: "middle",
       }}
       axisLeft={{
@@ -82,14 +85,12 @@ const LineChart = ({ isDashboard = false }) => {
         tickSize: 3,
         tickPadding: 6,
         tickRotation: 0,
-        legend: "Cantidad de Vuelos",
+        legend: "Cantidad de Vuelos Ultimos 5 Años",
         legendOffset: -44,
         legendPosition: "middle",
       }}
-      enableGridX={false}
-      enableGridY={false}
-      pointSize={6}
-      pointColor={{ from: "serieColor" }}
+      pointSize={10}
+      pointColor={{ theme: "background" }}
       pointBorderWidth={2}
       pointBorderColor={{ from: "serieColor" }}
       pointLabelYOffset={-12}
@@ -120,8 +121,6 @@ const LineChart = ({ isDashboard = false }) => {
           ],
         },
       ]}
-      role="application"
-      lineAriaLabel={(e) => `${e.id}: ${e.formattedValue} in year: ${e.indexValue}`}
     />
   );
 };
