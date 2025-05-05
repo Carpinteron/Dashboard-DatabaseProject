@@ -16,8 +16,8 @@ import ProgressCircle from "../../components/ProgressCircle";
 import { useEffect, useState } from "react";
 import AirplaneTicketIcon from '@mui/icons-material/AirplaneTicket';
 import RouteIcon from '@mui/icons-material/Route';
-
-
+import MonetizationOnIcon from '@mui/icons-material/MonetizationOn';
+import LuggageIcon from '@mui/icons-material/Luggage';
 
 
 const Dashboard = () => {
@@ -217,7 +217,7 @@ useEffect(() => {
             progress="0.30"
             increase="+5%"
             icon={
-              <PersonAddIcon
+              <LuggageIcon
                 sx={{ color: colors.greenAccent[600], fontSize: "26px" }}
               />
             }
@@ -236,7 +236,7 @@ useEffect(() => {
             progress="0.80"
             increase="+43%"
             icon={
-              <TrafficIcon
+              <MonetizationOnIcon
                 sx={{ color: colors.greenAccent[600], fontSize: "26px" }}
               />
             }
@@ -271,7 +271,13 @@ useEffect(() => {
           backgroundColor={colors.primary[400]}
           padding="10px"
         >
-          Vuelos Historicos con N Pasajeros
+          <Typography
+            variant="h5"
+            ml="150px"
+            fontWeight="600"
+            sx={{ padding: "0px 0px 0 0px" }}
+          >Vuelos Historicos con N Pasajeros</Typography>
+          
           <Box height="260px">
             <GeographyChart isDashboard={true} />
           </Box>

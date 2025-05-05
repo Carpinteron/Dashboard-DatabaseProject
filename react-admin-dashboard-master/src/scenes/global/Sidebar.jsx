@@ -186,7 +186,7 @@ const Sidebar = () => {
               setSelected={setSelected}
             />
               <Item
-              title="Aereopuerto Origen"
+              title="Aeropuerto Origen"
               to="/geo2"
               icon={< AirplanemodeActiveIcon/>}
               selected={selected}
