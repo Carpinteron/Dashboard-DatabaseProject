@@ -3,7 +3,7 @@ const sql = require("mssql");
 const cors = require("cors");
 const WebSocket = require("ws");
 const axios = require('axios'); //npm install axios --legacy-peer-deps
-
+const fs = require("fs"); // Para leer archivos SQL
 const app = express();
 const port = 3001;
 app.use(cors());
@@ -17,7 +17,7 @@ const config = {
   database: "Flights_Data",
   port: 1433,
   authentication: { type: "default" },
-  options: { encrypt: false, trustServerCertificate: true },
+  options: { encrypt: false, trustServerCertificate: true }, requestTimeout: 120000 // 30 segundos
 };
 
 // Conexión a SQL Server
@@ -55,7 +55,7 @@ function calcularDistancia(lat1, lon1, lat2, lon2) {
   };
 }
 
-async function saveFilteredFlightsToDatabase(flights) {
+async function saveFilteredFlightsToDatabase(flights,airportOriginIataCode, fecharequest) {
   let pool; // Declarar pool aquí para que esté accesible en el bloque finally
   try {
     pool = await sql.connect(config); // Conectar al pool de conexiones
@@ -151,15 +151,13 @@ async function saveFilteredFlightsToDatabase(flights) {
 
   } catch (err) {
     console.error('Error al guardar los vuelos filtrados en la base de datos:', err);
-  } finally {
-    if (pool) {
-      await pool.close(); // Cerrar el pool de conexiones
-    }
   }
 }
 
+
 //Consumir API de vuelos
 async function Api_lol(fecha, IataCode) {
+  console.log('Llamando a la API...');
   let airportOriginIataCode = IataCode // Código IATA del aeropuerto de origen
   let fecharequest = fecha // YYYY-MM-DD  
   const options = {
@@ -174,11 +172,12 @@ async function Api_lol(fecha, IataCode) {
   axios.request(options).then(response => {
     const flights = response.data.routes; // Obtener las rutas de la API
     console.log('Datos obtenidos de la API:)');
-    saveFilteredFlightsToDatabase(flights); // Guardar los vuelos filtrados en la base de datos
+    saveFilteredFlightsToDatabase(flights,airportOriginIataCode,fecharequest); // Guardar los vuelos filtrados en la base de datos
   }).catch(error => {
     console.error('Error al consumir la API:', error);
   });
 }
+
 
 // 1. Rutas populares por año barchart apilado
 app.get('/api/rutas-populares', async (req, res) => {
@@ -451,39 +450,92 @@ app.get('/api/lista-vuelos', async (req, res) => {
 // Ruta: Rutas para el mapa
 app.get('/api/rutas-mapa2', async (req, res) => {
   const fecha = req.query.fecha || new Date().toISOString().split('T')[0];;
-  const airportOriginIataCode = req.query.airportOriginIataCode || 'JFK'; // Cambia esto por el código IATA del aeropuerto de origen que desees
+  const airportOriginIataCode = req.query.airportOriginIataCode || 'LAX'; // Código IATA del aeropuerto de origen
+  // Cambia esto por el código IATA del aeropuerto de origen que desees
 
   try {
-    const result = await pool.request().query(`
-SELECT  
-    city1,
-    city2,
-    airport1,
-    airport2,
-    latitude_airport1,
-    longitude_airport1,
-    latitude_airport2,
-    longitude_airport2
-FROM Flights_US
-WHERE date = ${fecha}  -- Filtro por fecha
-    AND airport1 = ${airportOriginIataCode};   -- Filtro por aeropuerto de origen
+    // Consulta SQL con parámetros
+    const result = await pool.request()
+      .input('fecha', sql.Date, fecha)
+      .input('airportOriginIataCode', sql.VarChar, airportOriginIataCode)
+      .query(`
+        SELECT  
+            city1,
+            city2,
+            airport1,
+            airport2,
+            latitude_airport1,
+            longitude_airport1,
+            latitude_airport2,
+            longitude_airport2
+        FROM Flights_US
+        WHERE date = @fecha
+          AND airport1 = @airportOriginIataCode;
       `);
+
 
     const rows = result.recordset;
 
-    const processedData = rows.map(r => ({
-      from: r.airport1,
-      to: r.airport2,
-      cityFrom: r.city1,
-      cityTo: r.city2,
-      lat1: r.latitude_airport1,
-      lon1: r.longitude_airport1,
-      lat2: r.latitude_airport2,
-      lon2: r.longitude_airport2,
-      passengers: r.total_passengers
-    }));
+    if (rows.length > 0) {
+      const processedData = rows.map(r => ({
+        from: r.airport1,
+        to: r.airport2,
+        cityFrom: r.city1,
+        cityTo: r.city2,
+        lat1: r.latitude_airport1,
+        lon1: r.longitude_airport1,
+        lat2: r.latitude_airport2,
+        lon2: r.longitude_airport2,
+      }));
 
-    res.json(processedData);
+      res.json(processedData);
+    } else {
+      // Si no hay datos, llamar a la API
+      console.log("No se encontraron datos en la base de datos. Llamando a la API...");
+      await Api_lol(fecha, airportOriginIataCode);
+
+      // Intentar consultar nuevamente la base de datos después de llamar a la API
+
+      // Intentar consultar nuevamente la base de datos
+      const retryResult = await pool.request()
+        .input('fecha', sql.Date, fecha)
+        .input('airportOriginIataCode', sql.VarChar, airportOriginIataCode)
+        .query(`
+          SELECT  
+              city1,
+              city2,
+              airport1,
+              airport2,
+              latitude_airport1,
+              longitude_airport1,
+              latitude_airport2,
+              longitude_airport2
+          FROM Flights_US
+          WHERE date = @fecha
+            AND airport1 = @airportOriginIataCode;
+        `);
+      const retryRows = retryResult.recordset;
+
+      if (retryRows.length > 0) {
+        const processedRetryData = retryRows.map(r => ({
+          from: r.airport1,
+          to: r.airport2,
+          cityFrom: r.city1,
+          cityTo: r.city2,
+          lat1: r.latitude_airport1,
+          lon1: r.longitude_airport1,
+          lat2: r.latitude_airport2,
+          lon2: r.longitude_airport2,
+          nsmiles: r.nsmiles,
+        }));
+
+        res.json(processedRetryData);
+      } else {
+        res.status(404).send("No se encontraron datos después de consultar la API.");
+      }
+
+    }
+
   } catch (err) {
     console.error("Error en rutas-mapa:", err.message);
     res.status(500).send("Error interno del servidor");
@@ -491,25 +543,6 @@ WHERE date = ${fecha}  -- Filtro por fecha
 });
 
 
-// 6. Información general (total de vuelos)
-app.get('/api/infogeneral1', async (req, res) => {
-  try {
-    const result = await pool.request().query(`
-      select count(*) as totalvuelos
-      from Flights_US f
-    `);
-
-    res.json({
-      success: true,
-      data: {
-        totalvuelos: result.recordset[0].totalvuelos
-      }
-    });
-  } catch (err) {
-    console.error("Error al obtener el total de vuelos:", err.message);
-    res.status(500).send("Error interno del servidor");
-  }
-});
 
 // 7. Información general (distancia promedio
 app.get('/api/infogeneral2', async (req, res) => {
@@ -595,6 +628,20 @@ app.get('/api/vuelos-por-ano', async (req, res) => {
     console.error("Error al obtener la cantidad de vuelos por año:", err.message);
     res.status(500).send("Error interno del servidor");
   }
+});
+
+// Cerrar el pool de conexiones al apagar el servidor
+process.on('SIGINT', async () => {
+  console.log("🛑 Apagando el servidor...");
+  if (pool) {
+    try {
+      await pool.close();
+      console.log("✅ Pool de conexiones cerrado correctamente.");
+    } catch (err) {
+      console.error("❌ Error al cerrar el pool de conexiones:", err.message);
+    }
+  }
+  process.exit(0);
 });
 
 
