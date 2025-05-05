@@ -10,7 +10,7 @@ import Header from "../../components/Header";
 import LineChart from "../../components/LineChart";
 import GeographyChart from "../../components/GeographyChart";
 import BarChart from "../../components/BarChart";
-import BarChart2 from "../../components/BarChart2";
+import PieChart2 from "../../components/PieChart2";
 import StatBox from "../../components/StatBox";
 import ProgressCircle from "../../components/ProgressCircle";
 import { useEffect, useState } from "react";
@@ -25,95 +25,95 @@ const Dashboard = () => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
   //Para los ultimos vuelos
-const [recentFlights, setRecentFlights] = useState([]);
-// info general
-const [totalvuelos, setTotalVuelos] = useState(0);
-const [avgdistancia, setAvgDistancia] = useState(0);
-const [totalaeropuertos, setTotalAeropuertos] = useState(0);
-const [avgprecio, setAvgPrecio] = useState(0);
+  const [recentFlights, setRecentFlights] = useState([]);
+  // info general
+  const [totalvuelos, setTotalVuelos] = useState(0);
+  const [avgdistancia, setAvgDistancia] = useState(0);
+  const [totalaeropuertos, setTotalAeropuertos] = useState(0);
+  const [avgprecio, setAvgPrecio] = useState(0);
 
-useEffect(() => {
-  fetch("http://localhost:3001/api/lista-vuelos")
-    .then((res) => res.json())
-    .then((data) => setRecentFlights(data))
-    .catch((error) => console.error("Error al obtener vuelos recientes:", error));
-}, []);
+  useEffect(() => {
+    fetch("http://localhost:3001/api/lista-vuelos")
+      .then((res) => res.json())
+      .then((data) => setRecentFlights(data))
+      .catch((error) => console.error("Error al obtener vuelos recientes:", error));
+  }, []);
 
-//Para el total de vuelos
-useEffect(() => {
-  const fetchTotalVuelos = async () => {
-    try {
-      const res = await fetch(`http://localhost:3001/api/infogeneral1`);
-      const data = await res.json(); 
-      if (data.success) { 
-        setTotalVuelos(data.data.totalvuelos);
-      } else {
-        console.error('Error en la respuesta:', data.message);
+  //Para el total de vuelos
+  useEffect(() => {
+    const fetchTotalVuelos = async () => {
+      try {
+        const res = await fetch(`http://localhost:3001/api/infogeneral1`);
+        const data = await res.json();
+        if (data.success) {
+          setTotalVuelos(data.data.totalvuelos);
+        } else {
+          console.error('Error en la respuesta:', data.message);
+        }
+      } catch (error) {
+        console.error("Error al obtener el total de vuelos:", error);
       }
-    } catch (error) {
-      console.error("Error al obtener el total de vuelos:", error);
-    }
-  };
-  fetchTotalVuelos(); 
-}, []);
+    };
+    fetchTotalVuelos();
+  }, []);
 
 
-//Para la distancia promedio
-useEffect(() => {
-  const fetchAvgDistancia = async () => {
-    try {
-      const res = await fetch(`http://localhost:3001/api/infogeneral2`);
-      const data = await res.json(); 
-      if (data.success) {
-        setAvgDistancia(data.data.avgdistancia); 
-      } else {
-        console.error('Error en la respuesta:', data.message);
+  //Para la distancia promedio
+  useEffect(() => {
+    const fetchAvgDistancia = async () => {
+      try {
+        const res = await fetch(`http://localhost:3001/api/infogeneral2`);
+        const data = await res.json();
+        if (data.success) {
+          setAvgDistancia(data.data.avgdistancia);
+        } else {
+          console.error('Error en la respuesta:', data.message);
+        }
+      } catch (error) {
+        console.error("Error al obtener la distancia promedio:", error);
       }
-    } catch (error) {
-      console.error("Error al obtener la distancia promedio:", error);
-    }
-  };
-  fetchAvgDistancia();
-}, []);
+    };
+    fetchAvgDistancia();
+  }, []);
 
-// Para el total de aeropuertos
-useEffect(() => {
-  const fetchTotalAeropuertos = async () => {
-    try {
-      const res = await fetch(`http://localhost:3001/api/infogeneral3`);
-      const data = await res.json();
-      
-      if (data.success) {
-        setTotalAeropuertos(data.data.totalaeropuertos);
-      }
-    } catch (error) {
-      console.error("Error al obtener el total de aeropuertos:", error);
-    }
-  };
-  fetchTotalAeropuertos();
-}, []);
+  // Para el total de aeropuertos
+  useEffect(() => {
+    const fetchTotalAeropuertos = async () => {
+      try {
+        const res = await fetch(`http://localhost:3001/api/infogeneral3`);
+        const data = await res.json();
 
-// Para el precio promedio
-useEffect(() => {
-  const fetchAvgPrecio = async () => {
-    try {
-      const res = await fetch(`http://localhost:3001/api/infogeneral4`);
-      const data = await res.json();
-      
-      if (data.success) {
-        setAvgPrecio(data.data.avgprecio);
+        if (data.success) {
+          setTotalAeropuertos(data.data.totalaeropuertos);
+        }
+      } catch (error) {
+        console.error("Error al obtener el total de aeropuertos:", error);
       }
-    } catch (error) {
-      console.error("Error al obtener el precio promedio:", error);
-    }
-  };
-  fetchAvgPrecio();
-}, []);
+    };
+    fetchTotalAeropuertos();
+  }, []);
+
+  // Para el precio promedio
+  useEffect(() => {
+    const fetchAvgPrecio = async () => {
+      try {
+        const res = await fetch(`http://localhost:3001/api/infogeneral4`);
+        const data = await res.json();
+
+        if (data.success) {
+          setAvgPrecio(data.data.avgprecio);
+        }
+      } catch (error) {
+        console.error("Error al obtener el precio promedio:", error);
+      }
+    };
+    fetchAvgPrecio();
+  }, []);
 
   return (
     <Box m="20px">
       {/* HEADER */}
-      
+
       {/* GRID & CHARTS */}
       <Box
         display="grid"
@@ -153,7 +153,7 @@ useEffect(() => {
 
           </Box>
           <Box height="250px" m="-20px 0 0 0">
-          <LineChart isDashboard={true} />
+            <LineChart isDashboard={true} />
           </Box>
         </Box>
         <Box
@@ -175,30 +175,30 @@ useEffect(() => {
             </Typography>
           </Box>
           {recentFlights.map((flight, i) => (
-          <Box
-            key={`${flight.id}-${i}`}
-            display="flex"
-            justifyContent="space-between"
-            alignItems="center"
-            borderBottom={`4px solid ${colors.primary[500]}`}
-            p="15px"
-          >
-            <Box>
-              <Typography
-                color={colors.greenAccent[500]}
-                variant="h5"
-                fontWeight="600"
-              >
-                🛬 {flight.airport1} → {flight.airport2}
-              </Typography>
-              <Typography color={colors.grey[100]}>
-              {flight.city1} → {flight.city2}
-              </Typography>
+            <Box
+              key={`${flight.id}-${i}`}
+              display="flex"
+              justifyContent="space-between"
+              alignItems="center"
+              borderBottom={`4px solid ${colors.primary[500]}`}
+              p="15px"
+            >
+              <Box>
+                <Typography
+                  color={colors.greenAccent[500]}
+                  variant="h5"
+                  fontWeight="600"
+                >
+                  🛬 {flight.airport1} → {flight.airport2}
+                </Typography>
+                <Typography color={colors.grey[100]}>
+                  {flight.city1} → {flight.city2}
+                </Typography>
+              </Box>
+              <Box color={colors.grey[100]}>{new Date(flight.date).toLocaleDateString()}</Box>
+
             </Box>
-            <Box color={colors.grey[100]}>{new Date(flight.date).toLocaleDateString()}</Box>
-            
-          </Box>
-          
+
           ))}
         </Box>
 
@@ -212,8 +212,8 @@ useEffect(() => {
         >
           <StatBox
             title="Total de vuelos registrados"
-            subtitle={totalvuelos ||"Cargando..."} 
-          
+            subtitle={totalvuelos || "Cargando..."}
+
             icon={
               <AirplaneTicketIcon
                 sx={{ color: colors.greenAccent[600], fontSize: "26px" }}
@@ -230,7 +230,7 @@ useEffect(() => {
         >
           <StatBox
             title="Promedio de distancia recorrida"
-            subtitle={avgdistancia.toFixed(2)+" millas" ||"Cargando..."} 
+            subtitle={avgdistancia.toFixed(2) + " millas" || "Cargando..."}
             progress=""
             increase=""
 
@@ -250,7 +250,7 @@ useEffect(() => {
         >
           <StatBox
             title="Total de aeropuertos registrados"
-            subtitle={totalaeropuertos ||"Cargando..."} 
+            subtitle={totalaeropuertos || "Cargando..."}
             progress=""
             increase=""
             icon={
@@ -269,7 +269,7 @@ useEffect(() => {
         >
           <StatBox
             title="Precio promedio de los vuelos"
-            subtitle={"$"+avgprecio.toFixed(2)+" USD" ||"Cargando..."} 
+            subtitle={"$" + avgprecio.toFixed(2) + " USD" || "Cargando..."}
             progress=""
             increase=""
             icon={
@@ -282,10 +282,10 @@ useEffect(() => {
 
 
 
-        
+
 
         {/* ROW 3 */}
-       
+
         <Box
           gridColumn="span 4"
           gridRow="span 2"
@@ -296,7 +296,7 @@ useEffect(() => {
             fontWeight="600"
             sx={{ padding: "30px 30px 0 30px" }}
           >
-        
+            NOMBREEE
           </Typography>
           <Box height="250px" mt="-20px">
             <BarChart isDashboard={true} />
@@ -306,19 +306,16 @@ useEffect(() => {
           gridColumn="span 4"
           gridRow="span 2"
           backgroundColor={colors.primary[400]}
-          padding="10px"
         >
-            <Typography
+          <Typography
             variant="h5"
             fontWeight="600"
-            ml="120px"
-            sx={{ padding: "0px 0px 0 0px" }}
+            sx={{ padding: "30px 30px 0 30px" }}
           >
-           Vuelos Historicos con N Pasajeros
+            Número de Vuelos por Año 
           </Typography>
-         
           <Box height="260px">
-            <GeographyChart isDashboard={true} />
+            <PieChart2 isDashboard={true} />
           </Box>
         </Box>
         <Box
@@ -331,15 +328,15 @@ useEffect(() => {
             fontWeight="600"
             sx={{ padding: "30px 30px 0 30px" }}
           >
-           
+
           </Typography>
           <Box height="250px" mt="-20px">
-            <BarChart2 isDashboard={true} />
+            <GeographyChart isDashboard={true} />
           </Box>
         </Box>
       </Box>
     </Box>
-    
+
   );
 };
 
