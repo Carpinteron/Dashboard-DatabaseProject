@@ -20,7 +20,7 @@ const FAQ = () => {
 
       <Accordion falseExpanded>
         <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-          <Typography color={colors.greenAccent[500]} variant="h4" fontWeight={"bold"}>
+          <Typography color={colors.greenAccent[500]} variant="h4">
             Descripción
           </Typography>
         </AccordionSummary>
@@ -34,7 +34,7 @@ const FAQ = () => {
       </Accordion>
       <Accordion falseExpanded>
         <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-          <Typography color={colors.greenAccent[500]} variant="h4"fontWeight={"bold"}>
+          <Typography color={colors.greenAccent[500]} variant="h4">
             Objetivos Principales
           </Typography>
         </AccordionSummary>
