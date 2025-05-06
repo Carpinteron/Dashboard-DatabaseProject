@@ -87,21 +87,24 @@ const FAQ = () => {
           </Typography>
         </AccordionSummary>
         <AccordionDetails >
-          <Typography component="div">
-            Fuentes utilizadas para el desarrollo del proyecto
-
+          <Typography component="div" variant="h5" color={colors.grey[100]}>
+            Hacer referencia a las fuentes de datos, como se obtuvieron, que se hizo con ellos, etc.
+            Txeto largo, links.
             <ul style={{ marginTop: 0, paddingLeft: '20px' }}>
-            • OpenFlights Airport Dataset: https://openflights.org/data.php 
-            <br />
-            • OpenFlights Flights Dataset: https://github.com/jpatokal/openflights/blob/master/data/airports.dat
-            <br />
-            • USA Airport Dataset: https://www.kaggle.com/datasets/flashgordon/usa-airport-dataset
-            <br />
-            • USA Flights Dataset: https://www.kaggle.com/datasets/bhavikjikadara/us-airline-flight-routes-and-fares-1993-2024
-            <br />
-            • AeroDataBox API: https://rapidapi.com/aedbx-aedbx/api/aerodatabox/playground/apiendpoint_a52ca6b2-212c-49ea-952b-e8170cfb3b00
-            <br />
-            • Flights Data Database Script: <a href="/public/Flights_Data_Script.sql" download> Flights_Data_Script.sql </a>
+              <li>Fuente de datos 1: Obtenida mediante API de Aerodatabox.</li>
+              <li>Fuente de datos 2: Dataset público de vuelos (2023).</li>
+              <li>Procesamiento: Limpieza con Python y Pandas.</li>
+              <li>
+                Dataset disponible en:
+                <a
+                  href="https://ejemplo.com/dataset"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{ color: '#1976d2', marginLeft: '5px' }}
+                >
+                  enlace al dataset
+                </a>
+              </li>
             </ul>
           </Typography>
         </AccordionDetails>
