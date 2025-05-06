@@ -35,7 +35,7 @@ const LineChart = ({ routes, isDashboard = false }) => {
     };
     
 
-    fetchData(routes);
+    fetchData();
   }, []);
 
   return (

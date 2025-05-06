@@ -3,7 +3,7 @@ import { useTheme } from "@mui/material";
 import { tokens } from "../theme";
 import { useEffect, useState } from "react";
 
-const LineChart = ({ routes, isDashboard = false }) => {
+const LineChart = ({ isDashboard = false }) => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
   const [data, setData] = useState([]);
@@ -15,27 +15,24 @@ const LineChart = ({ routes, isDashboard = false }) => {
       try {
         const res = await fetch("http://localhost:3001/api/vuelos-enero-mayo-2025");
         const json = await res.json();
-    
-        console.log("Datos recibidos en React:", json.data); // 👈
-    
+
         const formattedData = [
           {
             id: "Cantidad",
             data: json.data.map((item) => ({
-              x: item.NombreMes,
+              x: item.NombreMes, // Asegúrate que tu backend devuelve NombreMes (ej: "Enero")
               y: item.Cant_Vuelos,
             })),
           },
         ];
-    
+
         setData(formattedData);
       } catch (error) {
         console.error("Error al cargar los datos del gráfico:", error);
       }
     };
-    
 
-    fetchData(routes);
+    fetchData();
   }, []);
 
   return (
@@ -54,7 +51,7 @@ const LineChart = ({ routes, isDashboard = false }) => {
         tooltip: { container: { color: colors.primary[500] } },
       }}
       colors={fixedColors}
-      margin={{ top: 40, right: 110, bottom: 60, left: 60 }}
+      margin={{ top: 40, right: 110, bottom: 70, left: 60 }}
       xScale={{ type: "point" }}
       yScale={{
         type: "linear",
@@ -64,16 +61,16 @@ const LineChart = ({ routes, isDashboard = false }) => {
         reverse: false,
       }}
       yFormat=" >-.2f"
-      curve="linear"
+      curve="catmullRom"
       axisTop={null}
       axisRight={null}
       axisBottom={{
         orient: "bottom",
         tickSize: 0,
-        tickPadding: 10,
-        tickRotation: 0, // Mostrar horizontalmente
+        tickPadding: 5,
+        tickRotation: -45,
         legend: "Mes",
-        legendOffset: 36,
+        legendOffset: 43,
         legendPosition: "middle",
       }}
       axisLeft={{

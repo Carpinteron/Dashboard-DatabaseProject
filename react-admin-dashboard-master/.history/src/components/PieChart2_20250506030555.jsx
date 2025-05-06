@@ -3,7 +3,7 @@ import { useTheme } from "@mui/material";
 import { tokens } from "../theme";
 import { useEffect, useState } from "react";
 
-const LineChart = ({ routes, isDashboard = false }) => {
+const LineChart = ({ isDashboard = false }) => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
   const [data, setData] = useState([]);
@@ -35,7 +35,7 @@ const LineChart = ({ routes, isDashboard = false }) => {
     };
     
 
-    fetchData(routes);
+    fetchData();
   }, []);
 
   return (
@@ -54,7 +54,7 @@ const LineChart = ({ routes, isDashboard = false }) => {
         tooltip: { container: { color: colors.primary[500] } },
       }}
       colors={fixedColors}
-      margin={{ top: 40, right: 110, bottom: 60, left: 60 }}
+      margin={{ top: 40, right: 110, bottom: 70, left: 60 }}
       xScale={{ type: "point" }}
       yScale={{
         type: "linear",
@@ -64,16 +64,16 @@ const LineChart = ({ routes, isDashboard = false }) => {
         reverse: false,
       }}
       yFormat=" >-.2f"
-      curve="linear"
+      curve="catmullRom"
       axisTop={null}
       axisRight={null}
       axisBottom={{
         orient: "bottom",
         tickSize: 0,
-        tickPadding: 10,
-        tickRotation: 0, // Mostrar horizontalmente
+        tickPadding: 5,
+        tickRotation: -45,
         legend: "Mes",
-        legendOffset: 36,
+        legendOffset: 43,
         legendPosition: "middle",
       }}
       axisLeft={{

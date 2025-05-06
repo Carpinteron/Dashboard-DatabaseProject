@@ -66,9 +66,15 @@ const Geography2 = () => {
       {/* Contenedor para los gráficos */}
       <Box display={"flex"} gap="6px" height={"75vh"}>
         <Box
+          flex={7}
+          border={`1px solid ${colors.grey[100]}`}
+          borderRadius="4px"
+        >
+        
+        <Box
           flex={3}
           borderRadius="4px">
-          <PieChart2 routes={routes} />
+          <PieChart2 />
         </Box>
       </Box>
     </Box>

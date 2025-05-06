@@ -634,7 +634,7 @@ app.get('/api/vuelos-enero-mayo-2025', async (req, res) => {
       success: true,
       data: dataCompleta,
     });
-    console.log("Datos de enero a mayo 2025:", dataCompleta);
+    con
   } catch (err) {
     console.error("Error al obtener los vuelos de enero a mayo 2025:", err.message);
     res.status(500).send("Error interno del servidor");

@@ -597,7 +597,7 @@ from Flights_US f
   }
 });
 // 10. Información general (cantidad de vuelos por año)
-app.get('/api/vuelos-enero-mayo-2025', async (req, res) => {
+app.get('/api/vuelos-enero-mayo-2025', async (res) => {
   try {
     const result = await pool.request().query(`
       SELECT 

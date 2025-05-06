@@ -68,7 +68,7 @@ const Geography2 = () => {
         <Box
           flex={3}
           borderRadius="4px">
-          <PieChart2 routes={routes} />
+          <PieChart2 data={routes} />
         </Box>
       </Box>
     </Box>

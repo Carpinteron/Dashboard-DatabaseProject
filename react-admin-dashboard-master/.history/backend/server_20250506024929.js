@@ -601,47 +601,24 @@ app.get('/api/vuelos-enero-mayo-2025', async (req, res) => {
   try {
     const result = await pool.request().query(`
       SELECT 
-        MONTH(f.date) AS Mes,
-        DATENAME(MONTH, f.date) AS NombreMes,
+        DATENAME(MONTH, f.date) AS Mes, 
+        MONTH(f.date) AS MesNumero,
         COUNT(*) AS Cant_Vuelos
       FROM Flights_US f
       WHERE YEAR(f.date) = 2025 AND MONTH(f.date) BETWEEN 1 AND 5
-      GROUP BY MONTH(f.date), DATENAME(MONTH, f.date)
-      ORDER BY Mes ASC
+      GROUP BY DATENAME(MONTH, f.date), MONTH(f.date)
+      ORDER BY MesNumero ASC
     `);
-
-    const rawData = result.recordset;
-
-    // Mapeo fijo enero-mayo
-    const mesesEsperados = [
-      { Mes: 1, NombreMes: "Enero" },
-      { Mes: 2, NombreMes: "Febrero" },
-      { Mes: 3, NombreMes: "Marzo" },
-      { Mes: 4, NombreMes: "Abril" },
-      { Mes: 5, NombreMes: "Mayo" },
-    ];
-
-    const dataCompleta = mesesEsperados.map(({ Mes, NombreMes }) => {
-      const encontrado = rawData.find((m) => m.Mes === Mes);
-      return {
-        Mes,
-        NombreMes,
-        Cant_Vuelos: encontrado ? encontrado.Cant_Vuelos : 0,
-      };
-    });
 
     res.json({
       success: true,
-      data: dataCompleta,
+      data: result.recordset
     });
-    console.log("Datos de enero a mayo 2025:", dataCompleta);
   } catch (err) {
     console.error("Error al obtener los vuelos de enero a mayo 2025:", err.message);
     res.status(500).send("Error interno del servidor");
   }
 });
-
-
 
 
 // Cerrar el pool de conexiones al apagar el servidor
