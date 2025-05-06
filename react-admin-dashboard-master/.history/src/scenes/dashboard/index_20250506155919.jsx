@@ -195,7 +195,7 @@ const Dashboard = () => {
                   {flight.city1} → {flight.city2}
                 </Typography>
               </Box>
-              <Box color={colors.grey[100]}>{new Date(flight.date).toLocaleDateString('es-ES', { timeZone: 'UTC' })}</Box>
+              <Box color={colors.grey[100]}>{new Date(flight.date).toLocaleDateString('es-ES', { timeZone: 'UTC' }}</Box>
 
             </Box>
 

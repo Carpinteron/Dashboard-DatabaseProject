@@ -55,10 +55,6 @@ function calcularDistancia(lat1, lon1, lat2, lon2) {
   };
 }
 
-function getRandomInt(min, max) {
-    return Math.floor(Math.random() * (max - min + 1)) + min;
-  }
-  
 async function saveFilteredFlightsToDatabase(flights, airportOriginIataCode, fecharequest) {
   let pool; // Declarar pool aquí para que esté accesible en el bloque finally
   try {
@@ -106,8 +102,8 @@ async function saveFilteredFlightsToDatabase(flights, airportOriginIataCode, fec
         airport1: originAirport.iata,
         airport2: destinationAirport.iata,
         nsmiles: distancia.millas.toString(), // Convertir a string
-        passengers:getRandomInt(20,100), // Pasajeros como null
-        fare: getRandomInt(19,1200).toString(), // Tarifa como null
+        passengers: null, // Pasajeros como null
+        fare: null, // Tarifa como null
         latitude_airport1: originAirport.lat,
         longitude_airport1: originAirport.lon,
         latitude_airport2: destinationAirport.lat,
@@ -387,7 +383,7 @@ app.get('/api/top-ciudades-origen', async (req, res) => {
 // Ruta: Rutas para el mapa
 app.get('/api/rutas-mapa', async (req, res) => {
   const year = parseInt(req.query.year) || 2024;
-  const minPassengers = parseInt(req.query.minPassengers)  || 3000; // Valor por defecto si no se proporciona
+  const minPassengers = parseInt(req.query.minPassengers)  || 3000 ; // Valor por defecto si no se proporciona
 
   try {
     const result = await pool.request().query(`

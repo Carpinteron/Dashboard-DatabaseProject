@@ -106,8 +106,8 @@ async function saveFilteredFlightsToDatabase(flights, airportOriginIataCode, fec
         airport1: originAirport.iata,
         airport2: destinationAirport.iata,
         nsmiles: distancia.millas.toString(), // Convertir a string
-        passengers:getRandomInt(20,100), // Pasajeros como null
-        fare: getRandomInt(19,1200).toString(), // Tarifa como null
+        passengers:getRa, // Pasajeros como null
+        fare: null, // Tarifa como null
         latitude_airport1: originAirport.lat,
         longitude_airport1: originAirport.lon,
         latitude_airport2: destinationAirport.lat,

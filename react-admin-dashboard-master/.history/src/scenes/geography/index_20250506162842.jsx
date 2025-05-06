@@ -13,7 +13,7 @@ const Geography = () => {
   const [year, setYear] = useState("");
   return (
     <Box m="20px">
-      <Header title={`Vuelos de ${year||2024} con más de ${npasag ||3000} pasajeros` }subtitle="Geography Chart" />
+      <Header title={`Vuelos de ${year11} con más de ${npasag ||3000} pasajeros` }subtitle="Geography Chart" />
       
       <Box display="flex" justifyContent="center" gap={2} p={2}>
       <Box display="flex" backgroundColor={colors.primary[400]} borderRadius="2px">
