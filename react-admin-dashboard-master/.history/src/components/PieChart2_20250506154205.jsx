@@ -36,7 +36,7 @@ const LineChart = ({refreshCounter, isDashboard = false }) => {
     
 
     fetchData();
-  }, [refreshCounter]);
+  }, []);
 
   return (
     <ResponsiveLine

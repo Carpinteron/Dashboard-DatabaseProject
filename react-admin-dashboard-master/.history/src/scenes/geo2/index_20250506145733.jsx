@@ -8,7 +8,6 @@ import IconButton from "@mui/material/IconButton";
 import { tokens } from "../../theme";
 import { useState } from "react";
 import { InputBase } from "@mui/material";
-import Tooltip from "@mui/material/Tooltip";
 
 const Geography2 = () => {
   const theme = useTheme();
@@ -20,7 +19,7 @@ const Geography2 = () => {
   const [fecha, setFecha] = useState(hoy); // Fecha
   const [routes, setRoutes] = useState([]); // Rutas obtenidas del backend
   // Agregar un estado para forzar la recarga del PieChart
-  const [refreshCounter, setRefreshCounter] = useState(0);
+const [refreshPieChart, setRefreshPieChart] = useState(false);
 
   // Función para obtener rutas
   const fetchRoutes = async (forceUpdate = false) => {
@@ -58,38 +57,30 @@ const Geography2 = () => {
             onChange={(e) => setOrig(e.target.value)} // Actualiza el estado del código IATA
           />
         </Box>
-          {/* Botón para activar FetchRoutes */}
-          <Box display="flex" gap={1}>
-            <Tooltip title="Actualizar rutas desde el backend">
-              <IconButton onClick={() => fetchRoutes(true)}> {/* Llama a fetchRoutes con forceUpdate=true */}
-                <CheckCircleOutlineIcon /> {/* Ícono de un chulito */}
-              </IconButton>
-            </Tooltip>
+
+        {/* Botón para activar FetchRoutes */}
+        <Box display="flex" gap={1}>
+      <IconButton  onClick={() => fetchRoutes(true)}> {/* Llama a fetchRoutes con forceUpdate=true */}
+        <CheckCircleOutlineIcon /> {/* Ícono de un chulito */}
+      </IconButton>
+    </Box>
+
+        {/* Botón de Refresh */}
         
-          {/* Botón de Refresh */}
-          <Box display="flex">
-            <Tooltip title="Recargar el gráfico de pastel">
-            <IconButton onClick={() => setRefreshCounter(prev => prev + 1)}>
-            <RefreshOutlinedIcon />
+          <IconButton onClick={() => setRefreshPieChart(!refreshPieChart)}> {/* Cambia el estado para forzar el re-render */}
           </IconButton>
-            </Tooltip>
-            </Box>
-            </Box>
-       
-            </Box>
+        </Box>
+    
 
       {/* Contenedor para los gráficos */}
       <Box display={"flex"} gap="6px" height={"75vh"}>
-        
         <Box
           flex={3}
           borderRadius="4px">
-          <PieChart2 refreshCounter={refreshCounter} />
-        </Box>
+          <PieChart2 key={refreshPieChart}/>
         </Box>
       </Box>
-    
-    
+    </Box>
   );
 };
 

@@ -8,7 +8,6 @@ import IconButton from "@mui/material/IconButton";
 import { tokens } from "../../theme";
 import { useState } from "react";
 import { InputBase } from "@mui/material";
-import Tooltip from "@mui/material/Tooltip";
 
 const Geography2 = () => {
   const theme = useTheme();
@@ -19,8 +18,6 @@ const Geography2 = () => {
   const [orig, setOrig] = useState(""); // Código IATA
   const [fecha, setFecha] = useState(hoy); // Fecha
   const [routes, setRoutes] = useState([]); // Rutas obtenidas del backend
-  // Agregar un estado para forzar la recarga del PieChart
-  const [refreshCounter, setRefreshCounter] = useState(0);
 
   // Función para obtener rutas
   const fetchRoutes = async (forceUpdate = false) => {
@@ -58,38 +55,30 @@ const Geography2 = () => {
             onChange={(e) => setOrig(e.target.value)} // Actualiza el estado del código IATA
           />
         </Box>
-          {/* Botón para activar FetchRoutes */}
-          <Box display="flex" gap={1}>
-            <Tooltip title="Actualizar rutas desde el backend">
-              <IconButton onClick={() => fetchRoutes(true)}> {/* Llama a fetchRoutes con forceUpdate=true */}
-                <CheckCircleOutlineIcon /> {/* Ícono de un chulito */}
-              </IconButton>
-            </Tooltip>
-        
-          {/* Botón de Refresh */}
-          <Box display="flex">
-            <Tooltip title="Recargar el gráfico de pastel">
-            <IconButton onClick={() => setRefreshCounter(prev => prev + 1)}>
-            <RefreshOutlinedIcon />
-          </IconButton>
-            </Tooltip>
-            </Box>
-            </Box>
-       
-            </Box>
 
-      {/* Contenedor para los gráficos */}
-      <Box display={"flex"} gap="6px" height={"75vh"}>
-        
-        <Box
-          flex={3}
-          borderRadius="4px">
-          <PieChart2 refreshCounter={refreshCounter} />
-        </Box>
-        </Box>
-      </Box>
-    
-    
+        {/* Botón para activar FetchRoutes */}
+        <Box display="flex" gap={1}>
+      <IconButton  onClick={() => fetchRoutes(true)}> {/* Llama a fetchRoutes con forceUpdate=true */}
+        <CheckCircleOutlineIcon /> {/* Ícono de un chulito */}
+      </IconButton>
+    </Box>
+
+    // Agregar un estado para forzar la recarga del PieChart
+const [refreshPieChart, setRefreshPieChart] = useState(false);
+
+{/* Botón de Refresh */}
+<IconButton onClick={() => setRefreshPieChart(!refreshPieChart)}> {/* Cambia el estado para forzar el re-render */}
+  <RefreshOutlinedIcon />
+</IconButton>
+
+{/* Contenedor para los gráficos */}
+<Box display={"flex"} gap="6px" height={"75vh"}>
+  <Box
+    flex={3}
+    borderRadius="4px">
+    <PieChart2 key={refreshPieChart} /> {/* Cambiar la key fuerza el re-render */}
+  </Box>
+</Box>
   );
 };
 

@@ -3,7 +3,7 @@ import { useTheme } from "@mui/material";
 import { tokens } from "../theme";
 import { useEffect, useState } from "react";
 
-const LineChart = ({refreshCounter, isDashboard = false }) => {
+const LineChart = ({isDashboard = false }) => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
   const [data, setData] = useState([]);
@@ -35,8 +35,8 @@ const LineChart = ({refreshCounter, isDashboard = false }) => {
     };
     
 
-    fetchData();
-  }, [refreshCounter]);
+    fetchData(routes);
+  }, []);
 
   return (
     <ResponsiveLine

@@ -65,7 +65,7 @@ const Geography2 = () => {
                 <CheckCircleOutlineIcon /> {/* Ícono de un chulito */}
               </IconButton>
             </Tooltip>
-        
+            </Box>
           {/* Botón de Refresh */}
           <Box display="flex">
             <Tooltip title="Recargar el gráfico de pastel">
@@ -73,23 +73,19 @@ const Geography2 = () => {
             <RefreshOutlinedIcon />
           </IconButton>
             </Tooltip>
-            </Box>
-            </Box>
-       
-            </Box>
+          
+    
 
       {/* Contenedor para los gráficos */}
       <Box display={"flex"} gap="6px" height={"75vh"}>
-        
         <Box
           flex={3}
           borderRadius="4px">
           <PieChart2 refreshCounter={refreshCounter} />
         </Box>
-        </Box>
       </Box>
-    
-    
+      </Box>
+      </Box>
   );
 };
 

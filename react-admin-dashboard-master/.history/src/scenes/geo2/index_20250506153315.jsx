@@ -25,7 +25,7 @@ const Geography2 = () => {
   // Función para obtener rutas
   const fetchRoutes = async (forceUpdate = false) => {
     try {
-      const res = await fetch(`http://localhost:3001/api/rutas-mapa2?fecha=${fecha}&airportOriginIataCode=${orig}&forceUpdate=${forceUpdate}`);
+      const res = await fetch(http://localhost:3001/api/rutas-mapa2?fecha=${fecha}&airportOriginIataCode=${orig}&forceUpdate=${forceUpdate});
       const data = await res.json();
       setRoutes(data); // Actualiza las rutas en el estado
     } catch (err) {
@@ -35,7 +35,7 @@ const Geography2 = () => {
 
   return (
     <Box m="20px">
-      <Header title={`Destinos desde el aeropuerto ${orig || "LAX"}`} subtitle={`Geography Chart | Fecha: ${fecha || hoy}`} />
+      <Header title={Destinos desde el aeropuerto ${orig || "LAX"}} subtitle={Geography Chart | Fecha: ${fecha || hoy}} />
       <Box display="flex" justifyContent="center" gap={2} p={2}>
         {/* Input para la fecha */}
         <Box display="inline-block" backgroundColor={colors.primary[400]} borderRadius="7px" p={0} mb={1}>
@@ -73,23 +73,20 @@ const Geography2 = () => {
             <RefreshOutlinedIcon />
           </IconButton>
             </Tooltip>
-            </Box>
-            </Box>
-       
-            </Box>
+          </Box>
+        </Box>
+    
 
       {/* Contenedor para los gráficos */}
       <Box display={"flex"} gap="6px" height={"75vh"}>
-        
         <Box
           flex={3}
           borderRadius="4px">
-          <PieChart2 refreshCounter={refreshCounter} />
-        </Box>
+          <PieChart2 key={refreshCounter} />
         </Box>
       </Box>
-    
-    
+    </Box>
+    </Box>
   );
 };
 

@@ -73,10 +73,9 @@ const Geography2 = () => {
             <RefreshOutlinedIcon />
           </IconButton>
             </Tooltip>
-            </Box>
-            </Box>
+          
        
-            </Box>
+    
 
       {/* Contenedor para los gráficos */}
       <Box display={"flex"} gap="6px" height={"75vh"}>
@@ -88,8 +87,9 @@ const Geography2 = () => {
         </Box>
         </Box>
       </Box>
-    
-    
+    </Box>
+    </Box>
+    </Box>
   );
 };
 

@@ -20,7 +20,7 @@ const Geography2 = () => {
   const [fecha, setFecha] = useState(hoy); // Fecha
   const [routes, setRoutes] = useState([]); // Rutas obtenidas del backend
   // Agregar un estado para forzar la recarga del PieChart
-  const [refreshCounter, setRefreshCounter] = useState(0);
+const [refreshPieChart, setRefreshPieChart] = useState(false);
 
   // Función para obtener rutas
   const fetchRoutes = async (forceUpdate = false) => {
@@ -58,38 +58,35 @@ const Geography2 = () => {
             onChange={(e) => setOrig(e.target.value)} // Actualiza el estado del código IATA
           />
         </Box>
-          {/* Botón para activar FetchRoutes */}
-          <Box display="flex" gap={1}>
-            <Tooltip title="Actualizar rutas desde el backend">
-              <IconButton onClick={() => fetchRoutes(true)}> {/* Llama a fetchRoutes con forceUpdate=true */}
-                <CheckCircleOutlineIcon /> {/* Ícono de un chulito */}
-              </IconButton>
-            </Tooltip>
-        
-          {/* Botón de Refresh */}
-          <Box display="flex">
-            <Tooltip title="Recargar el gráfico de pastel">
-            <IconButton onClick={() => setRefreshCounter(prev => prev + 1)}>
-            <RefreshOutlinedIcon />
-          </IconButton>
-            </Tooltip>
-            </Box>
-            </Box>
-       
-            </Box>
+
+       {/* Botón para activar FetchRoutes */}
+<Box display="flex" gap={1}>
+  <Tooltip title="Actualizar rutas desde el backend">
+    <IconButton onClick={() => fetchRoutes(true)}> {/* Llama a fetchRoutes con forceUpdate=true */}
+      <CheckCircleOutlineIcon /> {/* Ícono de un chulito */}
+    </IconButton>
+  </Tooltip>
+</Box>
+
+{/* Botón de Refresh */}
+<Box display="flex" gap={1}>
+  <Tooltip title="Recargar el gráfico de pastel">
+    <IconButton onClick={() => setRefreshPieChart(!refreshPieChart)}> {/* Cambia el estado para forzar el re-render */}
+      <RefreshOutlinedIcon />
+    </IconButton>
+  </Tooltip>
+</Box>
+    
 
       {/* Contenedor para los gráficos */}
       <Box display={"flex"} gap="6px" height={"75vh"}>
-        
         <Box
           flex={3}
           borderRadius="4px">
-          <PieChart2 refreshCounter={refreshCounter} />
-        </Box>
+          <PieChart2 key={refreshPieChart}/>
         </Box>
       </Box>
-    
-    
+    </Box>
   );
 };
 

@@ -58,6 +58,8 @@ const Geography2 = () => {
             onChange={(e) => setOrig(e.target.value)} // Actualiza el estado del código IATA
           />
         </Box>
+        {/* Contenedor para los botones */}
+        
           {/* Botón para activar FetchRoutes */}
           <Box display="flex" gap={1}>
             <Tooltip title="Actualizar rutas desde el backend">
@@ -66,30 +68,28 @@ const Geography2 = () => {
               </IconButton>
             </Tooltip>
         
+
           {/* Botón de Refresh */}
-          <Box display="flex">
+          <Box display="flex" gap={1}>
             <Tooltip title="Recargar el gráfico de pastel">
             <IconButton onClick={() => setRefreshCounter(prev => prev + 1)}>
             <RefreshOutlinedIcon />
           </IconButton>
             </Tooltip>
-            </Box>
-            </Box>
-       
-            </Box>
+          </Box>
+        </Box>
+    
 
       {/* Contenedor para los gráficos */}
       <Box display={"flex"} gap="6px" height={"75vh"}>
-        
         <Box
           flex={3}
           borderRadius="4px">
-          <PieChart2 refreshCounter={refreshCounter} />
-        </Box>
+          <PieChart2 key={refreshCounter} />
         </Box>
       </Box>
-    
-    
+    </Box>
+    </Box>
   );
 };
 
