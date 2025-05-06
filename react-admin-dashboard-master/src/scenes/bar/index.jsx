@@ -13,9 +13,12 @@ const Bar = () => {
   const colors = tokens(theme.palette.mode);
 
   // Estado para los años
-  const [year1b, setYear1] = useState("");
-  const [year2b, setYear2] = useState("");
 
+  const [tempYear1, setTempYear1] = useState("");
+  const [year1b, setYear1] = useState("");
+  
+  const [tempYear2, setTempYear2] = useState("");
+  const [year2b, setYear2] = useState("");
  
 
   return (
@@ -28,10 +31,18 @@ const Bar = () => {
         {/* SEARCH BAR 1 */}
         <Box display="flex" backgroundColor={colors.primary[400]} borderRadius="2px">
           <InputBase
-            sx={{ ml: 2, flex: 1 }}
-            placeholder="Ingrese Año 1"
-            value={year1b}
-            onChange={(e) => setYear1(e.target.value)}
+           sx={{ ml: 2, flex: 1 }}
+           placeholder="Ingrese Año 1"
+           value={tempYear1}
+           onChange={(e) => {
+             const value = e.target.value;
+             if (/^\d{0,4}$/.test(value)) {
+               setTempYear1(value);
+               if (value.length === 4) {
+                 setYear1(value); // solo se guarda el valor si son 4 dígitos
+               }
+             }
+           }}
           />
         </Box>
 
@@ -40,8 +51,16 @@ const Bar = () => {
           <InputBase
             sx={{ ml: 2, flex: 1 }}
             placeholder="Ingrese Año 2"
-            value={year2b}
-            onChange={(e) => setYear2(e.target.value)}
+            value={tempYear2}
+            onChange={(e) => {
+              const value = e.target.value;
+              if (/^\d{0,4}$/.test(value)) {
+                setTempYear2(value);
+                if (value.length === 4) {
+                  setYear2(value);
+                }
+              }
+            }}
           />
         </Box>
       

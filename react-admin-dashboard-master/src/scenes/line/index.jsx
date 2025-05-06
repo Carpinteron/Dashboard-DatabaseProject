@@ -9,8 +9,11 @@ const Line = () => {
   const colors = tokens(theme.palette.mode);
 
   // Estado para los años
-  const [year1l, setYear1] = useState("");
-  const [year2l, setYear2] = useState("");
+  const [tempYear1l, setTempYear1l] = useState("");
+const [year1l, setYear1] = useState("");
+
+const [tempYear2l, setTempYear2l] = useState("");
+const [year2l, setYear2] = useState("");
 
   return (
     <Box m="20px">
@@ -19,10 +22,18 @@ const Line = () => {
               {/* SEARCH BAR 1 */}
               <Box display="flex" backgroundColor={colors.primary[400]} borderRadius="2px">
                 <InputBase
-                  sx={{ ml: 2, flex: 1 }}
-                  placeholder="Ingrese Año 1"
-                  value={year1l}
-                  onChange={(e) => setYear1(e.target.value)}
+                   sx={{ ml: 2, flex: 1 }}
+                   placeholder="Ingrese Año 1"
+                   value={tempYear1l}
+                   onChange={(e) => {
+                     const value = e.target.value;
+                     if (/^\d{0,4}$/.test(value)) {
+                       setTempYear1l(value);
+                       if (value.length === 4) {
+                         setYear1(value);
+                       }
+                     }
+                   }}
                 />
               </Box>
       
@@ -31,8 +42,16 @@ const Line = () => {
                 <InputBase
                   sx={{ ml: 2, flex: 1 }}
                   placeholder="Ingrese Año 2"
-                  value={year2l}
-                  onChange={(e) => setYear2(e.target.value)}
+                  value={tempYear2l}
+                  onChange={(e) => {
+                    const value = e.target.value;
+                    if (/^\d{0,4}$/.test(value)) {
+                      setTempYear2l(value);
+                      if (value.length === 4) {
+                        setYear2(value);
+                      }
+                    }
+                  }}
                 />
               </Box>
             </Box>
