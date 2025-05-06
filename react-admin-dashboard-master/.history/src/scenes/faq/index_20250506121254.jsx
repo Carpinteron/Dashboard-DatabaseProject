@@ -39,7 +39,7 @@ const FAQ = () => {
           </Typography>
         </AccordionSummary>
         <AccordionDetails>
-          <Typography variant="h5" color={colors.grey[100]}>
+          <Typography>
           • Implementar los conocimientos adquiridos en bases de datos SQL.<br />
           <br />
           • Conectar una base de datos real para visualizar datos dinámicos mediante un sitio web interactivo. <br />
@@ -55,7 +55,7 @@ const FAQ = () => {
           </Typography>
         </AccordionSummary>
         <AccordionDetails>
-          <Typography component={"div"} variant="h5" color={colors.grey[100]}>
+          <Typography component={"div"}>
           • Mostrar datos actualizados directamente desde la base de datos.
           <br />
           • Diseñar consultas SQL optimizadas que generen datos relevantes para el usuario.
@@ -71,7 +71,7 @@ const FAQ = () => {
           </Typography>
         </AccordionSummary>
         <AccordionDetails>
-          <Typography component={"div"} variant="h5" color={colors.grey[100]}>
+          <Typography component={"div"}>
           • Permitir la comparación de tendencias entre diferentes aspectos como periodos o rutas.
           <br />
           • Organizar datos relevantes de la base de datos para que sea facil de buscar y entender.
@@ -87,7 +87,7 @@ const FAQ = () => {
           </Typography>
         </AccordionSummary>
         <AccordionDetails >
-          <Typography component="div" variant="h5" color={colors.grey[100]}>
+          <Typography component="div">
             Hacer referencia a las fuentes de datos, como se obtuvieron, que se hizo con ellos, etc.
             Txeto largo, links.
             <ul style={{ marginTop: 0, paddingLeft: '20px' }}>

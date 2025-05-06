@@ -20,26 +20,26 @@ const FAQ = () => {
 
       <Accordion falseExpanded>
         <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-          <Typography color={colors.greenAccent[500]} variant="h4">
+          <Typography color={colors.greenAccent[500]} variant="h5">
             Descripción
           </Typography>
         </AccordionSummary>
         <AccordionDetails>
-          <Typography variant="h5" color={colors.grey[100]}>
-          El proyecto consiste en el desarrollo de un dashboard interactivo que gestiona y visualiza información proveniente de una base de datos de vuelos en Estados Unidos.<br />
+          <Typography font-size="16px" fon>
+          El proyecto consiste en el desarrollo de un dashboard interactivo que gestiona y visualiza información proveniente de una base de datos de vuelos en Estados Unidos.
            Además, se integra con una API externa para mantener actualizado el registro de los vuelos.
-           Esta herramienta tiene como objetivo facilitar la consulta, análisis<br /> y monitoreo de la información aeroportuaria en una sola interfaz intuitiva.
+           Esta herramienta tiene como objetivo facilitar la consulta, análisis y monitoreo de la información aeroportuaria en una sola interfaz intuitiva.
           </Typography>
         </AccordionDetails>
       </Accordion>
       <Accordion falseExpanded>
         <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-          <Typography color={colors.greenAccent[500]} variant="h4">
+          <Typography color={colors.greenAccent[500]} variant="h5">
             Objetivos Principales
           </Typography>
         </AccordionSummary>
         <AccordionDetails>
-          <Typography variant="h5" color={colors.grey[100]}>
+          <Typography>
           • Implementar los conocimientos adquiridos en bases de datos SQL.<br />
           <br />
           • Conectar una base de datos real para visualizar datos dinámicos mediante un sitio web interactivo. <br />
@@ -50,12 +50,12 @@ const FAQ = () => {
       </Accordion>
       <Accordion falseExpanded>
         <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-          <Typography color={colors.greenAccent[500]} variant="h4">
+          <Typography color={colors.greenAccent[500]} variant="h5">
           → Manejo de base de datos SQL
           </Typography>
         </AccordionSummary>
         <AccordionDetails>
-          <Typography component={"div"} variant="h5" color={colors.grey[100]}>
+          <Typography component={"div"}>
           • Mostrar datos actualizados directamente desde la base de datos.
           <br />
           • Diseñar consultas SQL optimizadas que generen datos relevantes para el usuario.
@@ -66,12 +66,12 @@ const FAQ = () => {
       </Accordion>
       <Accordion falseExpanded>
         <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-          <Typography color={colors.greenAccent[500]} variant="h4">
+          <Typography color={colors.greenAccent[500]} variant="h5">
           → Interacción y Visualización de Datos
           </Typography>
         </AccordionSummary>
         <AccordionDetails>
-          <Typography component={"div"} variant="h5" color={colors.grey[100]}>
+          <Typography component={"div"}>
           • Permitir la comparación de tendencias entre diferentes aspectos como periodos o rutas.
           <br />
           • Organizar datos relevantes de la base de datos para que sea facil de buscar y entender.
@@ -82,12 +82,12 @@ const FAQ = () => {
       </Accordion>
       <Accordion falseExpanded>
         <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-          <Typography color={colors.greenAccent[500]} variant="h4">
+          <Typography color={colors.greenAccent[500]} variant="h5">
             Referencias
           </Typography>
         </AccordionSummary>
         <AccordionDetails >
-          <Typography component="div" variant="h5" color={colors.grey[100]}>
+          <Typography component="div">
             Hacer referencia a las fuentes de datos, como se obtuvieron, que se hizo con ellos, etc.
             Txeto largo, links.
             <ul style={{ marginTop: 0, paddingLeft: '20px' }}>

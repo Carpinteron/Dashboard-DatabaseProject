@@ -71,7 +71,7 @@ const FAQ = () => {
           </Typography>
         </AccordionSummary>
         <AccordionDetails>
-          <Typography component={"div"} variant="h5" color={colors.grey[100]}>
+          <Typography component={"div"} >
           • Permitir la comparación de tendencias entre diferentes aspectos como periodos o rutas.
           <br />
           • Organizar datos relevantes de la base de datos para que sea facil de buscar y entender.
@@ -87,7 +87,7 @@ const FAQ = () => {
           </Typography>
         </AccordionSummary>
         <AccordionDetails >
-          <Typography component="div" variant="h5" color={colors.grey[100]}>
+          <Typography component="div">
             Hacer referencia a las fuentes de datos, como se obtuvieron, que se hizo con ellos, etc.
             Txeto largo, links.
             <ul style={{ marginTop: 0, paddingLeft: '20px' }}>
