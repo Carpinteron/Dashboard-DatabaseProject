@@ -89,7 +89,10 @@ const FAQ = () => {
         <AccordionDetails >
           <Typography component="div">
             Fuentes utilizadas para el desarrollo del proyecto
-
+          </Typography>
+          <Typography component="div" variant="h5" color={colors.grey[100]}>
+            Hacer referencia a las fuentes de datos, como se obtuvieron, que se hizo con ellos, etc.
+            Txeto largo, links.
             <ul style={{ marginTop: 0, paddingLeft: '20px' }}>
             • OpenFlights Airport Dataset: https://openflights.org/data.php 
             <br />
