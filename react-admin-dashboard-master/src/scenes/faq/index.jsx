@@ -26,9 +26,9 @@ const FAQ = () => {
         </AccordionSummary>
         <AccordionDetails>
           <Typography variant="h5" color={colors.grey[100]}>
-          El proyecto consiste en el desarrollo de un dashboard interactivo que gestiona y visualiza información proveniente de una base de datos de vuelos en Estados Unidos.<br />
-           Además, se integra con una API externa para mantener actualizado el registro de los vuelos.
-           Esta herramienta tiene como objetivo facilitar la consulta, análisis<br /> y monitoreo de la información aeroportuaria en una sola interfaz intuitiva.
+          El proyecto consiste en el desarrollo de un dashboard interactivo que gestiona y visualiza información proveniente de una base de datos de vuelos en Estados Unidos.
+          Además, se integra con una API externa para mantener actualizado el registro de los vuelos.
+          Esta herramienta tiene como objetivo facilitar la consulta, análisis y monitoreo de la información aeroportuaria en una sola interfaz intuitiva.
           </Typography>
         </AccordionDetails>
       </Accordion>
@@ -40,11 +40,11 @@ const FAQ = () => {
         </AccordionSummary>
         <AccordionDetails>
           <Typography variant="h5" color={colors.grey[100]}>
-          • Implementar los conocimientos adquiridos en bases de datos SQL.<br />
+          • Implementar los conocimientos adquiridos en bases de datos SQL.
           <br />
-          • Conectar una base de datos real para visualizar datos dinámicos mediante un sitio web interactivo. <br />
+          • Conectar una base de datos real para visualizar datos dinámicos mediante un sitio web interactivo. 
           <br />
-          • Integrar los datos a una API que permita actualizar automáticamente parte de la información.<br />
+          • Integrar los datos a una API que permita actualizar automáticamente parte de la información.
           </Typography>
         </AccordionDetails>
       </Accordion>
