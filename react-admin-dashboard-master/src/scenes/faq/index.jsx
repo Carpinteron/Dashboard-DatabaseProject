@@ -87,26 +87,42 @@ const FAQ = () => {
           </Typography>
         </AccordionSummary>
         <AccordionDetails >
-          <Typography component="div">
-            Fuentes utilizadas para el desarrollo del proyecto
-          </Typography>
           <Typography component="div" variant="h5" color={colors.grey[100]}>
-            Hacer referencia a las fuentes de datos, como se obtuvieron, que se hizo con ellos, etc.
-            Txeto largo, links.
-            <ul style={{ marginTop: 0, paddingLeft: '20px' }}>
-            • OpenFlights Airport Dataset: https://openflights.org/data.php 
-            <br />
-            • OpenFlights Flights Dataset: https://github.com/jpatokal/openflights/blob/master/data/airports.dat
-            <br />
-            • USA Airport Dataset: https://www.kaggle.com/datasets/flashgordon/usa-airport-dataset
-            <br />
-            • USA Flights Dataset: https://www.kaggle.com/datasets/bhavikjikadara/us-airline-flight-routes-and-fares-1993-2024
-            <br />
-            • AeroDataBox API: https://rapidapi.com/aedbx-aedbx/api/aerodatabox/playground/apiendpoint_a52ca6b2-212c-49ea-952b-e8170cfb3b00
-            <br />
-            • Flights Data Database Script: <a href="/public/Flights_Data_Script.sql" download> Flights_Data_Script.sql </a>
-            </ul>
-          </Typography>
+  Fuentes utilizadas para el desarrollo del proyecto:
+  <ul style={{ marginTop: 0, paddingLeft: '20px' }}>
+    <li>
+      <a href="https://openflights.org/data.php" target="_blank" rel="noopener noreferrer">
+        OpenFlights Airport Dataset
+      </a>
+    </li>
+    <li>
+      <a href="https://github.com/jpatokal/openflights/blob/master/data/airports.dat" target="_blank" rel="noopener noreferrer">
+        OpenFlights Flights Dataset
+      </a>
+    </li>
+    <li>
+      <a href="https://www.kaggle.com/datasets/flashgordon/usa-airport-dataset" target="_blank" rel="noopener noreferrer">
+        USA Airport Dataset
+      </a>
+    </li>
+    <li>
+      <a href="https://www.kaggle.com/datasets/bhavikjikadara/us-airline-flight-routes-and-fares-1993-2024" target="_blank" rel="noopener noreferrer">
+        USA Flights Dataset
+      </a>
+    </li>
+    <li>
+      <a href="https://rapidapi.com/aedbx-aedbx/api/aerodatabox/playground/apiendpoint_a52ca6b2-212c-49ea-952b-e8170cfb3b00" target="_blank" rel="noopener noreferrer">
+        AeroDataBox API
+      </a>
+    </li>
+    <li>
+      <a href="/Flights_Data.sql" download>
+        Descargar Script Flights_Data.sql
+      </a>
+    </li>
+  </ul>
+</Typography>
+
         </AccordionDetails>
       </Accordion>
     </Box>
