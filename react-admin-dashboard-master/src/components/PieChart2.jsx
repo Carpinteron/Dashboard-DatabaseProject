@@ -10,7 +10,7 @@ const LineChart = ({refreshCounter, isDashboard = false }) => {
   const fixedColors = ["#4FC3F7", "#81C784", "#BA68C8", "#FFB74D", "#90A4AE"];
 
   useEffect(() => {
-    document.title = "Line Chart - Skylar";
+    document.title = "Dashboard - Skylar";
     const fetchData = async () => {
       try {
         const res = await fetch("http://localhost:3001/api/vuelos-enero-mayo-2025");
