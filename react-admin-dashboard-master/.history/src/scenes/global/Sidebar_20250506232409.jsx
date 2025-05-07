@@ -85,7 +85,7 @@ const Sidebar = () => {
                   <img 
                     src="/logoprueba.png" 
                     alt="Airplane" 
-                    style={{ width: "30px", height: "30px",marginLeft: "10px", marginRight: "10px" }} 
+                    style={{ width: "20px", height: "20px", marginRight: "10px" }} 
                   />
                   Skylar
                 </Typography>

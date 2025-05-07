@@ -326,8 +326,9 @@ const Dashboard = () => {
           <Typography
             variant="h5"
             fontWeight="600"
-            sx={{ padding: "30px 30px 0 30px" }}
+            sx={{ padding: "20px 30px 0 30px" }}
           >
+            Mapa de Rutas de Vuelo
           </Typography>
           <Box height="250px" mt="-20px">
             <GeographyChart isDashboard={true} />

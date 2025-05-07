@@ -4,11 +4,10 @@ import Header from "../../components/Header";
 import { tokens } from "../../theme";
 import { useState } from "react";
 import { InputBase } from "@mui/material";
-import { useEffect } from 'react';
 
 const Geography = () => {
   useEffect(() => {
-      document.title = "Geography Chart - Skylar";
+      document.title = "Propósitos - Skylar";
     }, []);
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);

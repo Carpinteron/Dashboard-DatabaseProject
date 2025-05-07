@@ -8,7 +8,7 @@ import { useEffect } from 'react';
 
 const Geography = () => {
   useEffect(() => {
-      document.title = "Geography Chart - Skylar";
+      document.title = "Geogra - Skylar";
     }, []);
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);

@@ -82,16 +82,16 @@ const Sidebar = () => {
                 ml="15px"
               >
                 <Typography variant="h3" color={colors.grey[100]} display="flex" alignItems="center">
-                  <img 
-                    src="/logoprueba.png" 
-                    alt="Airplane" 
-                    style={{ width: "30px", height: "30px",marginLeft: "10px", marginRight: "10px" }} 
-                  />
-                  Skylar
-                </Typography>
-                <IconButton onClick={() => setIsCollapsed(!isCollapsed)}>
-                  <MenuOutlinedIcon />
-                </IconButton>
+  Skylar
+  <img 
+    src="/images/airplane.png" 
+    alt="Airplane" 
+    style={{ width: "30px", height: "30px", marginLeft: "10px" }} 
+  />
+</Typography>
+<IconButton onClick={() => setIsCollapsed(!isCollapsed)}>
+  <MenuOutlinedIcon />
+</IconButton>
               </Box>
             
             )}

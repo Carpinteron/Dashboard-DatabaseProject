@@ -13,7 +13,7 @@ import { useEffect } from 'react';
 
 const Geography2 = () => {
   useEffect(() => {
-        document.title = "Line Chart - Skylar";
+        document.title = "Geography Chart - Skylar";
       }, []);
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);

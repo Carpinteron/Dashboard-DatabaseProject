@@ -323,12 +323,7 @@ const Dashboard = () => {
           gridRow="span 2"
           backgroundColor={colors.primary[400]}
         >
-          <Typography
-            variant="h5"
-            fontWeight="600"
-            sx={{ padding: "30px 30px 0 30px" }}
-          >
-          </Typography>
+          
           <Box height="250px" mt="-20px">
             <GeographyChart isDashboard={true} />
           </Box>
