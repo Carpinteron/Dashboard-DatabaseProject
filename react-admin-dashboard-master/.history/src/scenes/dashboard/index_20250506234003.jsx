@@ -328,9 +328,9 @@ const Dashboard = () => {
             fontWeight="600"
             sx={{ padding: "20px 20px 0 20px", marginBottom: "10px", textAlign: "left" }}
           >
-          Vuelos de 2024 con más de 3000 pasajeros
+          Mapa de Rutas de Vuelo
           </Typography>
-          <Box height="230px">
+          <Box height="248px">
             <GeographyChart isDashboard={true} />
           </Box>
         </Box>

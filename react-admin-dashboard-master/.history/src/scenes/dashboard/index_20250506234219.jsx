@@ -330,7 +330,7 @@ const Dashboard = () => {
           >
           Vuelos de 2024 con más de 3000 pasajeros
           </Typography>
-          <Box height="230px">
+          <Box height="2px">
             <GeographyChart isDashboard={true} />
           </Box>
         </Box>
